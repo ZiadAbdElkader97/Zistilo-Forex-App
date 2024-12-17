@@ -1,0 +1,16 @@
+.app {
+  height: 100vh;
+  display: flex;
+}
+
+/* Dark Mode */
+.dark_mode {
+  background-color: var(--body_color);
+  color: white;
+}
+
+/* Light Mode */
+.light_mode {
+  background-color: white;
+  color: black;
+}
