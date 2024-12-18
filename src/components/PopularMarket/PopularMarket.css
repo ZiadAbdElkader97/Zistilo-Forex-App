@@ -1,0 +1,51 @@
+.view_data {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #454545;
+  cursor: pointer;
+}
+.view_data:hover {
+  background-color: #45454573;
+}
+.light_mode .view_data {
+  border-bottom: 1px solid #d5dde0;
+}
+.view_data .view_sec1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.view_sec1 .view_icon {
+  color: var(--buy_color);
+  font-size: 12px;
+}
+.view_sec1 .view_symbol {
+  font-size: 11.5px;
+}
+.view_data .view_sec2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  gap: 7px;
+}
+.view_data .view_sec2 .view_percent_change {
+  color: var(--natural_color);
+  width: 30px;
+  text-align: right;
+}
+.light_mode .view_data .view_sec2 .view_percent_change {
+  color: #454545;
+}
+.view_data .view_sec2 .view_ask_price {
+  color: var(--buy_color);
+  width: 60px;
+  text-align: right;
+}
+.view_data .view_sec2 .view_bid_price {
+  color: var(--sell_color);
+  width: 60px;
+  text-align: right;
+}
