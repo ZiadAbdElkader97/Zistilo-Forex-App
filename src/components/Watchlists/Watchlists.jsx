@@ -1,47 +1,36 @@
 import "./Watchlists.css";
 import { useState } from "react";
-import PopularMarket from "../PopularMarket/PopularMarket";
+import PM_WatchList from "../PopularMarkets/PM_WatchList/PM_WatchList.jsx";
 import { FiPlus } from "react-icons/fi";
-import { FaListUl } from "react-icons/fa";
-import { HiSquares2X2 } from "react-icons/hi2";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 
 export default function Watchlists() {
   const [toggleState, setToggleState] = useState(true);
-  const [changeIcon, setChangeIcon] = useState(true);
 
   return (
     <>
       <div className="watchlist">
-        <div className="popular">
-          <div
-            className="popular_section"
-            onClick={() => setToggleState(!toggleState)}
-          >
-            <div className="pop_section">
+        <div className="watchlist_section">
+          <div className="popular">
+            <div
+              className="popular_section"
+              onClick={() => setToggleState(!toggleState)}
+            >
               <i>
                 {toggleState ? <IoMdArrowDropdown /> : <IoMdArrowDropright />}
               </i>
               <p>Popular Markets</p>
             </div>
           </div>
-          <div className="view_section">
-            <i
-              title={changeIcon ? "Tiles" : "List"}
-              onClick={() => setChangeIcon(!changeIcon)}
-            >
-              {changeIcon ? <HiSquares2X2 /> : <FaListUl />}
+
+          {toggleState ? <PM_WatchList /> : <></>}
+
+          <div className="new_watchlist">
+            <i>
+              <FiPlus />
             </i>
+            <p>Create new Watchlist</p>
           </div>
-        </div>
-
-        {toggleState ? <PopularMarket /> : <></>}
-
-        <div className="new_watchlist">
-          <i>
-            <FiPlus />
-          </i>
-          <p>Create new Watchlist</p>
         </div>
       </div>
     </>

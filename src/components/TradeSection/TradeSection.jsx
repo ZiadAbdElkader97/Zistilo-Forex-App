@@ -4,7 +4,7 @@ import { symbols_search, tradeData } from "../../assets/data/TradeData";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
 import Watchlists from "../Watchlists/Watchlists.jsx";
-import Symbols from "../Symbols/Symbols.jsx";
+import AllSymbols from "../AllSymbols/AllSymbols.jsx";
 
 export default function TradeSection() {
   const [toggleState, setToggleState] = useState(1);
@@ -83,7 +83,7 @@ export default function TradeSection() {
           </div>
         </div>
 
-        {toggleState === 1 ? <Watchlists /> : <Symbols />}
+        {toggleState === 1 ? <Watchlists /> : <AllSymbols />}
       </div>
     </>
   );

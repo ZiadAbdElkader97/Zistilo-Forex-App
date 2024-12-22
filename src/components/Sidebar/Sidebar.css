@@ -26,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 13px;
+  padding: 11px 13px;
 }
 .sm_sidebar .top_menu {
   padding: 16px 13px;
@@ -118,7 +118,7 @@
 .center_menu .center_menu_list i {
   color: white;
   background-color: var(--main_color);
-  padding: 12px;
+  padding: 11px 12px;
 }
 .sm_sidebar .center_menu .center_menu_list i {
   background-color: transparent;
@@ -213,7 +213,7 @@
   display: flex;
   align-items: center;
   font-size: 16px;
-  padding: 12px;
+  padding: 11px 12px;
 }
 .light_mode .bottom_menu_list i {
   color: #000;

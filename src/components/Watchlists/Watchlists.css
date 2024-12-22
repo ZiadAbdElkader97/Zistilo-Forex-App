@@ -1,97 +1,53 @@
 .watchlist {
-  height: 240px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin: 5px;
+  height: 250px;
+  margin-top: 7px;
   overflow: auto;
   flex: 1;
 }
-::-webkit-scrollbar {
-  width: 10px;
-  background: #b8b8b8;
-  border-radius: 10px;
-}
-.light_mode ::-webkit-scrollbar {
-  background: rgb(241, 241, 241);
-}
-::-webkit-scrollbar-thumb {
-  background: #808080;
-  height: 50px;
-  border-radius: 10px;
-}
-.light_mode ::-webkit-scrollbar-thumb {
-  background: #afbdc4;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #5b5b5b;
-}
-.light_mode ::-webkit-scrollbar-thumb:hover {
-  background: #8aa0aa;
+.watchlist .watchlist_section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-right: 6px;
 }
 .watchlist .popular {
-  display: flex;
   position: relative;
+
 }
-.popular .popular_section {
+.watchlist .popular .popular_section {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: #525252;
-  padding: 4px 0px 4px 10px;
+  padding: 6px 0px 6px 10px;
   border-radius: var(--border_radius);
   cursor: pointer;
 }
-.light_mode .popular_section {
+.light_mode .watchlist .popular_section {
   background-color: #d5dde0;
-}
-.popular_section .pop_section {
   display: flex;
   align-items: center;
   gap: 2px;
 }
-.popular_section .pop_section i {
+.watchlist .popular_section i {
   color: #cccccc;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--main_transition);
 }
-.light_mode .popular_section .pop_section i {
+.light_mode .watchlist .popular_section i {
   color: #4a4d4f;
   font-size: 19px;
 }
-.watchlist .popular_section:hover .pop_section i {
+.watchlist .popular_section:hover i {
   color: white;
 }
-.light_mode .popular_section:hover .pop_section i {
+.light_mode .watchlist .popular_section:hover  i {
   color: #000;
 }
-.popular_section .pop_section p {
+.watchlist .popular_section  p {
   font-size: 11px;
-}
-.popular .view_section {
-  display: flex;
-  padding-right: 10px;
-  position: absolute;
-  right: 0;
-  top: 2px;
-}
-.popular .view_section i {
-  color: #cccccc;
-  padding: 2px 2px 0px 2px;
-  cursor: pointer;
-}
-.light_mode .popular .view_section i {
-  color: #4a4d4f;
-}
-.popular .view_section i:hover {
-  background-color: #666666;
-  border-radius: var(--border_radius);
-}
-.light_mode .popular .view_section i:hover {
-  background-color: #f9f9f9;
 }
 .watchlist .new_watchlist {
   width: 100%;
