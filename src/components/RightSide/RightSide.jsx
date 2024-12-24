@@ -1,6 +1,10 @@
 import "./RightSide.css";
 import { useState } from "react";
-import Technical_Indicator from "../Technical_Indicator/Technical_Indicator";
+import Tech_Section from "../Technical_Indicator/Tech_Section.jsx";
+import RSide_Symbol from "../RSide_Symbol/RSide_Symbol.jsx";
+import Calendar from "../Calendar/Calendar.jsx";
+import Autochartist from "../Autochartist/Autochartist.jsx";
+import News from "../News/News.jsx";
 
 export default function RightSide() {
   const [toggleState, setToggleState] = useState(1);
@@ -12,18 +16,18 @@ export default function RightSide() {
     <div className="right_side">
       <div className="tabs">
         <span
-          title="Symbol"
+          title="Technical Indicator"
           className={toggleState === 1 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(1)}
         >
-          Symbol
+          Tech
         </span>
         <span
-          title="Technical Indicator"
+          title="Symbol"
           className={toggleState === 2 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(2)}
         >
-          TI
+          Symbol
         </span>
         <span
           title="Calendar"
@@ -48,9 +52,11 @@ export default function RightSide() {
         </span>
       </div>
       <div className="right_side_content"></div>
-      {toggleState === 2 ? <Technical_Indicator /> : <></>}
-      {/* display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); */}
+      {toggleState === 1 ? <Tech_Section /> : <></>}
+      {toggleState === 2 ? <RSide_Symbol /> : <></>}
+      {toggleState === 3 ? <Calendar /> : <></>}
+      {toggleState === 4 ? <Autochartist /> : <></>}
+      {toggleState === 5 ? <News /> : <></>}
     </div>
   );
 }

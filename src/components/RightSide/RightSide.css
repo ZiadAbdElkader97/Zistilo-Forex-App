@@ -1,6 +1,8 @@
 .right_side {
   width: 400px;
+  height: 100%;
   margin-left: 5px;
+  border-radius: 4px 0px 4px 4px;
 }
 .right_side .tabs {
   display: flex;
@@ -11,7 +13,7 @@
   color: #bababa;
   background-color: #3b3b3b;
   padding: 6px;
-  border-radius: var(--border_radius);
+  border-radius: 4px 4px 0px 0px;
   cursor: pointer;
 }
 .right_side .tabs .tab:hover {
@@ -35,13 +37,14 @@
   background-color: #d5dde0;
 }
 .right_side .tabs .tab_active:hover {
-    color: white;
-    background-color: #525252;
-  }
-  .light_mode .tabs .tab_active:hover {
-    color: #161717;
-    background-color: #d5dde0;
-  }
+  color: white;
+  background-color: #525252;
+}
+.light_mode .tabs .tab_active:hover {
+  color: #161717;
+  background-color: #d5dde0;
+}
 
 /* right_side_content */
-.right_side .right_side_content {}
+.right_side .right_side_content {
+}

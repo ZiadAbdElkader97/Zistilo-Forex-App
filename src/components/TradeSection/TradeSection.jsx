@@ -1,12 +1,20 @@
 import "./TradeSection.css";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { symbols_search, tradeData } from "../../assets/data/TradeData";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
 import Watchlists from "../Watchlists/Watchlists.jsx";
 import AllSymbols from "../AllSymbols/AllSymbols.jsx";
+import { DataContext } from "../../context/DataContext.jsx";
 
 export default function TradeSection() {
+  const { filterData } = useContext(DataContext);
+
+  const handleFilter = (timeframe) => {
+    console.log("Clicked filter button with timeframe:", timeframe);
+    filterData(timeframe);
+  };
+
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -74,9 +82,11 @@ export default function TradeSection() {
                       ? "symbols_li symbols_active"
                       : "symbols_li"
                   }
-                  onClick={() => toggleSearchtab(tab.id)}
+                  onClick={() => (
+                    toggleSearchtab(tab.id), handleFilter(tab.timeframe)
+                  )}
                 >
-                  {tab.name}
+                  {tab.timeframe}
                 </li>
               ))}
             </ul>

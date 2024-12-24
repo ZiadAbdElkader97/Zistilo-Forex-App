@@ -4,6 +4,7 @@
   flex-direction: column;
 }
 .content .content_sides {
+  height: 95%;
   display: grid;
   grid-template-columns: 1fr auto;
   margin: 5px;

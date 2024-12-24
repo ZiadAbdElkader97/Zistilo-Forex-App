@@ -5,13 +5,14 @@ export const tradeData = {
   search_ph: "Enter symbol name",
 };
 export const symbols_search = [
-  { name: "M1", id: 1 },
-  { name: "M5", id: 2 },
-  { name: "M15", id: 3 },
-  { name: "M30", id: 4 },
-  { name: "H1", id: 5 },
-  { name: "H4", id: 6 },
-  { name: "D1", id: 7 },
-  { name: "W1", id: 8 },
-  { name: "MN", id: 9 },
+  { timeframe: "M1", id: 1 },
+  { timeframe: "M5", id: 2 },
+  { timeframe: "M15", id: 3 },
+  { timeframe: "M30", id: 4 },
+  { timeframe: "H1", id: 5 },
+  { timeframe: "H4", id: 6 },
+  { timeframe: "D1", id: 7 },
+  { timeframe: "W1", id: 8 },
+  { timeframe: "MN", id: 9 },
+  { timeframe: "30", id: 10 },
 ];

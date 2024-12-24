@@ -1,10 +1,17 @@
-.charts_view {
+.charts {
+  height: 100%;
+}
+.charts .charts_view {
+  height: 70%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   grid-gap: 5px;
 }
-.chart {
-  height: 150px;
+.charts .chart {
+  height: 250px;
   border-radius: var(--border_radius);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.charts .charts_info {
+  height: 30%;
 }

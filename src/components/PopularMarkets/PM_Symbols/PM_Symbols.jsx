@@ -1,36 +1,27 @@
-import axios from "axios";
 import "./PM_Symbols.css";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 
 export default function PM_Symbols() {
-  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
         "https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php"
       );
-      const uniqueNames = new Set();
-      const filtered = response.data.filter((item) => {
-        if (!uniqueNames.has(item.symbol)) {
-          uniqueNames.add(item.symbol);
-          return true;
-        }
-        return false;
-      });
       setData(response.data);
-      setFilteredData(filtered);
     };
     fetchData();
   }, []);
+
   // console.log(data);
+
   return (
     <>
-      {filteredData.map((item) => (
+      {data.map((item) => (
         <div key={item.id} className="view_data">
           <div className="view_sec1">
             <i className="view_icon1">
