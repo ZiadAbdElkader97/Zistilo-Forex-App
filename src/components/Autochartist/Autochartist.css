@@ -15,3 +15,6 @@
   margin-right: 6px;
   border-radius: var(--border_radius);
 }
+.light_mode .autochartist .autochartist_section {
+  background-color: white;
+}

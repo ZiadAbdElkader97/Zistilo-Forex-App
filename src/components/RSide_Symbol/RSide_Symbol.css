@@ -15,3 +15,6 @@
   margin-left: 6px;
   border-radius: var(--border_radius);
 }
+.light_mode .rSide_symbol .rSide_section {
+  background-color: white;
+}

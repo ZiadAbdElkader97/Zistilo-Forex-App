@@ -24,11 +24,9 @@ export const DataProvider = ({ children }) => {
   // console.log(data);
 
   const filterData = (timeframe) => {
-    console.log("Filtering with timeframe:", timeframe);
     const filtered = timeframe
       ? data.filter((item) => item.timeframe === timeframe)
       : data;
-    console.log("Filtered data:", filtered);
     setFilteredData(filtered);
   };
 

@@ -11,7 +11,6 @@ export default function TradeSection() {
   const { filterData } = useContext(DataContext);
 
   const handleFilter = (timeframe) => {
-    console.log("Clicked filter button with timeframe:", timeframe);
     filterData(timeframe);
   };
 

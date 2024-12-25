@@ -59,4 +59,19 @@
   margin-left: 6px;
   margin-right: 6px;
   border-radius: var(--border_radius);
+  padding: 5px;
+}
+.light_mode .tech_section {
+  background-color: white;
+}
+.tech_section .values_signal {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+.tech_section .values_signal .value {
+  font-size: 12px;
+}
+.tech_section .values_signal .num_status {
+  font-size: 12px;
 }

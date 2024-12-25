@@ -1,9 +1,9 @@
 import "./Tech_Section.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { signalsData } from "../../assets/data/TechData";
 
 export default function Advanced() {
-  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -25,9 +25,18 @@ export default function Advanced() {
   // console.log(data);
 
   return (
-    <>
+<>
       <div className="tech_section">
-        <div></div>
+        {signalsData.map((item) => (
+          <div key={item.id} className="values_signal">
+            <p className="value">{item.signalName} :</p>
+            <p className="num_status"></p>
+          </div>
+        ))}
+
+        {data.map((item) => (
+          <div key={item.id} className="tech_values"></div>
+        ))}
       </div>
     </>
   );
