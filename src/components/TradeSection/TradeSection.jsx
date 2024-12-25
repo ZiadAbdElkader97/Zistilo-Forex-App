@@ -1,6 +1,10 @@
 import "./TradeSection.css";
 import { useState, useRef, useContext } from "react";
-import { symbols_search, tradeData } from "../../assets/data/TradeData";
+import {
+  symbols_list,
+  symbols_search,
+  tradeData,
+} from "../../assets/data/TradeData";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
 import Watchlists from "../Watchlists/Watchlists.jsx";
@@ -8,20 +12,36 @@ import AllSymbols from "../AllSymbols/AllSymbols.jsx";
 import { DataContext } from "../../context/DataContext.jsx";
 
 export default function TradeSection() {
-  const { filterData } = useContext(DataContext);
+  const { filterData, activeTimeframe, activeSymbol } = useContext(DataContext);
 
-  const handleFilter = (timeframe) => {
-    filterData(timeframe);
+  const [activeTimeframeTab, setActiveTimeframeTab] = useState(
+    symbols_search[0].id
+  );
+  const [activeSymbolTab, setActiveSymbolTab] = useState(null);
+
+  const handleTimeframeFilter = (id, timeframe) => {
+    if (setActiveTimeframeTab === id) {
+      setActiveTimeframeTab(null);
+      filterData(null, activeSymbol);
+    } else {
+      setActiveTimeframeTab(id);
+      filterData(timeframe, activeSymbol);
+    }
+  };
+
+  const handleSymbolFilter = (symbol) => {
+    if (activeSymbolTab === symbol) {
+      setActiveSymbolTab(null);
+      filterData(activeTimeframe, null);
+    } else {
+      setActiveSymbolTab(symbol);
+      filterData(activeTimeframe, symbol);
+    }
   };
 
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
-  };
-
-  const [activeTab, setActiveTab] = useState(symbols_search[0].id);
-  const toggleSearchtab = (id) => {
-    setActiveTab(id);
   };
 
   const [inputValue, setInputValue] = useState("");
@@ -77,15 +97,29 @@ export default function TradeSection() {
                 <li
                   key={tab.id}
                   className={
-                    activeTab === tab.id
+                    activeTimeframeTab === tab.id
                       ? "symbols_li symbols_active"
                       : "symbols_li"
                   }
-                  onClick={() => (
-                    toggleSearchtab(tab.id), handleFilter(tab.timeframe)
-                  )}
+                  onClick={() => handleTimeframeFilter(tab.id, tab.timeframe)}
                 >
                   {tab.timeframe}
+                </li>
+              ))}
+            </ul>
+
+            <ul className="symbols_ul">
+              {symbols_list.map((symbol) => (
+                <li
+                  key={symbol}
+                  className={
+                    activeSymbolTab === symbol
+                      ? "symbols_li symbols_active"
+                      : "symbols_li"
+                  }
+                  onClick={() => handleSymbolFilter(symbol)}
+                >
+                  {symbol}
                 </li>
               ))}
             </ul>

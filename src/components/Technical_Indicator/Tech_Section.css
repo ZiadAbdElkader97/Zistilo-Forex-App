@@ -69,7 +69,7 @@
   justify-content: space-between;
   padding-bottom: 8px;
 }
-.tech_section .values_signal .value {
+.tech_section .values_signal .valueName {
   font-size: 12px;
 }
 .tech_section .values_signal .num_status {
