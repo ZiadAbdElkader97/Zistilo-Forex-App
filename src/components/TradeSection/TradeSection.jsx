@@ -1,10 +1,6 @@
 import "./TradeSection.css";
 import { useState, useRef, useContext } from "react";
-import {
-  symbols_list,
-  symbols_search,
-  tradeData,
-} from "../../assets/data/TradeData";
+import { symbols_search, tradeData } from "../../assets/data/TradeData";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
 import Watchlists from "../Watchlists/Watchlists.jsx";
@@ -12,12 +8,11 @@ import AllSymbols from "../AllSymbols/AllSymbols.jsx";
 import { DataContext } from "../../context/DataContext.jsx";
 
 export default function TradeSection() {
-  const { filterData, activeTimeframe, activeSymbol } = useContext(DataContext);
+  const { filterData, activeSymbol } = useContext(DataContext);
 
   const [activeTimeframeTab, setActiveTimeframeTab] = useState(
     symbols_search[0].id
   );
-  const [activeSymbolTab, setActiveSymbolTab] = useState(null);
 
   const handleTimeframeFilter = (id, timeframe) => {
     if (setActiveTimeframeTab === id) {
@@ -26,16 +21,6 @@ export default function TradeSection() {
     } else {
       setActiveTimeframeTab(id);
       filterData(timeframe, activeSymbol);
-    }
-  };
-
-  const handleSymbolFilter = (symbol) => {
-    if (activeSymbolTab === symbol) {
-      setActiveSymbolTab(null);
-      filterData(activeTimeframe, null);
-    } else {
-      setActiveSymbolTab(symbol);
-      filterData(activeTimeframe, symbol);
     }
   };
 
@@ -104,22 +89,6 @@ export default function TradeSection() {
                   onClick={() => handleTimeframeFilter(tab.id, tab.timeframe)}
                 >
                   {tab.timeframe}
-                </li>
-              ))}
-            </ul>
-
-            <ul className="symbols_ul">
-              {symbols_list.map((symbol) => (
-                <li
-                  key={symbol}
-                  className={
-                    activeSymbolTab === symbol
-                      ? "symbols_li symbols_active"
-                      : "symbols_li"
-                  }
-                  onClick={() => handleSymbolFilter(symbol)}
-                >
-                  {symbol}
                 </li>
               ))}
             </ul>

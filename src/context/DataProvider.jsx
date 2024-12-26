@@ -20,7 +20,7 @@ export const DataProvider = ({ children }) => {
       );
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // console.log(data);
@@ -37,9 +37,21 @@ export const DataProvider = ({ children }) => {
     setFilteredData(filtered);
   };
 
+  const setSymbol = (symbol) => {
+    setActiveSymbol(symbol);
+    filterData(activeTimeframe, symbol);
+  };
+
   return (
     <DataContext.Provider
-      value={{ data, filteredData, filterData, activeTimeframe, activeSymbol }}
+      value={{
+        data,
+        filteredData,
+        filterData,
+        activeTimeframe,
+        activeSymbol,
+        setSymbol,
+      }}
     >
       {children}
     </DataContext.Provider>

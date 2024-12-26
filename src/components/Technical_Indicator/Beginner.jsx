@@ -1,14 +1,13 @@
 import "./Tech_Section.css";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { signalsData } from "../../assets/data/TechData";
+import { DataContext } from "../../context/DataContext";
 
 export default function Beginner() {
-  const [data, setData] = useState([]);
-  const [matchedData, setMatchedData] = useState([]);
+  const { activeTimeframe, activeSymbol } = useContext(DataContext);
 
-  const localData = signalsData;
-  const keysToCompare = signalsData.map((key) => key.key);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,22 +23,9 @@ export default function Beginner() {
       setData(response.data);
     };
     fetchData();
-  }, []);
+  }, [activeTimeframe, activeSymbol]);
 
-  useEffect(() => {
-    compareData();
-  }, [data]);
-
-  const compareData = () => {
-    const newMatchedData = data.filter((apiItem) =>
-      localData.some((localItem) =>
-        keysToCompare.every((key) => apiItem[key] === localItem[key])
-      )
-    );
-    setMatchedData(newMatchedData);
-  };
-
-  // console.log(data);
+  console.log(data);
 
   return (
     <>
@@ -47,12 +33,10 @@ export default function Beginner() {
         {signalsData.map((item) => (
           <div key={item.id} className="values_signal">
             <p className="valueName">{item.name}</p>
-            <p className="num_status"></p>
+            {data.map((item) => (
+              <p key={item.id} className="num_status"></p>
+            ))}
           </div>
-        ))}
-
-        {data.map((item) => (
-          <div key={item.id} className="tech_values"></div>
         ))}
       </div>
     </>

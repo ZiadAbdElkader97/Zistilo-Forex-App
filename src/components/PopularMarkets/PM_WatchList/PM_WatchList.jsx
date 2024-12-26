@@ -4,12 +4,20 @@ import { FaCheck } from "react-icons/fa6";
 import { DataContext } from "../../../context/DataContext.jsx";
 
 export default function PM_WatchList() {
-  const { filteredData } = useContext(DataContext);
+  const { filteredData, setSymbol } = useContext(DataContext);
+
+  const handleItemClick = (symbol) => {
+    setSymbol(symbol);
+  };
 
   return (
     <>
       {filteredData.map((item) => (
-        <div key={item.id} className="view_data">
+        <div
+          key={item.id}
+          className="view_data"
+          onClick={() => handleItemClick(item.symbol)}
+        >
           <div className="view_sec1">
             <i className="view_icon">
               <FaCheck />

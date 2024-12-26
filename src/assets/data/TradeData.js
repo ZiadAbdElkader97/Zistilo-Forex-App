@@ -16,5 +16,3 @@ export const symbols_search = [
   { timeframe: "MN", id: 9 },
   { timeframe: "30", id: 10 },
 ];
-
-export const symbols_list = ["BTCUSD", "EURUSD", "AUDUSD", "USDJPY"];
