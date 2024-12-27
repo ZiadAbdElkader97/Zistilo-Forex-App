@@ -5,22 +5,36 @@ import { DataContext } from "./DataContext";
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [otherData, setOtherData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [activeTimeframe, setActiveTimeframe] = useState("M1");
+  const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php"
+        "https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php?timeframe=M1"
       );
       setData(response.data);
-      setFilteredData(
-        response.data.filter((item) => item.timeframe === activeTimeframe)
-      );
+      setFilteredData(response.data.filter((item) => item.timeframe === "M1"));
     };
     fetchData();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const fetchOtherData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/indicators_for_beginner_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setOtherData(response.data);
+    };
+    fetchOtherData();
   }, []);
 
   // console.log(data);
@@ -46,6 +60,7 @@ export const DataProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         data,
+        otherData,
         filteredData,
         filterData,
         activeTimeframe,

@@ -59,19 +59,35 @@
   margin-left: 6px;
   margin-right: 6px;
   border-radius: var(--border_radius);
-  padding: 5px;
+  padding: 6px;
 }
 .light_mode .tech_section {
   background-color: white;
 }
-.tech_section .values_signal {
+.tech_section .tech_values {
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+}
+.tech_section .tech_values .values_signal {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   padding-bottom: 8px;
+  font-size: 12px;
 }
 .tech_section .values_signal .valueName {
   font-size: 12px;
 }
 .tech_section .values_signal .num_status {
   font-size: 12px;
+}
+.tech_section .tech_values .data_values {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tech_section .tech_values .data_values p {
+  font-size: 12px;
+  text-align: right;
 }

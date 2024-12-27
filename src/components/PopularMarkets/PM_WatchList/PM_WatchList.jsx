@@ -1,10 +1,18 @@
 import "./PM_WatchList.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { DataContext } from "../../../context/DataContext.jsx";
 
 export default function PM_WatchList() {
-  const { filteredData, setSymbol } = useContext(DataContext);
+  const { data, setSymbol, filterData, activeTimeframe } =
+    useContext(DataContext);
+
+  useEffect(() => {
+    if (!activeTimeframe) {
+      filterData("M1", null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleItemClick = (symbol) => {
     setSymbol(symbol);
@@ -12,7 +20,7 @@ export default function PM_WatchList() {
 
   return (
     <>
-      {filteredData.map((item) => (
+      {data.map((item) => (
         <div
           key={item.id}
           className="view_data"

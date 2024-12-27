@@ -1,43 +1,52 @@
 import "./Tech_Section.css";
-import axios from "axios";
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect } from "react";
 import { signalsData } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
 
 export default function Beginner() {
-  const { activeTimeframe, activeSymbol } = useContext(DataContext);
-
-  const [data, setData] = useState([]);
+  const { otherData, activeTimeframe, activeSymbol, filterData } =
+    useContext(DataContext);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://notifications.copyforexsignals.com/apii/indicators_for_beginner_api.php?timeframe=30",
-        {
-          headers: {
-            "Content-Type": "application/json",
-            api_password: "5BhZWHeSp463Q7sU",
-          },
-        }
-      );
-      setData(response.data);
-    };
-    fetchData();
-  }, [activeTimeframe, activeSymbol]);
+    if (!activeTimeframe) {
+      filterData("H1", "EURUSD");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  console.log(data);
+  const filterOtherData = otherData.filter(
+    (item) =>
+      (!activeTimeframe || item.timeframe === activeTimeframe) &&
+      (!activeSymbol || item.symbol === activeSymbol)
+  );
+
+  console.log(filterOtherData);
 
   return (
     <>
       <div className="tech_section">
-        {signalsData.map((item) => (
-          <div key={item.id} className="values_signal">
-            <p className="valueName">{item.name}</p>
-            {data.map((item) => (
-              <p key={item.id} className="num_status"></p>
+        <div className="tech_values">
+          <div className="values_signal">
+            {signalsData.map((signal) => (
+              <p key={signal.id}>{signal.name}</p>
             ))}
           </div>
-        ))}
+
+          {filterOtherData.map((item) => (
+            <div key={item.id} className="data_values">
+              <p className="num_status">{item.rsi_value}</p>
+              <p className="num_status">{item.stoch_value}</p>
+              <p className="num_status">{item.williams_value}</p>
+              <p className="num_status">{item.momentum_value}</p>
+              <p className="num_status">{item.mfi_value}</p>
+              <p className="num_status">{item.bb_value}</p>
+              <p className="num_status">{item.atr_value}</p>
+              <p className="num_status">{item.ha_value}</p>
+              <p className="num_status">{item.candle_value}</p>
+              <p className="num_status">{item.sar_value}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
