@@ -91,7 +91,7 @@ export const DataProvider = ({ children }) => {
     };
 
     const getColor = () => {
-      return value > 0 ? "green" : "red";
+      return value > 0 ? "#60d938" : "#ed250e";
     };
 
     return (
