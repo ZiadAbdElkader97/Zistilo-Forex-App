@@ -84,6 +84,32 @@ export const DataProvider = ({ children }) => {
 
   // console.log(data);
 
+  const ValueBar = ({ value }) => {
+    const getWidth = () => {
+      const percentage = Math.min(Math.abs(value) * 10, 100);
+      return `${percentage}%`;
+    };
+
+    const getColor = () => {
+      return value > 0 ? "green" : "red";
+    };
+
+    return (
+      <div className="value_bar_container">
+        <div className="value_bar_center"></div>
+        <div
+          className={`value_bar ${
+            value > 0 ? "value_bar_right" : "value_bar_left"
+          }`}
+          style={{
+            width: getWidth(),
+            backgroundColor: getColor(),
+          }}
+        ></div>
+      </div>
+    );
+  };
+
   const filterData = (timeframe, symbol) => {
     setActiveTimeframe(timeframe || activeTimeframe);
     setActiveSymbol(symbol || activeSymbol);
@@ -109,6 +135,7 @@ export const DataProvider = ({ children }) => {
         otherData2,
         otherData3,
         calendarData,
+        ValueBar,
         filteredData,
         filterData,
         activeTimeframe,

@@ -4,7 +4,7 @@ import { advanced_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
 
 export default function Advanced() {
-  const { otherData3, activeTimeframe, activeSymbol, filterData } =
+  const { otherData3, activeTimeframe, activeSymbol, filterData, ValueBar } =
     useContext(DataContext);
 
   useEffect(() => {
@@ -34,22 +34,22 @@ export default function Advanced() {
 
           {filterOtherData.map((chart) => (
             <div key={chart.id} className="chart_values">
-              <p>{chart.ichimoku_value}</p>
-              <p>{chart.elder_impulse_value}</p>
-              <p>{chart.schaff_value}</p>
-              <p>{chart.cmf_value}</p>
-              <p>{chart.mega_fx_value}</p>
-              <p>{chart.misus_value}</p>
-              <p>{chart.vortex_value}</p>
-              <p>{chart.volume_oscillator_value}</p>
-              <p>{chart.elder_ray_value}</p>
-              <p>{chart.pivot_points_value}</p>
-              <p>{chart.hma_value}</p>
-              <p>{chart.qqe_value}</p>
-              <p>{chart.cci_value}</p>
-              <p>{chart.semafor_value}</p>
-              <p>{chart.ama_value}</p>
-              <p>{chart.ao_value}</p>
+              <ValueBar value={chart.ichimoku_value} />
+              <ValueBar value={chart.elder_impulse_value} />
+              <ValueBar value={chart.schaff_value} />
+              <ValueBar value={chart.cmf_value} />
+              <ValueBar value={chart.mega_fx_value} />
+              <ValueBar value={chart.misus_value} />
+              <ValueBar value={chart.vortex_value} />
+              <ValueBar value={chart.volume_oscillator_value} />
+              <ValueBar value={chart.elder_ray_value} />
+              <ValueBar value={chart.pivot_points_value} />
+              <ValueBar value={chart.hma_value} />
+              <ValueBar value={chart.qqe_value} />
+              <ValueBar value={chart.cci_value} />
+              <ValueBar value={chart.semafor_value} />
+              <ValueBar value={chart.ama_value} />
+              <ValueBar value={chart.ao_value} />
             </div>
           ))}
 
@@ -74,6 +74,7 @@ export default function Advanced() {
             </div>
           ))}
         </div>
+        <div className="tech_ads"></div>
       </div>
     </>
   );

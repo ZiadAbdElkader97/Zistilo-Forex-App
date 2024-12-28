@@ -4,7 +4,7 @@ import { beginner_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
 
 export default function Beginner() {
-  const { otherData1, activeTimeframe, activeSymbol, filterData } =
+  const { otherData1, activeTimeframe, activeSymbol, filterData, ValueBar } =
     useContext(DataContext);
 
   useEffect(() => {
@@ -34,16 +34,16 @@ export default function Beginner() {
 
           {filterOtherData.map((chart) => (
             <div key={chart.id} className="chart_values">
-              <p>{chart.rsi_value}</p>
-              <p>{chart.stoch_value}</p>
-              <p>{chart.williams_value}</p>
-              <p>{chart.momentum_value}</p>
-              <p>{chart.mfi_value}</p>
-              <p>{chart.bb_value}</p>
-              <p>{chart.atr_value}</p>
-              <p>{chart.ha_value}</p>
-              <p>{chart.candle_value}</p>
-              <p>{chart.sar_value}</p>
+              <ValueBar value={chart.rsi_value} />
+              <ValueBar value={chart.stoch_value} />
+              <ValueBar value={chart.williams_value} />
+              <ValueBar value={chart.momentum_value} />
+              <ValueBar value={chart.mfi_value} />
+              <ValueBar value={chart.bb_value} />
+              <ValueBar value={chart.atr_value} />
+              <ValueBar value={chart.ha_value} />
+              <ValueBar value={chart.candle_value} />
+              <ValueBar value={chart.sar_value} />
             </div>
           ))}
 
@@ -62,6 +62,7 @@ export default function Beginner() {
             </div>
           ))}
         </div>
+        <div className="tech_ads"></div>
       </div>
     </>
   );

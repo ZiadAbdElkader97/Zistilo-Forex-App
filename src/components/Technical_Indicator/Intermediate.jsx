@@ -4,7 +4,7 @@ import { intermediate_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
 
 export default function Intermediate() {
-  const { otherData2, activeTimeframe, activeSymbol, filterData } =
+  const { otherData2, activeTimeframe, activeSymbol, filterData, ValueBar } =
     useContext(DataContext);
 
   useEffect(() => {
@@ -34,16 +34,16 @@ export default function Intermediate() {
 
           {filterOtherData.map((chart) => (
             <div key={chart.id} className="chart_values">
-              <p>{chart.macd_value}</p>
-              <p>{chart.supertrend_value}</p>
-              <p>{chart.donchian_value}</p>
-              <p>{chart.dpo_value}</p>
-              <p>{chart.aroon_value}</p>
-              <p>{chart.fractal_value}</p>
-              <p>{chart.waddah_value}</p>
-              <p>{chart.ultimate_value}</p>
-              <p>{chart.adx_value}</p>
-              <p>{chart.supply_demand_value}</p>
+              <ValueBar value={chart.macd_value} />
+              <ValueBar value={chart.supertrend_value} />
+              <ValueBar value={chart.donchian_value} />
+              <ValueBar value={chart.dpo_value} />
+              <ValueBar value={chart.aroon_value} />
+              <ValueBar value={chart.fractal_value} />
+              <ValueBar value={chart.waddah_value} />
+              <ValueBar value={chart.ultimate_value} />
+              <ValueBar value={chart.adx_value} />
+              <ValueBar value={chart.supply_demand_value} />
             </div>
           ))}
 
@@ -62,6 +62,7 @@ export default function Intermediate() {
             </div>
           ))}
         </div>
+        <div className="tech_ads"></div>
       </div>
     </>
   );

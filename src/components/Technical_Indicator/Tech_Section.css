@@ -65,31 +65,59 @@
   background-color: white;
 }
 .tech_section .tech_values {
+  /* height: 60%; */
   display: flex;
   justify-content: space-between;
-  gap: 5px;
 }
 .tech_section .tech_values .data_values {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 22px;
   padding-bottom: 8px;
-  font-size: 12px;
+  font-size: 11px;
 }
 .tech_section .tech_values .chart_values {
-  font-size: 12px;
-  text-align: right;
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding-bottom: 8px;
+  gap: 20px;
+}
+.tech_values .value_bar_container {
+  width: 130px;
+  height: 15px;
+  position: relative;
+}
+.value_bar_container .value_bar_center {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  background-color: #525252;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.light_mode .value_bar_container .value_bar_center {
+  background-color: #d5dde0;
+}
+.value_bar_container .value_bar {
+  height: 100%;
+  position: absolute;
+}
+.value_bar_container .value_bar_right {
+  left: 50%;
+  transform-origin: left;
+}
+.value_bar_container .value_bar_left {
+  right: 50%;
+  transform-origin: right;
 }
 .tech_section .tech_values .status_values {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 22px;
 }
 .tech_section .tech_values .status_values p {
-  font-size: 12px;
+  font-size: 11px;
   text-align: right;
+}
+.tech_section .tech_ads {
+  height: 40%;
 }
