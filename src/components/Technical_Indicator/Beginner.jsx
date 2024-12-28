@@ -1,10 +1,10 @@
 import "./Tech_Section.css";
 import { useContext, useEffect } from "react";
-import { signalsData } from "../../assets/data/TechData";
+import { beginner_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
 
 export default function Beginner() {
-  const { otherData, activeTimeframe, activeSymbol, filterData } =
+  const { otherData1, activeTimeframe, activeSymbol, filterData } =
     useContext(DataContext);
 
   useEffect(() => {
@@ -14,36 +14,51 @@ export default function Beginner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filterOtherData = otherData.filter(
+  const filterOtherData = otherData1.filter(
     (item) =>
       (!activeTimeframe || item.timeframe === activeTimeframe) &&
       (!activeSymbol || item.symbol === activeSymbol)
   );
 
-  console.log(filterOtherData);
+  // console.log(filterOtherData);
 
   return (
     <>
       <div className="tech_section">
         <div className="tech_values">
-          <div className="values_signal">
-            {signalsData.map((signal) => (
+          <div className="data_values">
+            {beginner_signal_data.map((signal) => (
               <p key={signal.id}>{signal.name}</p>
             ))}
           </div>
 
+          {filterOtherData.map((chart) => (
+            <div key={chart.id} className="chart_values">
+              <p>{chart.rsi_value}</p>
+              <p>{chart.stoch_value}</p>
+              <p>{chart.williams_value}</p>
+              <p>{chart.momentum_value}</p>
+              <p>{chart.mfi_value}</p>
+              <p>{chart.bb_value}</p>
+              <p>{chart.atr_value}</p>
+              <p>{chart.ha_value}</p>
+              <p>{chart.candle_value}</p>
+              <p>{chart.sar_value}</p>
+            </div>
+          ))}
+
           {filterOtherData.map((item) => (
-            <div key={item.id} className="data_values">
-              <p className="num_status">{item.rsi_value}</p>
-              <p className="num_status">{item.stoch_value}</p>
-              <p className="num_status">{item.williams_value}</p>
-              <p className="num_status">{item.momentum_value}</p>
-              <p className="num_status">{item.mfi_value}</p>
-              <p className="num_status">{item.bb_value}</p>
-              <p className="num_status">{item.atr_value}</p>
-              <p className="num_status">{item.ha_value}</p>
-              <p className="num_status">{item.candle_value}</p>
-              <p className="num_status">{item.sar_value}</p>
+            <div key={item.id} className="status_values">
+              <p>{item.rsi_signal}</p>
+              <p>{item.stoch_signal}</p>
+              <p>{item.williams_signal}</p>
+              <p>{item.momentum_signal}</p>
+              <p>{item.mfi_signal}</p>
+              <p>{item.bb_signal}</p>
+              <p>{item.atr_signal}</p>
+              <p>{item.ha_signal}</p>
+              <p>{item.candle_signal}</p>
+              <p>{item.sar_signal}</p>
             </div>
           ))}
         </div>

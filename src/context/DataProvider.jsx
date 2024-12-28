@@ -5,7 +5,10 @@ import { DataContext } from "./DataContext";
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
-  const [otherData, setOtherData] = useState([]);
+  const [otherData1, setOtherData1] = useState([]);
+  const [otherData2, setOtherData2] = useState([]);
+  const [otherData3, setOtherData3] = useState([]);
+  const [calendarData, setCalendarData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
@@ -22,7 +25,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const fetchOtherData = async () => {
+    const fetchOtherData1 = async () => {
       const response = await axios.get(
         "https://notifications.copyforexsignals.com/apii/indicators_for_beginner_api.php",
         {
@@ -32,9 +35,51 @@ export const DataProvider = ({ children }) => {
           },
         }
       );
-      setOtherData(response.data);
+      setOtherData1(response.data);
     };
-    fetchOtherData();
+    fetchOtherData1();
+  }, []);
+
+  useEffect(() => {
+    const fetchOtherData2 = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/indicators_for_intermediate_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setOtherData2(response.data);
+    };
+    fetchOtherData2();
+  }, []);
+
+  useEffect(() => {
+    const fetchOtherData3 = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/indicators_for_advanced_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setOtherData3(response.data);
+    };
+    fetchOtherData3();
+  }, []);
+
+  useEffect(() => {
+    const fetchCalendarData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/economic_news_api.php"
+      );
+      setCalendarData(response.data);
+    };
+    fetchCalendarData();
   }, []);
 
   // console.log(data);
@@ -60,7 +105,10 @@ export const DataProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         data,
-        otherData,
+        otherData1,
+        otherData2,
+        otherData3,
+        calendarData,
         filteredData,
         filterData,
         activeTimeframe,
