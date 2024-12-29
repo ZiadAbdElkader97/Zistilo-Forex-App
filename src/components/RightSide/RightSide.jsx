@@ -3,7 +3,7 @@ import { useState } from "react";
 import Tech_Section from "../Technical_Indicator/Tech_Section.jsx";
 import RSide_Symbol from "../RSide_Symbol/RSide_Symbol.jsx";
 import Calendar from "../Calendar/Calendar.jsx";
-import Autochartist from "../Autochartist/Autochartist.jsx";
+import Patterns from "../Patterns/Patterns.jsx";
 import News from "../News/News.jsx";
 
 export default function RightSide() {
@@ -41,7 +41,7 @@ export default function RightSide() {
           className={toggleState === 4 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(4)}
         >
-          Autochartist
+          Patterns
         </span>
         <span
           title="News"
@@ -55,7 +55,7 @@ export default function RightSide() {
       {toggleState === 1 ? <Tech_Section /> : <></>}
       {toggleState === 2 ? <RSide_Symbol /> : <></>}
       {toggleState === 3 ? <Calendar /> : <></>}
-      {toggleState === 4 ? <Autochartist /> : <></>}
+      {toggleState === 4 ? <Patterns /> : <></>}
       {toggleState === 5 ? <News /> : <></>}
     </div>
   );

@@ -1,5 +1,6 @@
 import "./ChartsView.css";
 import { useEffect } from "react";
+import PatternsSignals from "../PatternsSignals/PatternsSignals";
 
 function ChartsView() {
   useEffect(() => {
@@ -36,7 +37,7 @@ function ChartsView() {
           <div id="chart1" className="chart"></div>
           <div id="chart2" className="chart"></div>
         </div>
-        <div className="charts_info"></div>
+        <PatternsSignals />
       </div>
     </>
   );

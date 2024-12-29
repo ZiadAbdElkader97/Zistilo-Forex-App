@@ -24,18 +24,3 @@
 .light_mode .news .news_section {
   background-color: white;
 }
-.news_section .news_info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 10px 4px 0px;
-  transition: var(main_transition);
-}
-.news_section .news_info:hover {
-  background-color: #8080711f;
-  border-radius: var(--border_radius);
-}
-.light_mode .news_section .news_info:hover {
-  background-color: #d5dde064;
-}

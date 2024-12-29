@@ -9,6 +9,9 @@ export const DataProvider = ({ children }) => {
   const [otherData2, setOtherData2] = useState([]);
   const [otherData3, setOtherData3] = useState([]);
   const [calendarData, setCalendarData] = useState([]);
+  const [symbolData, setSymbolData] = useState([]);
+  const [patternsData, setPatternsData] = useState([]);
+  const [patternsSignalsData, setPatternsSignalsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
@@ -75,11 +78,59 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const fetchCalendarData = async () => {
       const response = await axios.get(
-        "https://notifications.copyforexsignals.com/apii/economic_news_api.php"
+        "https://notifications.copyforexsignals.com/apii/economic_news_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
       );
       setCalendarData(response.data);
     };
     fetchCalendarData();
+  }, []);
+
+  useEffect(() => {
+    const fetchSymbolData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php"
+      );
+      setSymbolData(response.data);
+    };
+    fetchSymbolData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPatternsData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/candle_patterns_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setPatternsData(response.data);
+    };
+    fetchPatternsData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPatternsSignalsData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/patterns_signals.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setPatternsSignalsData(response.data);
+    };
+    fetchPatternsSignalsData();
   }, []);
 
   // console.log(data);
@@ -135,6 +186,9 @@ export const DataProvider = ({ children }) => {
         otherData2,
         otherData3,
         calendarData,
+        symbolData,
+        patternsData,
+        patternsSignalsData,
         ValueBar,
         filteredData,
         filterData,

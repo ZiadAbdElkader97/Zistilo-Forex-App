@@ -8,10 +8,6 @@
   grid-gap: 5px;
 }
 .charts .chart {
-  height: 250px;
   border-radius: var(--border_radius);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.charts .charts_info {
-  height: 30%;
 }
