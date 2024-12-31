@@ -1,3 +1,23 @@
 .navbar {
-    height: 5%;
+  height: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.navbar .navbar_main {
+  width: 75%;
+}
+.navbar .navbar_login {
+  width: 25%;
+  text-align: right;
+  padding: 10px;
+}
+.navbar .navbar_login .login_btn {
+  color: white;
+  background-color: var(--main_color);
+  font-size: 12px;
+  padding: 4px 20px;
+  border: none;
+  outline: none;
+  border-radius: var(--border_radius);
+  cursor: pointer;
 }

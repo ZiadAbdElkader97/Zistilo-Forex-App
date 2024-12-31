@@ -32,7 +32,6 @@
 .patterns_section .patterns_div .patterns_info {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
 }
 .patterns_div .patterns_info .patterns_header {
   font-size: 12px;

@@ -25,10 +25,10 @@ export default function Patterns() {
           <div className="patterns_div">
             <div className="patterns_info">
               <p className="patterns_header">Symbol</p>
-              <p className="patterns_header">Trade Signal</p>
-              <p className="patterns_header">Candle Type</p>
-              <p className="patterns_header">Formatted Age</p>
-              <p className="patterns_header">Str.</p>
+              <p className="patterns_header">Signal</p>
+              <p className="patterns_header">Type</p>
+              <p className="patterns_header">Age</p>
+              <p className="patterns_header">Strength</p>
             </div>
             <hr />
             {filterOtherData.map((item) => (

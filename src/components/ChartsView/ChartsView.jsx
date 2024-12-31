@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import "./ChartsView.css";
 import { useEffect } from "react";
 import PatternsSignals from "../PatternsSignals/PatternsSignals";

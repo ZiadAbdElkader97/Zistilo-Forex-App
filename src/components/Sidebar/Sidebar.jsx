@@ -8,16 +8,14 @@ import { LuKeyboard, LuFullscreen } from "react-icons/lu";
 import { CgDarkMode } from "react-icons/cg";
 import { AiOutlineTrademark } from "react-icons/ai";
 import { FaRegCopy, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import { RiRobot2Line } from "react-icons/ri";
-import { TbAnalyze } from "react-icons/tb";
-import { PiHandDepositLight, PiHandWithdrawLight } from "react-icons/pi";
 import { IoSettingsOutline, IoHelpCircleOutline } from "react-icons/io5";
+import { GrPlan } from "react-icons/gr";
 import {
   MdOutlineEmail,
   MdLanguage,
-  MdOutlineWidgets,
   MdOutlineKeyboardArrowDown,
   MdOutlineKeyboardArrowUp,
+  MdPermContactCalendar,
 } from "react-icons/md";
 
 export default function Sidebar({ toggleMode }) {
@@ -138,35 +136,9 @@ export default function Sidebar({ toggleMode }) {
             onClick={() => toggleTab(3)}
           >
             <i title={center_menu.center3}>
-              <RiRobot2Line />
+              <MdPermContactCalendar />
             </i>
             <h4>{center_menu.center3}</h4>
-          </div>
-          <div
-            className={
-              toggleState === 4
-                ? "center_menu_list center_menu_active"
-                : "center_menu_list"
-            }
-            onClick={() => toggleTab(4)}
-          >
-            <i title={center_menu.center4}>
-              <TbAnalyze />
-            </i>
-            <h4>{center_menu.center4}</h4>
-          </div>
-          <div
-            className={
-              toggleState === 5
-                ? "center_menu_list center_menu_active"
-                : "center_menu_list"
-            }
-            onClick={() => toggleTab(5)}
-          >
-            <i title={center_menu.center5}>
-              <MdOutlineWidgets />
-            </i>
-            <h4>{center_menu.center5}</h4>
           </div>
         </div>
 
@@ -186,27 +158,21 @@ export default function Sidebar({ toggleMode }) {
         <div className={visibleBottomMenu ? "bottom_menu" : "sm_bottom_menu"}>
           <div className="bottom_menu_list">
             <i title={bottom_menu.bottom1}>
-              <PiHandDepositLight />
+              <GrPlan />
             </i>
             <h4>{bottom_menu.bottom1}</h4>
           </div>
           <div className="bottom_menu_list">
             <i title={bottom_menu.bottom2}>
-              <PiHandWithdrawLight />
+              <IoSettingsOutline />
             </i>
             <h4>{bottom_menu.bottom2}</h4>
           </div>
           <div className="bottom_menu_list">
             <i title={bottom_menu.bottom3}>
-              <IoSettingsOutline />
-            </i>
-            <h4>{bottom_menu.bottom3}</h4>
-          </div>
-          <div className="bottom_menu_list">
-            <i title={bottom_menu.bottom4}>
               <IoHelpCircleOutline />
             </i>
-            <h4>{bottom_menu.bottom4}</h4>
+            <h4>{bottom_menu.bottom3}</h4>
           </div>
         </div>
       </div>

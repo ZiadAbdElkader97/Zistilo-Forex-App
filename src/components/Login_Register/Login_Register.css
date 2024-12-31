@@ -1,0 +1,121 @@
+.form_switcher {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.form_switcher button {
+  color: white;
+  background-color: #545454;
+  font-size: 16px;
+  padding: 10px 30px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+.light_mode .form_switcher button {
+  color: #40484d;
+  background-color: #e8ebed;
+}
+.form_switcher button:hover {
+  background-color: #6464646d;
+}
+.light_mode .form_switcher button:hover {
+  background-color: #d5d5d5a0;
+}
+.navbar_login .form_switcher button.active {
+  background-color: var(--main_color);
+}
+.light_mode .navbar_login .form_switcher button.active {
+  color: white;
+}
+.light_mode .navbar_login .form_switcher button.active:hover {
+  background-color: var(--main_color);
+}
+.navbar_login .login_form,
+.navbar_login .signup_form {
+  width: 100%;
+  padding: 20px;
+}
+.navbar_login .login_form h1,
+.navbar_login .signup_form h1 {
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.light_mode .navbar_login .login_form h1,
+.light_mode .navbar_login .signup_form h1 {
+  color: black;
+}
+.navbar_login form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.navbar_login form input {
+  padding: 10px 15px;
+  border-radius: var(--border_radius);
+  border: none;
+  outline: none;
+}
+.light_mode .navbar_login form input {
+  background: #c0c0c0;
+}
+.light_mode .navbar_login form input::placeholder {
+  color: #676767;
+}
+.navbar_login form .keep_login {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.navbar_login form .keep_login input {
+  cursor: pointer;
+}
+.navbar_login form .keep_login label {
+  font-size: 14px;
+  cursor: pointer;
+}
+.navbar_login form button {
+  width: 100px;
+  color: white;
+  background-color: var(--main_color);
+  margin: 20px auto 0px auto;
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.navbar_login form button:hover {
+  background-color: #216694;
+}
+.navbar_login .login_span {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.navbar_login .login_span:hover {
+  color: var(--main_color);
+  text-decoration: underline;
+}
+.navbar_login .signup_span {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.navbar_login .signup_span span {
+  margin-left: 5px;
+  cursor: pointer;
+}
+.navbar_login .signup_span span:hover {
+  color: var(--main_color);
+  text-decoration: underline;
+}

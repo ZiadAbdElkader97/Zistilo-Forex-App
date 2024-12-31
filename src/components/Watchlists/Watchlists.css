@@ -1,18 +1,13 @@
 .watchlist {
-  height: 250px;
+  height: 350px;
   margin-top: 7px;
   overflow: auto;
-  flex: 1;
 }
 .watchlist .watchlist_section {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-right: 6px;
-}
-.watchlist .popular {
-  position: relative;
-
 }
 .watchlist .popular .popular_section {
   width: 100%;
@@ -43,10 +38,10 @@
 .watchlist .popular_section:hover i {
   color: white;
 }
-.light_mode .watchlist .popular_section:hover  i {
+.light_mode .watchlist .popular_section:hover i {
   color: #000;
 }
-.watchlist .popular_section  p {
+.watchlist .popular_section p {
   font-size: 11px;
 }
 .watchlist .new_watchlist {
