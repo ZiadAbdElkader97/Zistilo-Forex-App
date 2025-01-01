@@ -22,33 +22,44 @@ export default function Patterns() {
     <div className="patterns">
       <div className="patterns_content">
         <div className="patterns_section">
-          <div className="patterns_div">
-            <div className="patterns_info">
-              <p className="patterns_header">Symbol</p>
-              <p className="patterns_header">Signal</p>
-              <p className="patterns_header">Type</p>
-              <p className="patterns_header">Age</p>
-              <p className="patterns_header">Strength</p>
-            </div>
-            <hr />
-            {filterOtherData.map((item) => (
-              <div key={item.id} className="patterns_details">
-                <p className="patterns_value patterns_value1">{item.symbol}</p>
-                <p className="patterns_value patterns_value2">
-                  {item.trade_signal}
-                </p>
-                <p className="patterns_value patterns_value3">
-                  {item.candle_type}
-                </p>
-                <p className="patterns_value patterns_value4">
+          {filterOtherData.map((item) => (
+            <>
+              <div key={item.id} className="patterns_info">
+                <div className="patterns_group">
+                  <div className="patterns_info_div">
+                    <p className="patterns_header">Symbol</p>
+                    <p className="patterns_value">{item.symbol}</p>
+                  </div>
+                  <div className="patterns_info_div">
+                    <p className="patterns_header">Trade Signal</p>
+                    <p className="patterns_value">{item.trade_signal}</p>
+                  </div>
+                </div>
+                <div className="patterns_group">
+                  <div className="patterns_info_div">
+                    <p className="patterns_header">Candle Type</p>
+                    <p className="patterns_value">{item.candle_type}</p>
+                  </div>
+                  <div className="patterns_info_div">
+                    <p className="patterns_header">Strength</p>
+                    <div className="strength">
+                      <div
+                        className="strength_bar"
+                        style={{ width: `${item.candle_strength * 2}px` }}
+                      ></div>
+                      <p className="patterns_value">
+                        {item.candle_strength * 2}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <span className="patterns_value_side">
                   {item.formatted_age}
-                </p>
-                <p className="patterns_value patterns_value5">
-                  {item.candle_strength}
-                </p>
+                </span>
               </div>
-            ))}
-          </div>
+              <hr />
+            </>
+          ))}
         </div>
       </div>
     </div>

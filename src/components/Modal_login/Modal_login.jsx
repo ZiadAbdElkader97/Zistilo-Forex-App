@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import "./Modal.css";
+import "./Modal_login.css";
 
-export default function Modal({ show, onClose, children }) {
+export default function Modal_login({ show, onClose, children }) {
   if (!show) {
     return null;
   }
@@ -16,9 +16,11 @@ export default function Modal({ show, onClose, children }) {
     <>
       <div className="modal_overlay" onClick={handleClickOutside}>
         <div className="modal_content">
-          <button className="close_btn" onClick={onClose}>
-            &times;
-          </button>
+          <div className="close_btn_div">
+            <button className="close_btn" onClick={onClose}>
+              &times;
+            </button>
+          </div>
           {children}
         </div>
       </div>

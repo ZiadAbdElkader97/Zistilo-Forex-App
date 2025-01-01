@@ -1,28 +1,34 @@
 import "./PM_Symbols.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import { DataContext } from "../../../context/DataContext";
 
 export default function PM_Symbols() {
-  const [data, setData] = useState([]);
+  const { data, setSymbol, filterData, activeTimeframe } =
+    useContext(DataContext);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php"
-      );
-      setData(response.data);
-    };
-    fetchData();
+    if (!activeTimeframe) {
+      filterData("M1", null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleItemClick = (symbol) => {
+    setSymbol(symbol);
+  };
 
   // console.log(data);
 
   return (
     <>
       {data.map((item) => (
-        <div key={item.id} className="view_data">
+        <div
+          key={item.id}
+          className="view_data"
+          onClick={() => handleItemClick(item.symbol)}
+        >
           <div className="view_sec1">
             <i className="view_icon1">
               <FaRegStar />

@@ -54,7 +54,8 @@
 }
 .tech_section {
   width: calc(100% - 12px);
-  height: 93.5%;
+  max-height: 93.5%;
+  height: 600px;
   background-color: #292929;
   margin-left: 6px;
   margin-right: 6px;
@@ -65,25 +66,24 @@
   background-color: white;
 }
 .tech_section .tech_values {
-  /* height: 60%; */
   display: flex;
   justify-content: space-between;
 }
 .tech_section .tech_values .data_values {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 15px;
   padding-bottom: 8px;
   font-size: 11px;
 }
 .tech_section .tech_values .chart_values {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 .tech_values .value_bar_container {
   width: 130px;
-  height: 15px;
+  height: 10px;
   position: relative;
 }
 .value_bar_container .value_bar_center {
@@ -112,7 +112,7 @@
 .tech_section .tech_values .status_values {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 15px;
 }
 .tech_section .tech_values .status_values p {
   font-size: 11px;

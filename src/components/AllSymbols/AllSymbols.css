@@ -1,14 +1,15 @@
 .symbol {
-  height: 250px;
+  height: 350px;
   margin-top: 7px;
   overflow: auto;
-  flex: 1;
 }
 .symbol .symbol_section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   margin-right: 6px;
 }
 .symbol .category_symbol {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 6px;

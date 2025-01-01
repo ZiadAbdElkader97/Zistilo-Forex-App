@@ -1,13 +1,18 @@
-import axios from "axios";
 import "./AllSymbols.css";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import PM_Symbols from "../PopularMarkets/PM_Symbols/PM_Symbols.jsx";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 
 export default function AllSymbols() {
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [activeTab, setActiveTab] = useState(null);
+  const [openTabs, setOpenTabs] = useState(false);
+
+  const handleToggle = (id) => {
+    setOpenTabs((prevState) => ({ ...prevState, [id]: !prevState[id] }));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,40 +29,34 @@ export default function AllSymbols() {
       });
       setData(response.data);
       setFilteredData(filtered);
-      setActiveTab(
-        response.filteredData.length > 0 ? response.filteredData[0].id : null
-      );
     };
     fetchData();
   }, []);
-  console.log(data);
 
-  const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
-  };
+  console.log();
 
   return (
     <>
       <div className="symbol">
         <div className="symbol_section">
-          <div className="category_symbol">
-            {filteredData.map((item) => (
+          {filteredData.map((item) => (
+            <div key={item.id} className="category_symbol">
               <div
-                key={item.id}
                 className="category_symbol_section"
-                onClick={() => (
-                  handleTabClick(item.id), setActiveTab(!activeTab)
-                )}
+                onClick={() => handleToggle(item.id)}
               >
                 <i>
-                  {activeTab ? <IoMdArrowDropdown /> : <IoMdArrowDropright />}
+                  {openTabs[item.id] ? (
+                    <IoMdArrowDropdown />
+                  ) : (
+                    <IoMdArrowDropright />
+                  )}
                 </i>
                 <p>{item.category}</p>
               </div>
-            ))}
-          {activeTab ? <PM_Symbols /> : <></>}
-          </div>
-
+              {openTabs[item.id] ? <PM_Symbols /> : <></>}
+            </div>
+          ))}
         </div>
       </div>
     </>

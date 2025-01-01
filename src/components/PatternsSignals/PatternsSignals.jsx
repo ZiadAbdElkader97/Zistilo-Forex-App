@@ -18,7 +18,7 @@ export default function PatternsSignals() {
     if (toggleState === 3) return signal.status === "Close";
     return false;
   });
-  console.log(filterSignals);
+  // console.log(filterSignals);
 
   return (
     <>
@@ -48,118 +48,177 @@ export default function PatternsSignals() {
         </div>
         <div className="patterns_signals_content">
           <div className="patterns_signals_section">
-            <div className="patterns_signals_info">
-              <div className="patterns_signals_header">
-                <p className="header_p">Symbol</p>
-                <p className="header_p">Timeframe</p>
-                <p className="header_p">Recommendation</p>
-                <p className="header_p">Pattern Type</p>
-                <p className="header_p">Entry</p>
-                <p className="header_p">Take Profit</p>
-                <p className="header_p">Stop Loss</p>
-              </div>
-              <hr />
-              {toggleState === 1 &&
-                filterSignals.map((item) => (
-                  <div key={item.id} className="patterns_signals_data">
-                    <p className="patterns_data_p" style={{ width: "50px" }}>
-                      {item.symbol}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "25px" }}>
-                      {item.timeframe}
-                    </p>
-                    <p
-                      className="patterns_data_p"
-                      style={{
-                        width: "65px",
-                        marginLeft: "70px",
-                        textAlign: "center",
-                      }}
+            {toggleState === 1 &&
+              filterSignals.map((item) => (
+                <>
+                  <div key={item.id} className="patterns_signals_info">
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "50px" }}
                     >
-                      {item.recommendation}
-                    </p>
-                    <p
-                      className="patterns_data_p"
-                      style={{ width: "150px", textAlign: "center" }}
+                      <p className="patterns_s_header">Symbol</p>
+                      <p className="patterns_s_value">{item.symbol}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "80px" }}
                     >
-                      {item.pattern_type}
-                    </p>
-                    <p
-                      className="patterns_data_p"
-                      style={{ width: "60px", textAlign: "right" }}
+                      <p className="patterns_s_header">Timeframe</p>
+                      <p className="patterns_s_value">{item.timeframe}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "100px" }}
                     >
-                      {item.entry}
-                    </p>
-                    <p
-                      className="patterns_data_p"
-                      style={{ width: "60px", textAlign: "right" }}
+                      <p className="patterns_s_header">Recommendation</p>
+                      <p className="patterns_s_value">{item.recommendation}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "120px" }}
                     >
-                      {item.take_profit}
-                    </p>
-                    <p
-                      className="patterns_data_p"
-                      style={{ width: "60px", textAlign: "right" }}
+                      <p className="patterns_s_header">Pattern Type</p>
+                      <p className="patterns_s_value">{item.pattern_type}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
                     >
-                      {item.stop_loss}
-                    </p>
+                      <p className="patterns_s_header">Entry</p>
+                      <p className="patterns_s_value">{item.entry}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Take Profit</p>
+                      <p className="patterns_s_value">{item.take_profit}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Stop Loss</p>
+                      <p className="patterns_s_value">{item.stop_loss}</p>
+                    </div>
                   </div>
-                ))}
-              {toggleState === 2 &&
-                filterSignals.map((item) => (
-                  <div key={item.id} className="patterns_signals_data">
-                    <p
-                      className="patterns_data_p"
-                      style={{ width: "50px", textAlign: "right" }}
+                  <hr />
+                </>
+              ))}
+            {toggleState === 2 &&
+              filterSignals.map((item) => (
+                <>
+                  <div key={item.id} className="patterns_signals_info">
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "50px" }}
                     >
-                      {item.symbol}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "25px" }}>
-                      {item.timeframe}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "65px" }}>
-                      {item.recommendation}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "150px" }}>
-                      {item.pattern_type}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.entry}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.take_profit}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.stop_loss}
-                    </p>
+                      <p className="patterns_s_header">Symbol</p>
+                      <p className="patterns_s_value">{item.symbol}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "80px" }}
+                    >
+                      <p className="patterns_s_header">Timeframe</p>
+                      <p className="patterns_s_value">{item.timeframe}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "100px" }}
+                    >
+                      <p className="patterns_s_header">Recommendation</p>
+                      <p className="patterns_s_value">{item.recommendation}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "120px" }}
+                    >
+                      <p className="patterns_s_header">Pattern Type</p>
+                      <p className="patterns_s_value">{item.pattern_type}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Entry</p>
+                      <p className="patterns_s_value">{item.entry}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Take Profit</p>
+                      <p className="patterns_s_value">{item.take_profit}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Stop Loss</p>
+                      <p className="patterns_s_value">{item.stop_loss}</p>
+                    </div>
                   </div>
-                ))}
-              {toggleState === 3 &&
-                filterSignals.map((item) => (
-                  <div key={item.id} className="patterns_signals_data">
-                    <p className="patterns_data_p" style={{ width: "50px" }}>
-                      {item.symbol}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "25px" }}>
-                      {item.timeframe}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "65px" }}>
-                      {item.recommendation}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "150px" }}>
-                      {item.pattern_type}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.entry}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.take_profit}
-                    </p>
-                    <p className="patterns_data_p" style={{ width: "60px" }}>
-                      {item.stop_loss}
-                    </p>
+                  <hr />
+                </>
+              ))}
+            {toggleState === 3 &&
+              filterSignals.map((item) => (
+                <>
+                  <div key={item.id} className="patterns_signals_info">
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "50px" }}
+                    >
+                      <p className="patterns_s_header">Symbol</p>
+                      <p className="patterns_s_value">{item.symbol}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "80px" }}
+                    >
+                      <p className="patterns_s_header">Timeframe</p>
+                      <p className="patterns_s_value">{item.timeframe}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "100px" }}
+                    >
+                      <p className="patterns_s_header">Recommendation</p>
+                      <p className="patterns_s_value">{item.recommendation}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "120px" }}
+                    >
+                      <p className="patterns_s_header">Pattern Type</p>
+                      <p className="patterns_s_value">{item.pattern_type}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Entry</p>
+                      <p className="patterns_s_value">{item.entry}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Take Profit</p>
+                      <p className="patterns_s_value">{item.take_profit}</p>
+                    </div>
+                    <div
+                      className="patterns_s_info_div"
+                      style={{ width: "60px" }}
+                    >
+                      <p className="patterns_s_header">Stop Loss</p>
+                      <p className="patterns_s_value">{item.stop_loss}</p>
+                    </div>
                   </div>
-                ))}
-            </div>
+                  <hr />
+                </>
+              ))}
           </div>
         </div>
       </div>

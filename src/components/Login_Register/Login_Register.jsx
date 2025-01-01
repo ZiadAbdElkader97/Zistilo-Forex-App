@@ -1,5 +1,7 @@
 import "./Login_Register.css";
 import { useState } from "react";
+import { FaCircleUser } from "react-icons/fa6";
+import { PiUserCirclePlusBold } from "react-icons/pi";
 
 export default function Login_Register() {
   const [activeForm, setActiveForm] = useState("login");
@@ -9,23 +11,14 @@ export default function Login_Register() {
   };
   return (
     <>
-      <div className="form_switcher">
-        <button
-          className={activeForm === "login" ? "active" : ""}
-          onClick={() => switchForm("login")}
-        >
-          Login
-        </button>
-        <button
-          className={activeForm === "register" ? "active" : ""}
-          onClick={() => switchForm("register")}
-        >
-          Sign Up
-        </button>
-      </div>
       {activeForm === "login" && (
         <div className="login_form">
-          <h1>Login</h1>
+          <div className="form_header">
+            <i className="form_icon">
+              <FaCircleUser />
+            </i>
+            <h1>Login</h1>
+          </div>
           {/* Login Form */}
           <form>
             <input
@@ -53,7 +46,12 @@ export default function Login_Register() {
       )}
       {activeForm === "register" && (
         <div className="signup_form">
-          <h1>Sign Up</h1>
+          <div className="form_header">
+            <i className="form_icon">
+              <PiUserCirclePlusBold />
+            </i>
+            <h1>Sign Up</h1>
+          </div>
           <form>
             <input
               type="text"

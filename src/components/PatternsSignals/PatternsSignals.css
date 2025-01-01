@@ -57,7 +57,7 @@
 }
 .patterns_signals .patterns_signals_section {
   width: calc(100% - 12px);
-  height: 145px;
+  max-height: 145px;
   background-color: #292929;
   margin-left: 6px;
   padding: 5px;
@@ -69,30 +69,31 @@
 }
 .patterns_signals_section .patterns_signals_info {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
 }
-.patterns_signals_info hr {
+.patterns_signals_section .patterns_signals_info:hover {
+  background-color: #8f8f8f55;
+}
+.patterns_signals_info .patterns_s_info_div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.patterns_s_info_div .patterns_s_header {
+  color: #a6a6a6;
+  font-size: 12px;
+  text-align: center;
+}
+.patterns_s_info_div .patterns_s_value {
+  font-size: 12px;
+  text-align: center;
+}
+.patterns_signals_section hr {
   width: 100%;
   height: 1px;
   background-color: #525252;
-  margin-top: 3px;
-  margin-bottom: 4px;
   border: none;
-}
-.light_mode .patterns_signals_info hr {
-  background-color: #d5dde0;
-}
-.patterns_signals_section .patterns_signals_info .patterns_signals_header {
-  display: flex;
-  justify-content: space-between;
-}
-.patterns_signals_section .patterns_signals_info .header_p {
-  font-size: 12px;
-}
-.patterns_signals_data {
-  display: flex;
-  justify-content: space-between;
-}
-.patterns_signals_data .patterns_data_p {
-  font-size: 12px;
+  outline: none;
 }

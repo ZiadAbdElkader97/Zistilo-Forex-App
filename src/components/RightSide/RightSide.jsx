@@ -37,7 +37,7 @@ export default function RightSide() {
           Calendar
         </span>
         <span
-          title="Autochartist"
+          title="Patterns"
           className={toggleState === 4 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(4)}
         >

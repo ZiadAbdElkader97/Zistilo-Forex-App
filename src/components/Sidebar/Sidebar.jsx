@@ -3,8 +3,7 @@ import "./Sidebar.css";
 import { useState } from "react";
 import TradeSection from "../TradeSection/TradeSection";
 import { center_menu, bottom_menu } from "../../assets/data/SidebarData";
-import { FaRegHandPointer } from "react-icons/fa6";
-import { LuKeyboard, LuFullscreen } from "react-icons/lu";
+import { LuFullscreen } from "react-icons/lu";
 import { CgDarkMode } from "react-icons/cg";
 import { AiOutlineTrademark } from "react-icons/ai";
 import { FaRegCopy, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
@@ -72,12 +71,6 @@ export default function Sidebar({ toggleMode }) {
             <i title="Email Alerts">
               <MdOutlineEmail />
             </i>
-            <i title="Quick Trade">
-              <FaRegHandPointer />
-            </i>
-            <i title="Hotkeys">
-              <LuKeyboard />
-            </i>
             <i title="Full-screen mode (F11)" onClick={handleFullScreen}>
               <LuFullscreen />
             </i>
@@ -140,6 +133,19 @@ export default function Sidebar({ toggleMode }) {
             </i>
             <h4>{center_menu.center3}</h4>
           </div>
+          <div
+            className={
+              toggleState === 4
+                ? "center_menu_list center_menu_active"
+                : "center_menu_list"
+            }
+            onClick={() => toggleTab(4)}
+          >
+            <i title={center_menu.center4}>
+              <GrPlan />
+            </i>
+            <h4>{center_menu.center4}</h4>
+          </div>
         </div>
 
         {/* Bottom Menu */}
@@ -158,21 +164,15 @@ export default function Sidebar({ toggleMode }) {
         <div className={visibleBottomMenu ? "bottom_menu" : "sm_bottom_menu"}>
           <div className="bottom_menu_list">
             <i title={bottom_menu.bottom1}>
-              <GrPlan />
+              <IoSettingsOutline />
             </i>
             <h4>{bottom_menu.bottom1}</h4>
           </div>
           <div className="bottom_menu_list">
             <i title={bottom_menu.bottom2}>
-              <IoSettingsOutline />
-            </i>
-            <h4>{bottom_menu.bottom2}</h4>
-          </div>
-          <div className="bottom_menu_list">
-            <i title={bottom_menu.bottom3}>
               <IoHelpCircleOutline />
             </i>
-            <h4>{bottom_menu.bottom3}</h4>
+            <h4>{bottom_menu.bottom2}</h4>
           </div>
         </div>
       </div>
