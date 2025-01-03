@@ -67,7 +67,7 @@
   }
 }
 .search_section .search_field .search_input {
-  width: 165px;
+  width: 100%;
   color: #bababa;
   background-color: #1a1a1a;
   font-size: 11px;
@@ -76,11 +76,6 @@
   outline: none;
   position: relative;
   border-radius: var(--border_radius);
-}
-@media (max-width: 420px) {
-  .search_section .search_field .search_input {
-    width: 200px;
-  }
 }
 .light_mode .search_section .search_field .search_input {
   color: #000;

@@ -1,0 +1,161 @@
+.subPlans {
+  padding: 0px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+.subPlans .subPlans_header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.subPlans .subPlans_header .details {
+  display: flex;
+  gap: 5px;
+}
+.subPlans .subPlans_header .details i {
+  color: green;
+}
+.subPlans .subPlans_header .details p {
+  font-size: 14px;
+}
+.subPlans .subPlans_details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.subPlans .subPlans_details span {
+  width: 300px;
+  font-size: 13px;
+  color: #bfbfbf;
+}
+.light_mode .subPlans .subPlans_details span {
+  color: #636363;
+}
+.subPlans_details .details_btn {
+  border-radius: 8px;
+}
+.light_mode .subPlans_details .details_btn {
+  box-shadow: 10px 10px 19px #e0e0e0, -10px -10px 19px #e6e6e6;
+}
+.subPlans_details .details_btn button {
+  color: white;
+  background-color: #525252;
+  padding: 10px 20px;
+  border: 1px solid #454545;
+  outline: none;
+  cursor: pointer;
+}
+.light_mode .subPlans_details .details_btn button {
+  border: none;
+}
+.subPlans_details .details_btn button:hover {
+  background-color: #828282;
+}
+.light_mode .subPlans_details .details_btn button:hover {
+  background-color: #e2edf1;
+}
+.subPlans_details .details_btn .btn1 {
+  border-radius: 8px 0px 0px 8px;
+}
+.subPlans_details .details_btn .btn2 {
+  border-radius: 0px 8px 8px 0;
+}
+.subPlans_details .details_btn .btn_active {
+  background-color: var(--main_color);
+}
+.subPlans_details .details_btn .btn_active:hover {
+  background-color: var(--main_color);
+}
+.light_mode .subPlans_details .details_btn .btn_active {
+  color: white;
+  background-color: var(--main_color);
+  border-radius: 8px;
+}
+.light_mode .subPlans_details .details_btn .btn_active:hover {
+  background-color: var(--main_color);
+}
+.light_mode .subPlans_details .details_btn .btn_active:hover {
+  background-color: var(--main_color);
+}
+.light_mode .subPlans_details .details_btn button {
+  color: black;
+  background-color: white;
+}
+.subPlans .subPlans_cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.subPlans .subPlans_cards .subPlans_card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #525252;
+  padding: 35px;
+  border-radius: 20px;
+}
+.light_mode .subPlans .subPlans_cards .subPlans_card {
+  background-color: white;
+  box-shadow: 10px 10px 19px #e0e0e0, -10px -10px 19px #e6e6e6;
+}
+.subPlans_cards .subPlans_card .plan_name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.subPlans_cards .subPlans_card .plan_price {
+  color: black;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  margin-top: 20px;
+}
+.subPlans_cards .subPlans_card .plan_price h3 {
+  font-size: 30px;
+  font-weight: 500;
+}
+.subPlans_cards .subPlans_card .plan_price span {
+  font-size: 11px;
+  color: #181818;
+}
+.light_mode .subPlans_cards .subPlans_card .plan_price span {
+  color: #838383;
+}
+.subPlans_cards .subPlans_card .plan_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 20px;
+}
+.subPlans_cards .subPlans_card .plan_menu .plan_menu_list {
+  display: flex;
+  gap: 10px;
+}
+.subPlans_cards .subPlans_card .plan_menu .plan_menu_list i {
+  color: orange;
+}
+.subPlans_cards .subPlans_card .plan_menu .plan_menu_list p {
+  color: black;
+  font-size: 15px;
+}
+.subPlans_cards .subPlans_card .subPlans_btn {
+  width: 100%;
+  color: var(--main_color);
+  background-color: #525252;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 25px;
+  padding: 12px 0px;
+  border: 1px solid var(--main_color);
+  border-radius: 10px;
+  outline: none;
+  transition: var(--main_transition);
+  cursor: pointer;
+}
+.light_mode .subPlans_cards .subPlans_card .subPlans_btn {
+  background-color: white;
+}
+.subPlans_cards .subPlans_card .subPlans_btn:hover {
+  color: white;
+  background-color: var(--main_color);
+}

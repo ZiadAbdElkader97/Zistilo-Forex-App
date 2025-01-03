@@ -14,5 +14,4 @@ export const symbols_search = [
   { timeframe: "D1", id: 7 },
   { timeframe: "W1", id: 8 },
   { timeframe: "MN", id: 9 },
-  { timeframe: "30", id: 10 },
 ];

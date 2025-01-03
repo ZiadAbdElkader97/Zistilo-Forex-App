@@ -9,18 +9,21 @@
   background-color: #d5dde0;
 }
 .calendar .calendar_tabs {
+  width: 100%;
   display: flex;
   justify-content: center;
-  gap: 3px;
+  gap: 5px;
   padding: 6px;
   border-radius: 0 4px 4px 4px;
 }
 .calendar .calendar_tabs .calendar_tab {
+  width: 100%;
   font-size: 11px;
   color: #d1d1d1;
   background-color: #6b6b6b;
   text-align: center;
-  padding: 4px;
+  padding: 4px 2px;
+  border-radius: var(--border_radius);
   cursor: pointer;
 }
 .light_mode .calendar_tabs .calendar_tab {
