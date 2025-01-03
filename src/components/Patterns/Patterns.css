@@ -33,6 +33,9 @@
 .patterns_section .patterns_info:hover {
   background-color: #8f8f8f55;
 }
+.light_mode .patterns_section .patterns_info:hover {
+  background-color: #d5dde070;
+}
 .patterns_section .patterns_info .patterns_group {
   display: flex;
   flex-direction: column;
@@ -77,4 +80,7 @@
   background-color: #525252;
   border: none;
   outline: none;
+}
+.light_mode .patterns_section hr {
+  background-color: #d5dde0;
 }

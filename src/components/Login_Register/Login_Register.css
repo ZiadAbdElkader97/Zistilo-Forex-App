@@ -41,7 +41,7 @@
   outline: none;
 }
 .light_mode .navbar_login form input {
-  background: #c0c0c0;
+  background: #d5dde0;
 }
 .light_mode .navbar_login form input::placeholder {
   color: #676767;

@@ -72,18 +72,18 @@
 .tech_section .tech_values .data_values {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   padding-bottom: 8px;
-  font-size: 11px;
+  font-size: 12px;
 }
 .tech_section .tech_values .chart_values {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 13px;
 }
 .tech_values .value_bar_container {
   width: 130px;
-  height: 10px;
+  height: 11px;
   position: relative;
 }
 .value_bar_container .value_bar_center {
@@ -112,9 +112,9 @@
 .tech_section .tech_values .status_values {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 .tech_section .tech_values .status_values p {
-  font-size: 11px;
+  font-size: 12px;
   text-align: right;
 }

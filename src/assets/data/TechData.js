@@ -19,7 +19,7 @@ export const intermediate_signal_data = [
   { id: 4, name: "DPO" },
   { id: 5, name: "Aroon Indicator" },
   { id: 6, name: "Fractals" },
-  { id: 7, name: "Waddah Attar Explosion" },
+  { id: 7, name: "Zistilo Explosion" },
   { id: 8, name: "Ultimate Oscillator" },
   { id: 9, name: "ADX" },
   { id: 10, name: "Supply Demand" },

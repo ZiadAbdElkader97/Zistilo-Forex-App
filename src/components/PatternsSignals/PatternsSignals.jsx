@@ -50,8 +50,8 @@ export default function PatternsSignals() {
           <div className="patterns_signals_section">
             {toggleState === 1 &&
               filterSignals.map((item) => (
-                <>
-                  <div key={item.id} className="patterns_signals_info">
+                <div key={item.id}>
+                  <div className="patterns_signals_info">
                     <div
                       className="patterns_s_info_div"
                       style={{ width: "50px" }}
@@ -103,12 +103,12 @@ export default function PatternsSignals() {
                     </div>
                   </div>
                   <hr />
-                </>
+                </div>
               ))}
             {toggleState === 2 &&
               filterSignals.map((item) => (
-                <>
-                  <div key={item.id} className="patterns_signals_info">
+                <div key={item.id}>
+                  <div className="patterns_signals_info">
                     <div
                       className="patterns_s_info_div"
                       style={{ width: "50px" }}
@@ -160,12 +160,12 @@ export default function PatternsSignals() {
                     </div>
                   </div>
                   <hr />
-                </>
+                </div>
               ))}
             {toggleState === 3 &&
               filterSignals.map((item) => (
-                <>
-                  <div key={item.id} className="patterns_signals_info">
+                <div key={item.id}>
+                  <div className="patterns_signals_info">
                     <div
                       className="patterns_s_info_div"
                       style={{ width: "50px" }}
@@ -217,7 +217,7 @@ export default function PatternsSignals() {
                     </div>
                   </div>
                   <hr />
-                </>
+                </div>
               ))}
           </div>
         </div>

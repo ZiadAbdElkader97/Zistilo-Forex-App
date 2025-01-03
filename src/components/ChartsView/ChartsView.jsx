@@ -3,33 +3,38 @@ import "./ChartsView.css";
 import { useEffect } from "react";
 import PatternsSignals from "../PatternsSignals/PatternsSignals";
 
-function ChartsView() {
+function ChartsView({ isLightMode }) {
   useEffect(() => {
-    new window.TradingView.widget({
+    const widgetOptions = {
       container_id: "chart1",
       autosize: true,
       symbol: "BITSTAMP:BTCUSD",
       interval: "D",
       timezone: "Etc/UTC",
-      theme: "dark",
+      theme: isLightMode ? "light" : "dark",
       style: "1",
+      background_color: "#525252",
       locale: "en",
       allow_symbol_change: true,
       hide_volume: true,
-    });
-    new window.TradingView.widget({
+      overrides: {
+        "mainSeriesProperties.candleStyle.upColor": "#60d938",
+        "mainSeriesProperties.candleStyle.downColor": "#ed250e",
+        "mainSeriesProperties.candleStyle.borderUpColor": "#60d938",
+        "mainSeriesProperties.candleStyle.borderDownColor": "#ed250e",
+        "mainSeriesProperties.candleStyle.wickUpColor": "#60d938",
+        "mainSeriesProperties.candleStyle.wickDownColor": "#ed250e",
+      },
+    };
+
+    new window.TradingView.widget(widgetOptions);
+
+    const widgetOptions2 = {
+      ...widgetOptions,
       container_id: "chart2",
-      autosize: true,
-      symbol: "BITSTAMP:BTCUSD",
-      interval: "D",
-      timezone: "Etc/UTC",
-      theme: "dark",
-      style: "1",
-      locale: "en",
-      allow_symbol_change: true,
-      hide_volume: true,
-    });
-  }, []);
+    };
+    new window.TradingView.widget(widgetOptions2);
+  });
 
   return (
     <>

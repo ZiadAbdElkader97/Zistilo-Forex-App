@@ -28,6 +28,7 @@ export default function RSide_Symbol() {
           <div className="rSide_section">
             {filterOtherData.map((item) => (
               <div key={item.id} className="symbol_data">
+                <p className="symbol_data_head">Real-time Prices:</p>
                 <div className="symbol_data_div">
                   <p className="data_name">Ask Price</p>
                   <p className="data_value">{item.ask_price}</p>
@@ -37,6 +38,7 @@ export default function RSide_Symbol() {
                   <p className="data_name">Bid Price</p>
                   <p className="data_value">{item.bid_price}</p>
                 </div>
+                <p className="symbol_data_head">Current Candle Data:</p>
                 <hr />
                 <div className="symbol_data_div">
                   <p className="data_name">High Price</p>
@@ -52,6 +54,7 @@ export default function RSide_Symbol() {
                   <p className="data_name">Candle Volume</p>
                   <p className="data_value">{item.volume}</p>
                 </div>
+                <p className="symbol_data_head">Daily Statistics:</p>
                 <hr />
                 <div className="symbol_data_div">
                   <p className="data_name">High Price Daily</p>
@@ -67,6 +70,7 @@ export default function RSide_Symbol() {
                   <p className="data_name">Daily Range</p>
                   <p className="data_value">{item.daily_range}</p>
                 </div>
+                <p className="symbol_data_head">52-Week Range:</p>
                 <hr />
                 <div className="symbol_data_div">
                   <p className="data_name">Highest 52 Weeks</p>
@@ -82,6 +86,7 @@ export default function RSide_Symbol() {
                   <p className="data_name">Annual Range</p>
                   <p className="data_value">{item.annual_range}</p>
                 </div>
+                <p className="symbol_data_head">Additonal Metrics:</p>
                 <hr />
                 <div className="symbol_data_div">
                   <p className="data_name">Daily Volume</p>

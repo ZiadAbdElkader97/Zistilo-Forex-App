@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { useState } from "react";
-import Modal_login from "../Modal_login/Modal_login";
+import Modal from "../Modal/Modal";
 import Login_Register from "../Login_Register/Login_Register";
 
 export default function Navbar() {
@@ -21,9 +21,9 @@ export default function Navbar() {
           <button className="login_btn" onClick={handleOpenModal}>
             Login
           </button>
-          <Modal_login show={showModal} onClose={handleCloseModal}>
+          <Modal show={showModal} onClose={handleCloseModal}>
             <Login_Register />
-          </Modal_login>
+          </Modal>
         </div>
       </div>
     </>

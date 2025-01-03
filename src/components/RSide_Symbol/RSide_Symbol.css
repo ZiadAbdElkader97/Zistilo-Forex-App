@@ -30,6 +30,9 @@
   border: none;
   outline: none;
 }
+.light_mode .rSide_symbol .rSide_section hr {
+  background-color: #d5dde0;
+}
 .light_mode .rSide_symbol .rSide_section {
   background-color: white;
 }
@@ -37,6 +40,10 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+.rSide_section .symbol_data .symbol_data_head {
+  font-weight: bold;
+  font-size: 14px;
 }
 .rSide_symbol .rSide_section .symbol_data_div {
   display: flex;

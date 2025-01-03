@@ -11,8 +11,7 @@
   z-index: 500;
 }
 .modal_overlay .modal_content {
-  max-width: 80%;
-  width: 420px;
+  min-width: 420px;
   background-color: #292929;
   padding: 20px;
   border-radius: 8px;

@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import "./Modal_login.css";
+import "./Modal.css";
 
-export default function Modal_login({ show, onClose, children }) {
+export default function Modal({ show, onClose, children }) {
   if (!show) {
     return null;
   }
