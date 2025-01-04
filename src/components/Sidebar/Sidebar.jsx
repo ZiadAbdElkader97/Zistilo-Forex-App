@@ -2,28 +2,24 @@
 import "./Sidebar.css";
 import { useState } from "react";
 import TradeSection from "../TradeSection/TradeSection";
-import { center_menu, bottom_menu } from "../../assets/data/SidebarData";
+import { sidebar_menu } from "../../assets/data/SidebarData";
 import { LuFullscreen } from "react-icons/lu";
 import { CgDarkMode } from "react-icons/cg";
 import { AiOutlineTrademark } from "react-icons/ai";
 import { FaRegCopy, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import { IoSettingsOutline, IoHelpCircleOutline } from "react-icons/io5";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import { GrPlan } from "react-icons/gr";
 import {
   MdOutlineEmail,
   MdLanguage,
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
   MdPermContactCalendar,
 } from "react-icons/md";
 import Modal from "../Modal/Modal";
 import Contact_Us from "../Contact_Us/Contact_Us";
 import SubscriptionPlans from "../SubscriptionPlans/SubscriptionPlans";
-import Settings from "../Settings/Settings";
 
 export default function Sidebar({ toggleMode }) {
   const [open, setOpen] = useState(true);
-  const [visibleBottomMenu, setVisibleBottomMenu] = useState(true);
   const [isVisibleTrade, setIsVisibleTrade] = useState(true);
 
   const [toggleState, setToggleState] = useState(1);
@@ -76,15 +72,6 @@ export default function Sidebar({ toggleMode }) {
     setShowSubPlansModal(false);
   };
 
-  const [showSettingModal, setShowSettingModal] = useState(false);
-
-  const handleOpenSettingModal = () => {
-    setShowSettingModal(true);
-  };
-  const handleCloseSettingModal = () => {
-    setShowSettingModal(false);
-  };
-
   return (
     <>
       <div className={open ? "sidebar" : "sm_sidebar"}>
@@ -132,10 +119,10 @@ export default function Sidebar({ toggleMode }) {
               toggleTab(1), setIsVisibleTrade(!isVisibleTrade), setOpen(!open)
             )}
           >
-            <i title={center_menu.center1}>
+            <i title={sidebar_menu.menu1}>
               <AiOutlineTrademark />
             </i>
-            <h4>{center_menu.center1}</h4>
+            <h4>{sidebar_menu.menu1}</h4>
           </div>
           {toggleState === 1 && isVisibleTrade ? <TradeSection /> : <></>}
           <div
@@ -146,10 +133,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => toggleTab(2)}
           >
-            <i title={center_menu.center2}>
+            <i title={sidebar_menu.menu2}>
               <FaRegCopy />
             </i>
-            <h4>{center_menu.center2}</h4>
+            <h4>{sidebar_menu.menu2}</h4>
           </div>
           <div
             className={
@@ -159,10 +146,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => (toggleTab(3), handleOpenContactModal())}
           >
-            <i title={center_menu.center3}>
+            <i title={sidebar_menu.menu3}>
               <MdPermContactCalendar />
             </i>
-            <h4>{center_menu.center3}</h4>
+            <h4>{sidebar_menu.menu3}</h4>
           </div>
           <Modal show={showContactModal} onClose={handleCloseContactModal}>
             <Contact_Us />
@@ -175,44 +162,26 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => (toggleTab(4), handleOpenSubPlansModal())}
           >
-            <i title={center_menu.center4}>
+            <i title={sidebar_menu.menu4}>
               <GrPlan />
             </i>
-            <h4>{center_menu.center4}</h4>
+            <h4>{sidebar_menu.menu4}</h4>
           </div>
           <Modal show={showSubPlansModal} onClose={handleCloseSubPlansModal}>
             <SubscriptionPlans />
           </Modal>
-        </div>
-
-        {/* Bottom Menu */}
-        <div className="arrow_btn">
-          <button
-            className="btn_icon"
-            onClick={() => setVisibleBottomMenu(!visibleBottomMenu)}
+          <div
+            className={
+              toggleState === 5
+                ? "center_menu_list center_menu_active"
+                : "center_menu_list"
+            }
+            onClick={() => toggleTab(5)}
           >
-            {visibleBottomMenu ? (
-              <MdOutlineKeyboardArrowDown />
-            ) : (
-              <MdOutlineKeyboardArrowUp />
-            )}
-          </button>
-        </div>
-        <div className={visibleBottomMenu ? "bottom_menu" : "sm_bottom_menu"}>
-          <div className="bottom_menu_list" onClick={handleOpenSettingModal}>
-            <i title={bottom_menu.bottom1}>
-              <IoSettingsOutline />
-            </i>
-            <h4>{bottom_menu.bottom1}</h4>
-          </div>
-          <Modal show={showSettingModal} onClose={handleCloseSettingModal}>
-            <Settings />
-          </Modal>
-          <div className="bottom_menu_list">
-            <i title={bottom_menu.bottom2}>
+            <i title={sidebar_menu.menu5}>
               <IoHelpCircleOutline />
             </i>
-            <h4>{bottom_menu.bottom2}</h4>
+            <h4>{sidebar_menu.menu5}</h4>
           </div>
         </div>
       </div>

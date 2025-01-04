@@ -104,7 +104,6 @@
   font-weight: 600;
 }
 .subPlans_cards .subPlans_card .plan_price {
-  color: black;
   display: flex;
   align-items: baseline;
   gap: 3px;
@@ -116,7 +115,7 @@
 }
 .subPlans_cards .subPlans_card .plan_price span {
   font-size: 11px;
-  color: #181818;
+  color: #c8c8c8;
 }
 .light_mode .subPlans_cards .subPlans_card .plan_price span {
   color: #838383;
@@ -135,7 +134,7 @@
   color: orange;
 }
 .subPlans_cards .subPlans_card .plan_menu .plan_menu_list p {
-  color: black;
+  /* color: black; */
   font-size: 15px;
 }
 .subPlans_cards .subPlans_card .subPlans_btn {

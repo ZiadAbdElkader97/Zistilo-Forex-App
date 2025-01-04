@@ -1,12 +1,8 @@
 // Sidebar Data
-export const center_menu = {
-  center1: "Trade",
-  center2: "Copy",
-  center3: "Contact Us",
-  center4: "Subscription Plans",
-};
-
-export const bottom_menu = {
-  bottom1: "Settings",
-  bottom2: "Help Center",
+export const sidebar_menu = {
+  menu1: "Trade",
+  menu2: "Copy",
+  menu3: "Contact Us",
+  menu4: "Subscription Plans",
+  menu5: "Help Center",
 };
