@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { DataContext } from "./DataContext";
 
 export const DataProvider = ({ children }) => {
@@ -15,6 +15,43 @@ export const DataProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [watchlist, setWatchlist] = useState([]);
+
+  const inputRef = useRef(null);
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const filteredSearchData = data.filter((item) =>
+    item.symbol.toLowerCase().includes(inputValue.toLowerCase())
+  );
+
+  const clearInput = () => {
+    setInputValue("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    const savedWatchlist = JSON.parse(localStorage.getItem("watchlist"));
+    if (savedWatchlist) {
+      setWatchlist(savedWatchlist);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
+
+  const addToWatchlist = (item) => {
+    setWatchlist((prevList) => [...prevList, item]);
+  };
+  const removeFromWatchlist = (id) => {
+    setWatchlist((prevList) => prevList.filter((item) => item.id !== id));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -195,6 +232,14 @@ export const DataProvider = ({ children }) => {
         activeTimeframe,
         activeSymbol,
         setSymbol,
+        inputValue,
+        inputRef,
+        handleInputChange,
+        clearInput,
+        filteredSearchData,
+        watchlist,
+        addToWatchlist,
+        removeFromWatchlist,
       }}
     >
       {children}

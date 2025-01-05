@@ -1,14 +1,21 @@
-import "./TradeSection.css";
-import { useState, useRef, useContext } from "react";
-import { symbols_search, tradeData } from "../../assets/data/TradeData";
+import "./MarketSection.css";
+import { useState, useContext } from "react";
+import { symbols_search, marketData } from "../../assets/data/MarketData.js";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
 import Watchlists from "../Watchlists/Watchlists.jsx";
 import AllSymbols from "../AllSymbols/AllSymbols.jsx";
 import { DataContext } from "../../context/DataContext.jsx";
 
-export default function TradeSection() {
-  const { filterData, activeSymbol } = useContext(DataContext);
+export default function MarketSection() {
+  const {
+    filterData,
+    activeSymbol,
+    inputValue,
+    inputRef,
+    handleInputChange,
+    clearInput,
+  } = useContext(DataContext);
 
   const [activeTimeframeTab, setActiveTimeframeTab] = useState(
     symbols_search[0].id
@@ -29,35 +36,22 @@ export default function TradeSection() {
     setToggleState(index);
   };
 
-  const [inputValue, setInputValue] = useState("");
-  const inputRef = useRef(null);
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const clearInput = () => {
-    setInputValue("");
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
   return (
     <>
-      <div className="trade_section">
-        {/* Trade Tabs */}
-        <div className="trade_tabs">
+      <div className="market_section">
+        {/* Market Tabs */}
+        <div className="market_tabs">
           <div
             className={toggleState === 1 ? "tab_list active_tab" : "tab_list"}
             onClick={() => toggleTab(1)}
           >
-            {tradeData.tab1}
+            {marketData.tab1}
           </div>
           <div
             className={toggleState === 2 ? "tab_list active_tab" : "tab_list"}
             onClick={() => toggleTab(2)}
           >
-            {tradeData.tab2}
+            {marketData.tab2}
           </div>
         </div>
 
@@ -66,7 +60,7 @@ export default function TradeSection() {
           <div className="search_field">
             <input
               type="search"
-              placeholder={tradeData.search_ph}
+              placeholder={marketData.search_ph}
               className="search_input"
               value={inputValue}
               ref={inputRef}
@@ -95,7 +89,26 @@ export default function TradeSection() {
           </div>
         </div>
 
-        {toggleState === 1 ? <Watchlists /> : <AllSymbols />}
+        <div className="data_header">
+          <p className="data_header_p" style={{ width: "60px" }}>
+            Symbol
+          </p>
+          <p className="data_header_p">Change %</p>
+          <p
+            className="data_header_p"
+            style={{ width: "20px", marginLeft: "10px" }}
+          >
+            Ask
+          </p>
+          <p
+            className="data_header_p"
+            style={{ width: "20px", marginLeft: "30px" }}
+          >
+            Bid
+          </p>
+        </div>
+
+        {toggleState === 1 ? <AllSymbols /> : <Watchlists />}
       </div>
     </>
   );

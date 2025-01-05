@@ -9,41 +9,6 @@
   gap: 6px;
   margin-right: 6px;
 }
-.watchlist .popular .popular_section {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background-color: #525252;
-  padding: 6px 0px 6px 10px;
-  border-radius: var(--border_radius);
-  cursor: pointer;
-}
-.light_mode .watchlist .popular_section {
-  background-color: #d5dde0;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-.watchlist .popular_section i {
-  color: #cccccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--main_transition);
-}
-.light_mode .watchlist .popular_section i {
-  color: #4a4d4f;
-  font-size: 19px;
-}
-.watchlist .popular_section:hover i {
-  color: white;
-}
-.light_mode .watchlist .popular_section:hover i {
-  color: #000;
-}
-.watchlist .popular_section p {
-  font-size: 11px;
-}
 .watchlist .new_watchlist {
   width: 100%;
   display: flex;

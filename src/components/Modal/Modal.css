@@ -47,3 +47,9 @@
 .light_mode .modal_content .close_btn {
   color: #363839;
 }
+.close_btn_div .modal_title {
+  position: absolute;
+  top: 6px;
+  left: 15px;
+  font-size: 16px;
+}

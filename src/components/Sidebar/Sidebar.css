@@ -1,5 +1,5 @@
 .sidebar {
-  width: 350px;
+  width: 300px;
   background-color: #3b3b3b;
   display: flex;
   flex-direction: column;
@@ -69,6 +69,77 @@
   border-radius: var(--border_radius);
 }
 
+.lang_dropdown {
+  position: relative;
+  display: inline-block;
+}
+.lang_dropdown .dropdown_menu {
+  width: 200px;
+  background-color: #525252;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  position: absolute;
+  top: -35px;
+  left: calc(100% + 6px);
+  border-radius: var(--border_radius);
+  z-index: 10;
+  transition: var(--main_transition);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.light_mode .lang_dropdown .dropdown_menu {
+  background-color: #d5dde0;
+}
+.lang_dropdown .dropdown_menu .dropdown_group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 5px;
+}
+.dropdown_menu .dropdown_group img {
+  width: 20px;
+  height: 20px;
+}
+.lang_dropdown .dropdown_group .dropdown_tab {
+  color: #d1d1d1;
+  background-color: #6b6b6b;
+  font-size: 12px;
+  padding: 5px;
+  transition: var(--main_transition);
+  border-radius: var(--border_radius);
+  cursor: pointer;
+}
+.light_mode .lang_dropdown .dropdown_group .dropdown_tab {
+  color: #52536e;
+  background-color: #edf0f2;
+}
+.lang_dropdown .dropdown_group .dropdown_tab:hover {
+  color: white;
+  background-color: #808080;
+}
+.light_mode .lang_dropdown .dropdown_group .dropdown_tab:hover {
+  color: black;
+  background-color: #f6f6f6;
+}
+.lang_dropdown .dropdown_group .dropdown_active {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .lang_dropdown .dropdown_group .dropdown_active {
+  color: black;
+  background-color: white;
+}
+.lang_dropdown .dropdown_group .dropdown_active:hover {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .lang_dropdown .dropdown_group .dropdown_active:hover {
+  color: black;
+  background-color: white;
+}
+
 /* Center Menu */
 .center_menu {
   flex: 1;
@@ -134,7 +205,7 @@
 .center_menu .center_menu_list h4 {
   color: white;
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
 }
 .light_mode .center_menu .center_menu_list h4 {
   color: #0f0f0f;

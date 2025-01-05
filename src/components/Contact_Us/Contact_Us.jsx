@@ -15,6 +15,7 @@ export default function Contact_Us() {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [attachPic, setAttachPic] = useState(null);
 
   // ============== Email Validation Start ==============
 
@@ -48,6 +49,7 @@ export default function Contact_Us() {
       setSubject("");
       setPhoneNumber("");
       setMessage("");
+      setAttachPic("");
     }
   };
 
@@ -158,6 +160,17 @@ export default function Contact_Us() {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>
+            </div>
+
+            <div className="contact_field">
+              <p className="contact_label">Attach Picture</p>
+              <input
+                type="file"
+                accept=".jpg, .jpeg, .png, .gif"
+                className="contact_attach"
+                value={attachPic}
+                onChange={(e) => setAttachPic(e.target.value)}
+              />
             </div>
 
             <div className="contact_submit">

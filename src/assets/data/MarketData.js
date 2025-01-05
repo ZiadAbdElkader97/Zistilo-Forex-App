@@ -1,7 +1,7 @@
 // Trade Data
-export const tradeData = {
-  tab1: "Watchlists",
-  tab2: "All Symbols",
+export const marketData = {
+  tab1: "All Symbols",
+  tab2: "Watchlists",
   search_ph: "Enter symbol name",
 };
 export const symbols_search = [

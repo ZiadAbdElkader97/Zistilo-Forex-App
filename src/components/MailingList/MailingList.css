@@ -1,4 +1,4 @@
-.contact {
+.mailing_list {
   width: 100%;
   display: flex;
   gap: 30px;
@@ -7,56 +7,56 @@
 }
 
 /* Left Side */
-.contact_left {
+.mailing_left {
   width: 50%;
   padding-bottom: 50px;
   border-radius: 8px;
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.5);
 }
-.contact_left .contact_left_info {
+.mailing_left .mailing_left_info {
   padding: 30px;
 }
-.contact_left_info .contact_h2 {
+.mailing_left_info .mailing_h2 {
   color: white;
   font-size: 30px;
 }
-.contact_left_info .contact_details {
+.mailing_left_info .mailing_details {
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-top: 30px;
 }
-.contact_left_info .contact_details .contact_h4 {
+.mailing_left_info .mailing_details .mailing_h4 {
   color: white;
 }
-.contact_left_info .contact_details .contact_p1 {
+.mailing_left_info .mailing_details .mailing_p1 {
   color: rgb(220, 220, 220);
   font-size: 13px;
 }
-.contact_left_info .contact_details .contact_p2 {
+.mailing_left_info .mailing_details .mailing_p2 {
   color: white;
   font-size: 12px;
 }
-.contact_left_info .contact_details .contact_icons {
+.mailing_left_info .mailing_details .mailing_icons {
   display: flex;
   gap: 10px;
 }
-.contact_left_info .contact_details .contact_icons i {
+.mailing_left_info .mailing_details .mailing_icons i {
   color: white;
   font-size: 14px;
   cursor: pointer;
 }
-.contact_left_info .contact_details .contact_icons i:hover {
+.mailing_left_info .mailing_details .mailing_icons i:hover {
   color: #7aa1e3;
 }
 
 /* Right Side */
-.contact_right {
+.mailing_right {
   width: 50%;
   height: 100%;
 }
-.contact_right_info .contact_form {
+.mailing_right_info .mailing_form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.contact_right_info .contact_form .contact_err_msg {
+.mailing_right_info .mailing_form .mailing_err_msg {
   color: orange;
   text-align: center;
   font-size: 14px;
@@ -77,10 +77,10 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
-.light_mode .contact_right_info .contact_form .contact_err_msg {
+.light_mode .mailing_right_info .mailing_form .mailing_err_msg {
   background: #d5dde0;
 }
-.contact_right_info .contact_form .contact_success_msg {
+.mailing_right_info .mailing_form .mailing_success_msg {
   color: #47c71d;
   text-align: center;
   font-size: 14px;
@@ -93,38 +93,33 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
-.light_mode .contact_right_info .contact_form .contact_success_msg {
+.light_mode .mailing_right_info .mailing_form .mailing_success_msg {
   background: #d5dde0;
 }
-.contact_form .contact_name_phone {
-  width: 100%;
-  display: flex;
-  gap: 10px;
-}
-.contact_form .contact_field {
+.mailing_form .mailing_field {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   transition: var(--main_transition);
 }
-.contact_form .contact_field .contact_label {
+.mailing_form .mailing_field .mailing_label {
   font-size: 13px;
 }
-.contact_form .contact_field .contact_input {
+.mailing_form .mailing_field .mailing_input {
   padding: 8px 15px;
   border-radius: 8px;
   border: none;
   outline: none;
   transition: var(--main_transition);
 }
-.light_mode .contact_form .contact_field .contact_input {
+.light_mode .mailing_form .mailing_field .mailing_input {
   background: #d5dde0;
 }
-.contact_form .contact_field .contact_input::placeholder {
+.mailing_form .mailing_field .mailing_input::placeholder {
   font-size: 12px;
 }
-.contact_form .contact_field .contact_textarea {
+.mailing_form .mailing_field .mailing_textarea {
   width: 100%;
   padding: 8px 15px;
   border-radius: 8px;
@@ -133,10 +128,10 @@
   resize: none;
   transition: var(--main_transition);
 }
-.light_mode .contact_form .contact_field .contact_textarea {
+.light_mode .mailing_form .mailing_field .mailing_textarea {
   background: #d5dde0;
 }
-.contact_form .contact_submit .contact_submit_button {
+.mailing_form .mailing_submit .mailing_submit_button {
   width: 80%;
   height: 35px;
   color: white;
@@ -150,6 +145,6 @@
   cursor: pointer;
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
 }
-.contact_form .contact_submit .contact_submit_button:hover {
+.mailing_form .mailing_submit .mailing_submit_button:hover {
   background-image: linear-gradient(10deg, #2980b9 0%, #19499c 100%);
 }

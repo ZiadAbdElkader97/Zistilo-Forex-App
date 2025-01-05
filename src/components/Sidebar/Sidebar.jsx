@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "./Sidebar.css";
 import { useState } from "react";
-import TradeSection from "../TradeSection/TradeSection";
+import MarketSection from "../MarketSection/MarketSection";
 import { sidebar_menu } from "../../assets/data/SidebarData";
 import { LuFullscreen } from "react-icons/lu";
 import { CgDarkMode } from "react-icons/cg";
@@ -14,7 +14,11 @@ import {
   MdLanguage,
   MdPermContactCalendar,
 } from "react-icons/md";
+import en_lang from "../../assets/img/en.png";
+import ar_lang from "../../assets/img/ar.png";
+import de_lang from "../../assets/img/de.png";
 import Modal from "../Modal/Modal";
+import MailingList from "../MailingList/MailingList";
 import Contact_Us from "../Contact_Us/Contact_Us";
 import SubscriptionPlans from "../SubscriptionPlans/SubscriptionPlans";
 
@@ -22,9 +26,23 @@ export default function Sidebar({ toggleMode }) {
   const [open, setOpen] = useState(true);
   const [isVisibleTrade, setIsVisibleTrade] = useState(true);
 
+  const [openMenuLang, SetOpenMenuLang] = useState(false);
+  const [toggleOption, setToggleOption] = useState(1);
+
+  const handleToggle = () => {
+    SetOpenMenuLang(!openMenuLang);
+  };
+
+  const handleToggleOption = (num) => {
+    setToggleOption(num);
+    SetOpenMenuLang(false);
+  };
+
   const [toggleState, setToggleState] = useState(1);
-  const toggleTab = (index) => {
+  const [modalTitle, setModalTitle] = useState("");
+  const toggleTab = (index, title = "") => {
     setToggleState(index);
+    setModalTitle(title);
   };
 
   const handleFullScreen = () => {
@@ -54,10 +72,21 @@ export default function Sidebar({ toggleMode }) {
   };
   const [isMuted, setIsMuted] = useState(false);
 
+  const [showMailingModal, setShowMailingModal] = useState(false);
+
+  const handleOpenMailingModal = () => {
+    setShowMailingModal(true);
+    setModalTitle("Mailing List");
+  };
+  const handleCloseMailingModal = () => {
+    setShowMailingModal(false);
+  };
+
   const [showContactModal, setShowContactModal] = useState(false);
 
   const handleOpenContactModal = () => {
     setShowContactModal(true);
+    setModalTitle("Contact Us");
   };
   const handleCloseContactModal = () => {
     setShowContactModal(false);
@@ -67,6 +96,7 @@ export default function Sidebar({ toggleMode }) {
 
   const handleOpenSubPlansModal = () => {
     setShowSubPlansModal(true);
+    setModalTitle("Subscription Plans");
   };
   const handleCloseSubPlansModal = () => {
     setShowSubPlansModal(false);
@@ -86,7 +116,7 @@ export default function Sidebar({ toggleMode }) {
             <span></span>
           </div>
           <div className="top_menu_icons">
-            <i title="Email Alerts">
+            <i title="Mailing List" onClick={() => handleOpenMailingModal()}>
               <MdOutlineEmail />
             </i>
             <i title="Full-screen mode (F11)" onClick={handleFullScreen}>
@@ -101,10 +131,63 @@ export default function Sidebar({ toggleMode }) {
             >
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </i>
-            <i title="Change Language">
+            <i title="Change Language" onClick={handleToggle}>
               <MdLanguage />
             </i>
           </div>
+          <Modal
+            show={showMailingModal}
+            onClose={handleCloseMailingModal}
+            title={modalTitle}
+          >
+            <MailingList />
+          </Modal>
+        </div>
+
+        <div className="lang_dropdown">
+          {openMenuLang && (
+            <div className="dropdown_menu">
+              <div className="dropdown_group">
+                <img src={en_lang} />
+                <p
+                  className={
+                    toggleOption === 1
+                      ? "dropdown_tab dropdown_active"
+                      : "dropdown_tab"
+                  }
+                  onClick={() => handleToggleOption(1)}
+                >
+                  EN
+                </p>
+              </div>
+              <div className="dropdown_group">
+                <img src={ar_lang} />
+                <p
+                  className={
+                    toggleOption === 2
+                      ? "dropdown_tab dropdown_active"
+                      : "dropdown_tab"
+                  }
+                  onClick={() => handleToggleOption(2)}
+                >
+                  AR
+                </p>
+              </div>
+              <div className="dropdown_group">
+                <img src={de_lang} />
+                <p
+                  className={
+                    toggleOption === 3
+                      ? "dropdown_tab dropdown_active"
+                      : "dropdown_tab"
+                  }
+                  onClick={() => handleToggleOption(3)}
+                >
+                  DE
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Center Menu */}
@@ -124,7 +207,7 @@ export default function Sidebar({ toggleMode }) {
             </i>
             <h4>{sidebar_menu.menu1}</h4>
           </div>
-          {toggleState === 1 && isVisibleTrade ? <TradeSection /> : <></>}
+          {toggleState === 1 && isVisibleTrade ? <MarketSection /> : <></>}
           <div
             className={
               toggleState === 2
@@ -151,7 +234,11 @@ export default function Sidebar({ toggleMode }) {
             </i>
             <h4>{sidebar_menu.menu3}</h4>
           </div>
-          <Modal show={showContactModal} onClose={handleCloseContactModal}>
+          <Modal
+            show={showContactModal}
+            onClose={handleCloseContactModal}
+            title={modalTitle}
+          >
             <Contact_Us />
           </Modal>
           <div
@@ -167,7 +254,11 @@ export default function Sidebar({ toggleMode }) {
             </i>
             <h4>{sidebar_menu.menu4}</h4>
           </div>
-          <Modal show={showSubPlansModal} onClose={handleCloseSubPlansModal}>
+          <Modal
+            show={showSubPlansModal}
+            onClose={handleCloseSubPlansModal}
+            title={modalTitle}
+          >
             <SubscriptionPlans />
           </Modal>
           <div
