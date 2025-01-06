@@ -1,45 +1,8 @@
-.watchlist {
-  height: 350px;
-  margin-top: 7px;
-  overflow: auto;
-}
 .watchlist .watchlist_section {
+  height: 350px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-right: 6px;
-}
-.watchlist .new_watchlist {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  background-color: #4a4a4a;
-  padding: 7px 0px 7px 10px;
-  border-radius: var(--border_radius);
-  cursor: pointer;
-}
-.watchlist .new_watchlist_active {
-  background-color: #525252;
-}
-.light_mode .watchlist .new_watchlist {
-  background-color: #edf0f2;
-}
-.watchlist .new_watchlist:hover {
-  background-color: #525252;
-}
-.light_mode .watchlist .new_watchlist:hover {
-  background-color: #d5dde0a9;
-}
-.watchlist .new_watchlist i {
-  display: flex;
-  color: #cccccc;
-  font-size: 11px;
-}
-.light_mode .watchlist .new_watchlist i {
-  color: #000;
-}
-.watchlist .new_watchlist p {
-  font-size: 11px;
+  margin-top: 6px;
+  overflow: auto;
 }

@@ -68,6 +68,10 @@
   background-color: gray;
   border-radius: var(--border_radius);
 }
+.top_menu_icons .lang_img_icon {
+  width: 15px;
+  height: 15px;
+}
 
 .lang_dropdown {
   position: relative;

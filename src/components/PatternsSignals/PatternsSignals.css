@@ -1,15 +1,19 @@
 .patterns_signals {
   width: 100%;
-  height: 26.5%;
+  height: 26%;
   margin-right: 5px;
   border-radius: 4px 0px 4px 4px;
 }
 .patterns_signals .patterns_signals_tabs {
   display: flex;
-  gap: 5px;
+  justify-content: space-between;
   margin-top: 5px;
 }
-.patterns_signals .patterns_signals_tabs .tab {
+.patterns_signals .patterns_signals_tabs .left_tabs {
+  display: flex;
+  gap: 5px;
+}
+.patterns_signals .left_tabs .tab {
   color: #bababa;
   background-color: #3b3b3b;
   font-size: 12px;
@@ -17,47 +21,77 @@
   border-radius: 4px 4px 0px 0px;
   cursor: pointer;
 }
-.light_mode .patterns_signals_tabs .tab {
+.light_mode .left_tabs .tab {
   color: #40484d;
   background-color: #e8ebed;
 }
-.patterns_signals .patterns_signals_tabs .tab:hover {
-  color: rgb(229, 229, 229);
+.patterns_signals .left_tabs .tab:hover {
+  color: white;
   background-color: #5252529f;
 }
-.light_mode .patterns_signals .patterns_signals_tabs .tab:hover {
+.light_mode .patterns_signals .left_tabs .tab:hover {
   color: #292929;
   background-color: #e2e5e7;
 }
-.patterns_signals .patterns_signals_tabs .tab_active {
+.patterns_signals .left_tabs .tab_active {
   color: white;
   background-color: #525252;
 }
-.light_mode .patterns_signals_tabs .tab_active {
+.light_mode .left_tabs .tab_active {
   color: #161717;
   background-color: #d5dde0;
 }
-.patterns_signals_tabs .tab_active:hover {
+.left_tabs .tab_active:hover {
   color: white;
   background-color: #525252;
 }
-.light_mode .patterns_signals_tabs .tab_active:hover {
+.light_mode .left_tabs .tab_active:hover {
   color: #161717;
   background-color: #d5dde0;
+}
+.patterns_signals .patterns_signals_tabs .right_search {
+  background-color: #525252;
+  padding: 3px;
+  border-radius: 4px 4px 0px 0px;
+}
+.patterns_signals_tabs .right_search .search_field {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.patterns_signals_tabs .right_search .search_field .search_input {
+  width: 100%;
+  color: #bababa;
+  background-color: #1a1a1a;
+  font-size: 11px;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  position: relative;
+  border-radius: var(--border_radius);
+}
+.patterns_signals_tabs .right_search .search_field i {
+  color: #bababa;
+  position: absolute;
+  right: 2px;
+  top: 4px;
+  cursor: pointer;
 }
 .patterns_signals .patterns_signals_content {
   width: 100%;
   height: 85%;
   background-color: #525252;
   padding-top: 5px;
-  border-radius: 0px 4px 4px 4px;
+  border-radius: 0px 0px 4px 4px;
 }
 .light_mode .patterns_signals .patterns_signals_content {
   background-color: #d5dde0;
 }
 .patterns_signals .patterns_signals_section {
   width: calc(100% - 12px);
-  max-height: 145px;
+  max-height: 95%;
+  height: 200px;
   background-color: #292929;
   margin-left: 6px;
   padding: 5px;

@@ -9,11 +9,7 @@ import { AiOutlineTrademark } from "react-icons/ai";
 import { FaRegCopy, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { GrPlan } from "react-icons/gr";
-import {
-  MdOutlineEmail,
-  MdLanguage,
-  MdPermContactCalendar,
-} from "react-icons/md";
+import { MdOutlineEmail, MdPermContactCalendar } from "react-icons/md";
 import en_lang from "../../assets/img/en.png";
 import ar_lang from "../../assets/img/ar.png";
 import de_lang from "../../assets/img/de.png";
@@ -28,13 +24,15 @@ export default function Sidebar({ toggleMode }) {
 
   const [openMenuLang, SetOpenMenuLang] = useState(false);
   const [toggleOption, setToggleOption] = useState(1);
+  const [selectedLang, setSelectedLang] = useState(en_lang);
 
   const handleToggle = () => {
     SetOpenMenuLang(!openMenuLang);
   };
 
-  const handleToggleOption = (num) => {
-    setToggleOption(num);
+  const handleToggleOption = (option, langImage) => {
+    setToggleOption(option);
+    setSelectedLang(langImage);
     SetOpenMenuLang(false);
   };
 
@@ -132,7 +130,7 @@ export default function Sidebar({ toggleMode }) {
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </i>
             <i title="Change Language" onClick={handleToggle}>
-              <MdLanguage />
+              <img className="lang_img_icon" src={selectedLang} />
             </i>
           </div>
           <Modal
@@ -155,7 +153,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(1)}
+                  onClick={() => handleToggleOption(1, en_lang)}
                 >
                   EN
                 </p>
@@ -168,7 +166,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(2)}
+                  onClick={() => handleToggleOption(2, ar_lang)}
                 >
                   AR
                 </p>
@@ -181,7 +179,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(3)}
+                  onClick={() => handleToggleOption(3, de_lang)}
                 >
                   DE
                 </p>

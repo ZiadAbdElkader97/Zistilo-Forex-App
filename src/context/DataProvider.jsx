@@ -15,25 +15,11 @@ export const DataProvider = ({ children }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
-  const [inputValue, setInputValue] = useState("");
+  const [inputSymbolValue, setInputSymbolValue] = useState("");
+  const [inputWatchlistValue, setInputWatchlistValue] = useState("");
+  const [inputPatternValue, setInputPatternValue] = useState("");
   const [watchlist, setWatchlist] = useState([]);
-
   const inputRef = useRef(null);
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const filteredSearchData = data.filter((item) =>
-    item.symbol.toLowerCase().includes(inputValue.toLowerCase())
-  );
-
-  const clearInput = () => {
-    setInputValue("");
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
 
   useEffect(() => {
     const savedWatchlist = JSON.parse(localStorage.getItem("watchlist"));
@@ -53,6 +39,8 @@ export const DataProvider = ({ children }) => {
     setWatchlist((prevList) => prevList.filter((item) => item.id !== id));
   };
 
+  const [isSingleChart, setIsSingleChart] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
@@ -62,6 +50,8 @@ export const DataProvider = ({ children }) => {
       setFilteredData(response.data.filter((item) => item.timeframe === "M1"));
     };
     fetchData();
+    // const interval = setInterval(fetchData, 5000);
+    // return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -232,14 +222,18 @@ export const DataProvider = ({ children }) => {
         activeTimeframe,
         activeSymbol,
         setSymbol,
-        inputValue,
+        inputSymbolValue,
+        setInputSymbolValue,
+        inputWatchlistValue,
+        setInputWatchlistValue,
+        inputPatternValue,
+        setInputPatternValue,
         inputRef,
-        handleInputChange,
-        clearInput,
-        filteredSearchData,
         watchlist,
         addToWatchlist,
         removeFromWatchlist,
+        isSingleChart,
+        setIsSingleChart,
       }}
     >
       {children}

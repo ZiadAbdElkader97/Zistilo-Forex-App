@@ -6,6 +6,52 @@
 .navbar .navbar_main {
   width: 75%;
 }
+.navbar .navbar_main .charts_tabs {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 6px;
+}
+.navbar_main .charts_tabs .chart_tab {
+  color: #bababa;
+  background-color: #3b3b3b;
+  font-size: 13px;
+  display: flex;
+  gap: 3px;
+  padding: 5px 6px;
+  border-radius: var(--border_radius);
+  cursor: pointer;
+}
+.light_mode .navbar_main .charts_tabs .chart_tab {
+  color: #40484d;
+  background-color: #e8ebed;
+}
+.navbar_main .charts_tabs .chart_tab:hover {
+  color: white;
+  background-color: #5252529f;
+}
+.light_mode .navbar_main .charts_tabs .chart_tab:hover {
+  color: #292929;
+  background-color: #e2e5e7;
+}
+.navbar_main .charts_tabs .chart_active {
+  color: white;
+  background-color: #525252;
+}
+.light_mode .navbar_main .charts_tabs .chart_active {
+  color: #161717;
+  background-color: #d5dde0;
+}
+.navbar_main .charts_tabs .chart_active:hover {
+  color: white;
+  background-color: #525252;
+}
+.light_mode .navbar_main .charts_tabs .chart_active:hover {
+  color: #161717;
+  background-color: #d5dde0;
+}
+
 .navbar .navbar_login {
   width: 25%;
   text-align: right;

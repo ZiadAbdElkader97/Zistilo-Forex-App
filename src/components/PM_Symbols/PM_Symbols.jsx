@@ -1,20 +1,24 @@
-/* eslint-disable no-unused-vars */
 import "./PM_Symbols.css";
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { DataContext } from "../../context/DataContext";
 
 export default function PM_Symbols() {
   const {
+    data,
+    inputSymbolValue,
     setSymbol,
     filterData,
     activeTimeframe,
-    filteredSearchData,
     watchlist,
     addToWatchlist,
     removeFromWatchlist,
   } = useContext(DataContext);
+
+  const filteredSearchData = data.filter((item) =>
+    item.symbol.toLowerCase().includes(inputSymbolValue.toLowerCase())
+  );
 
   const handleStarClick = (item) => {
     const isItemInWatchlist = watchlist.some(

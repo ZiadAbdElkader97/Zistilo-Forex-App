@@ -7,7 +7,6 @@
   grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   grid-gap: 5px;
 }
-.charts .chart {
-  border-radius: var(--border_radius);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.chart.full-width {
+  width: 100%;
 }

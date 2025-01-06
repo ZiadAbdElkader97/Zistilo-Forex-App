@@ -166,10 +166,18 @@ export default function Contact_Us() {
               <p className="contact_label">Attach Picture</p>
               <input
                 type="file"
-                accept=".jpg, .jpeg, .png, .gif"
+                accept="image/*"
                 className="contact_attach"
                 value={attachPic}
-                onChange={(e) => setAttachPic(e.target.value)}
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file && file.size > 1024 * 1024) {
+                    alert("The file size must be less than 1MB.");
+                    e.target.value = "";
+                  } else {
+                    setAttachPic(e.target.value);
+                  }
+                }}
               />
             </div>
 

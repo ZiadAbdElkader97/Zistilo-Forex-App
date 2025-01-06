@@ -4,7 +4,7 @@ import Tech_Section from "../Technical_Indicator/Tech_Section.jsx";
 import RSide_Symbol from "../RSide_Symbol/RSide_Symbol.jsx";
 import Calendar from "../Calendar/Calendar.jsx";
 import Patterns from "../Patterns/Patterns.jsx";
-import News from "../News/News.jsx";
+import MovingAverage from "../MovingAverage/MovingAverage.jsx";
 
 export default function RightSide() {
   const [toggleState, setToggleState] = useState(1);
@@ -44,11 +44,11 @@ export default function RightSide() {
           Patterns
         </span>
         <span
-          title="News"
+          title="Moving Average"
           className={toggleState === 5 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(5)}
         >
-          News
+          M.A
         </span>
       </div>
       <div className="right_side_content"></div>
@@ -56,7 +56,7 @@ export default function RightSide() {
       {toggleState === 2 ? <RSide_Symbol /> : <></>}
       {toggleState === 3 ? <Calendar /> : <></>}
       {toggleState === 4 ? <Patterns /> : <></>}
-      {toggleState === 5 ? <News /> : <></>}
+      {toggleState === 5 ? <MovingAverage /> : <></>}
     </div>
   );
 }

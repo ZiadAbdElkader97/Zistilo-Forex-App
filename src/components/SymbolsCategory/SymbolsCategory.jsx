@@ -1,17 +1,15 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import "./SymbolsCategory.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
 import { DataContext } from "../../context/DataContext.jsx";
 
-export default function SymbolsCategory({ data }) {
+export default function SymbolsCategory({ data, filteredSearchData }) {
   const {
     setSymbol,
     filterData,
     activeTimeframe,
-    filteredSearchData,
     watchlist,
     addToWatchlist,
     removeFromWatchlist,

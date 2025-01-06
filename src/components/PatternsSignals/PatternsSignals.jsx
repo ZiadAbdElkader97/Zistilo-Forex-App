@@ -1,9 +1,27 @@
 import "./PatternsSignals.css";
 import { useContext, useState } from "react";
 import { DataContext } from "../../context/DataContext";
+import { LiaSearchSolid } from "react-icons/lia";
+import { MdCancel } from "react-icons/md";
 
 export default function PatternsSignals() {
-  const { patternsSignalsData } = useContext(DataContext);
+  const {
+    patternsSignalsData,
+    inputPatternValue,
+    setInputPatternValue,
+    inputRef,
+  } = useContext(DataContext);
+
+  const handleInputChange = (event) => {
+    setInputPatternValue(event.target.value);
+  };
+
+  const clearInput = () => {
+    setInputPatternValue("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   // console.log(patternsSignalsData);
 
@@ -13,10 +31,16 @@ export default function PatternsSignals() {
   };
 
   const filterSignals = patternsSignalsData.filter((signal) => {
-    if (toggleState === 1) return signal.status === "Open";
-    if (toggleState === 2) return signal.status === "Pending";
-    if (toggleState === 3) return signal.status === "Close";
-    return false;
+    const matchesStatus =
+      (toggleState === 1 && signal.status === "Open") ||
+      (toggleState === 2 && signal.status === "Pending") ||
+      (toggleState === 3 && signal.status === "Close");
+
+    const matchesSymbol = signal.symbol
+      .toLowerCase()
+      .includes(inputPatternValue.toLowerCase());
+
+    return matchesStatus && matchesSymbol;
   });
   // console.log(filterSignals);
 
@@ -24,27 +48,44 @@ export default function PatternsSignals() {
     <>
       <div className="patterns_signals">
         <div className="patterns_signals_tabs">
-          <span
-            className={toggleState === 1 ? "tab tab_active" : "tab"}
-            title="Opened Signals"
-            onClick={() => toggleTab(1)}
-          >
-            Opened Signals
-          </span>
-          <span
-            className={toggleState === 2 ? "tab tab_active" : "tab"}
-            title="Pending Signals"
-            onClick={() => toggleTab(2)}
-          >
-            Pending Signals
-          </span>
-          <span
-            className={toggleState === 3 ? "tab tab_active" : "tab"}
-            title="Closed Signals"
-            onClick={() => toggleTab(3)}
-          >
-            Closed Signals
-          </span>
+          <div className="left_tabs">
+            <span
+              className={toggleState === 1 ? "tab tab_active" : "tab"}
+              title="Opened Signals"
+              onClick={() => toggleTab(1)}
+            >
+              Opened Signals
+            </span>
+            <span
+              className={toggleState === 2 ? "tab tab_active" : "tab"}
+              title="Pending Signals"
+              onClick={() => toggleTab(2)}
+            >
+              Pending Signals
+            </span>
+            <span
+              className={toggleState === 3 ? "tab tab_active" : "tab"}
+              title="Closed Signals"
+              onClick={() => toggleTab(3)}
+            >
+              Closed Signals
+            </span>
+          </div>
+          <div className="right_search">
+            <div className="search_field">
+              <input
+                type="search"
+                placeholder="Enter your symbol"
+                className="search_input"
+                value={inputPatternValue}
+                ref={inputRef}
+                onChange={handleInputChange}
+              />
+              <i onClick={clearInput}>
+                {inputPatternValue ? <MdCancel /> : <LiaSearchSolid />}
+              </i>
+            </div>
+          </div>
         </div>
         <div className="patterns_signals_content">
           <div className="patterns_signals_section">

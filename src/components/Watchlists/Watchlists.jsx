@@ -1,18 +1,53 @@
-import { useContext, useEffect } from "react";
 import "./Watchlists.css";
-import { FiPlus } from "react-icons/fi";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../context/DataContext";
+import { marketData, symbols_search } from "../../assets/data/MarketData";
 import { FaCheck } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
+import { LiaSearchSolid } from "react-icons/lia";
+import { MdCancel } from "react-icons/md";
 
 export default function Watchlists() {
   const {
-    setSymbol,
+    inputWatchlistValue,
+    setInputWatchlistValue,
+    inputRef,
     filterData,
+    setSymbol,
+    activeSymbol,
     activeTimeframe,
     watchlist,
     removeFromWatchlist,
   } = useContext(DataContext);
+
+  const handleInputChange = (event) => {
+    setInputWatchlistValue(event.target.value);
+  };
+
+  const filteredSearchInputData = watchlist.filter((item) =>
+    item.symbol.toLowerCase().includes(inputWatchlistValue.toLowerCase())
+  );
+
+  const clearInput = () => {
+    setInputWatchlistValue("");
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const [activeTimeframeTab, setActiveTimeframeTab] = useState(
+    symbols_search[0].id
+  );
+
+  const handleTimeframeFilter = (id, timeframe) => {
+    if (setActiveTimeframeTab === id) {
+      setActiveTimeframeTab(null);
+      filterData(null, activeSymbol);
+    } else {
+      setActiveTimeframeTab(id);
+      filterData(timeframe, activeSymbol);
+    }
+  };
 
   const handleStarClick = (id) => {
     removeFromWatchlist(id);
@@ -34,9 +69,62 @@ export default function Watchlists() {
   return (
     <>
       <div className="watchlist">
+        {/* Search Section */}
+        <div className="search_section">
+          <div className="search_field">
+            <input
+              type="search"
+              placeholder={marketData.search_ph}
+              className="search_input"
+              value={inputWatchlistValue}
+              ref={inputRef}
+              onChange={handleInputChange}
+            />
+            <i onClick={clearInput}>
+              {inputWatchlistValue ? <MdCancel /> : <LiaSearchSolid />}
+            </i>
+          </div>
+          <div className="symbols_search">
+            <ul className="symbols_ul">
+              {symbols_search.map((tab) => (
+                <li
+                  key={tab.id}
+                  className={
+                    activeTimeframeTab === tab.id
+                      ? "symbols_li symbols_active"
+                      : "symbols_li"
+                  }
+                  onClick={() => handleTimeframeFilter(tab.id, tab.timeframe)}
+                >
+                  {tab.timeframe}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="data_header">
+          <p className="data_header_p" style={{ width: "60px" }}>
+            Symbol
+          </p>
+          <p className="data_header_p">Change %</p>
+          <p
+            className="data_header_p"
+            style={{ width: "20px", marginLeft: "10px" }}
+          >
+            Ask
+          </p>
+          <p
+            className="data_header_p"
+            style={{ width: "20px", marginLeft: "30px" }}
+          >
+            Bid
+          </p>
+        </div>
+
         <div className="watchlist_section">
           <div className="copied_items_section">
-            {watchlist.map((item) => (
+            {filteredSearchInputData.map((item) => (
               <div
                 key={item.id}
                 className="view_data"
@@ -61,13 +149,6 @@ export default function Watchlists() {
                 </p>
               </div>
             ))}
-          </div>
-
-          <div className="new_watchlist">
-            <i>
-              <FiPlus />
-            </i>
-            <p>Create new Watchlist</p>
           </div>
         </div>
       </div>

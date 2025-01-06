@@ -1,17 +1,17 @@
-.news {
+.moving {
   width: 100%;
   height: 93%;
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
-.light_mode .news {
+.light_mode .moving {
   background-color: #d5dde0;
 }
-.news .news_content {
+.moving .moving_content {
   padding-top: 35px;
 }
-.news .news_section {
+.moving .moving_section {
   width: calc(100% - 12px);
   height: 94%;
   background-color: #292929;
@@ -21,6 +21,6 @@
   border-radius: var(--border_radius);
   overflow: auto;
 }
-.light_mode .news .news_section {
+.light_mode .moving .moving_section {
   background-color: white;
 }
