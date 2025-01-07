@@ -1,5 +1,5 @@
 import "./Tech_Section.css";
-import GaugeChart from "react-gauge-chart";
+// import GaugeChart from "react-gauge-chart";
 import { useContext, useEffect } from "react";
 import { beginner_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
@@ -63,7 +63,7 @@ export default function Beginner() {
             </div>
           ))}
         </div>
-        <div className="tech_chart">
+        {/* <div className="tech_chart">
           <h3>Summary</h3>
           <GaugeChart
             id="gauge-chart1"
@@ -76,7 +76,7 @@ export default function Beginner() {
             needleBaseColor="#345243"
             textColor="#345243"
           />
-        </div>
+        </div> */}
       </div>
     </>
   );
