@@ -5,6 +5,7 @@ import { DataContext } from "./DataContext";
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [categoryData, setCategoryData] = useState({});
   const [otherData1, setOtherData1] = useState([]);
   const [otherData2, setOtherData2] = useState([]);
   const [otherData3, setOtherData3] = useState([]);
@@ -12,6 +13,11 @@ export const DataProvider = ({ children }) => {
   const [symbolData, setSymbolData] = useState([]);
   const [patternsData, setPatternsData] = useState([]);
   const [patternsSignalsData, setPatternsSignalsData] = useState([]);
+  const [movingAverageSMAData, setMovingAverageSMAData] = useState([]);
+  const [movingAverageEMAData, setMovingAverageEMAData] = useState([]);
+  const [pivotClassicData, setPivotClassicData] = useState([]);
+  const [pivotFibonacciData, setPivotFibonacciData] = useState([]);
+  const [pivotCamarillaData, setPivotCamarillaData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [activeTimeframe, setActiveTimeframe] = useState(null);
   const [activeSymbol, setActiveSymbol] = useState(null);
@@ -50,9 +56,32 @@ export const DataProvider = ({ children }) => {
       setFilteredData(response.data.filter((item) => item.timeframe === "M1"));
     };
     fetchData();
-    // const interval = setInterval(fetchData, 5000);
-    // return () => clearInterval(interval);
+    const interval = setInterval(fetchData, 30000);
+    return () => clearInterval(interval);
   }, []);
+
+  const [openTabs, setOpenTabs] = useState(false);
+  const [filteredSearchData, setFilteredSearchData] = useState({});
+
+  const filterByTimeframe = (data, timeframe) => {
+    return data.filter((item) => item.timeframe === timeframe);
+  };
+
+  const handleToggle = async (id, category) => {
+    setOpenTabs((prevState) => ({ ...prevState, [id]: !prevState[id] }));
+
+    if (!categoryData[id]) {
+      const response = await axios.get(
+        `https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php?category=${category}`
+      );
+      const filteredData = filterByTimeframe(response.data, "M1");
+      setCategoryData((prevState) => ({ ...prevState, [id]: filteredData }));
+      setFilteredSearchData((prevState) => ({
+        ...prevState,
+        [id]: filteredData,
+      }));
+    }
+  };
 
   useEffect(() => {
     const fetchOtherData1 = async () => {
@@ -160,6 +189,86 @@ export const DataProvider = ({ children }) => {
     fetchPatternsSignalsData();
   }, []);
 
+  useEffect(() => {
+    const fetchMovingAverageSMAData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/moving_averages_api.php?ma_type=SMA",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setMovingAverageSMAData(response.data);
+    };
+    fetchMovingAverageSMAData();
+  }, []);
+
+  useEffect(() => {
+    const fetchMovingAverageEMAData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/moving_averages_api.php?ma_type=EMA",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setMovingAverageEMAData(response.data);
+    };
+    fetchMovingAverageEMAData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPivotClassicData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/support_resistance_levels_api.php?calculation_type=Classic",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setPivotClassicData(response.data);
+    };
+    fetchPivotClassicData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPivotFibonacciData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/support_resistance_levels_api.php?calculation_type=Fibonacci",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setPivotFibonacciData(response.data);
+    };
+    fetchPivotFibonacciData();
+  }, []);
+
+  useEffect(() => {
+    const fetchPivotCamarillaData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/support_resistance_levels_api.php?calculation_type=Camarilla",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setPivotCamarillaData(response.data);
+    };
+    fetchPivotCamarillaData();
+  }, []);
+
   // console.log(data);
 
   const ValueBar = ({ value }) => {
@@ -209,6 +318,12 @@ export const DataProvider = ({ children }) => {
     <DataContext.Provider
       value={{
         data,
+        categoryData,
+        setCategoryData,
+        openTabs,
+        filteredSearchData,
+        setFilteredSearchData,
+        handleToggle,
         otherData1,
         otherData2,
         otherData3,
@@ -216,6 +331,11 @@ export const DataProvider = ({ children }) => {
         symbolData,
         patternsData,
         patternsSignalsData,
+        movingAverageSMAData,
+        movingAverageEMAData,
+        pivotClassicData,
+        pivotFibonacciData,
+        pivotCamarillaData,
         ValueBar,
         filteredData,
         filterData,

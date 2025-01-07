@@ -1,0 +1,121 @@
+.pivot_points {
+  width: 100%;
+  height: 93%;
+  background-color: #525252;
+  padding-bottom: 15px;
+  border-radius: 0 4px 4px 4px;
+}
+.light_mode .pivot_points {
+  background-color: #d5dde0;
+}
+.pivot_points .pivot_tabs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px;
+  border-radius: 0 4px 4px 4px;
+}
+.pivot_points .pivot_tabs .pivot_tab {
+  width: 100%;
+  color: #d1d1d1;
+  background-color: #6b6b6b;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+}
+.light_mode .pivot_points .pivot_tabs .pivot_tab {
+  color: #52536e;
+  background-color: #edf0f2;
+}
+.pivot_points .pivot_tabs .pivot_tab:hover {
+  color: white;
+  background-color: #808080;
+}
+.light_mode .pivot_points .pivot_tabs .pivot_tab:hover {
+  color: black;
+  background-color: #f6f6f6;
+}
+.pivot_points .pivot_tabs .pivot_active {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .pivot_points .pivot_tabs .pivot_active {
+  color: black;
+  background-color: white;
+}
+.pivot_points .pivot_tabs .pivot_active:hover {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .pivot_points .pivot_tabs .pivot_active:hover {
+  color: black;
+  background-color: white;
+}
+
+.pivot_points .pivot_section {
+  width: calc(100% - 12px);
+  height: 94%;
+  background-color: #292929;
+  margin-right: 6px;
+  margin-left: 6px;
+  padding: 6px;
+  border-radius: var(--border_radius);
+  overflow: auto;
+}
+.light_mode .pivot_points .pivot_section {
+  background-color: white;
+}
+.pivot_section .pivot_header {
+  width: 100%;
+  display: flex;
+  gap: 70px;
+  margin-bottom: 10px;
+}
+.pivot_section .pivot_header .pivot_header_p {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+}
+.pivot_section .pivot_data_general {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.pivot_data_general .pivot_data_div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px;
+}
+.pivot_data_general .pivot_data_div .pivot_level {
+  width: 22px;
+  color: #a5a5a5;
+  text-align: left;
+  font-weight: 500;
+}
+.light_mode .pivot_data_general .pivot_data_div .pivot_level {
+  color: #7f7f7f;
+}
+.pivot_data_general .pivot_data_div .pivot_value {
+  width: 85px;
+  text-align: right;
+}
+.pivot_data_general .pivot_data_div .pivot_empty {
+  width: 100px;
+}
+.pivot_data_general .pivot_data_div .pivot_high_low {
+  width: 100px;
+  text-align: center;
+}
+.pivot_data_general .pivot_data_div .pivot_current_price {
+  width: 100px;
+  text-align: center;
+}
+.pivot_current_value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

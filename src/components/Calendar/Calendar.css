@@ -58,12 +58,12 @@
   color: black;
   background-color: white;
 }
-.calendar_content .importance_filter {
+.importance_filter {
   display: flex;
   justify-content: center;
   gap: 1px;
 }
-.calendar_content .importance_filter label {
+.importance_filter label {
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
   padding: 4px 3px 5px;
   cursor: pointer;
 }
-.calendar_content .importance_filter label input {
+.importance_filter label input {
   order: 1;
   cursor: pointer;
 }

@@ -9,12 +9,12 @@
   background-color: #d5dde0;
 }
 .rSide_symbol .rSide_content {
-  padding-top: 35px;
+  height: 100%;
+  padding-top: 10px;
 }
 .rSide_symbol .rSide_section {
   width: calc(100% - 12px);
-  max-height: 100%;
-  height: 600px;
+  height: 100%;
   background-color: #292929;
   margin-right: 6px;
   margin-left: 6px;
@@ -54,7 +54,7 @@
   color: #a5a5a5;
 }
 .light_mode .rSide_section .symbol_data_div .data_name {
-  color: #212121;
+  color: #7f7f7f;
 }
 .rSide_section .symbol_data_div .data_value {
   font-size: 13px;

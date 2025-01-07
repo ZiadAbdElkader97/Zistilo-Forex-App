@@ -8,9 +8,54 @@
 .light_mode .moving {
   background-color: #d5dde0;
 }
-.moving .moving_content {
-  padding-top: 35px;
+
+.moving .moving_tabs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  padding: 5px;
+  border-radius: 0 4px 4px 4px;
 }
+.moving .moving_tabs .moving_tab {
+  width: 100%;
+  color: #d1d1d1;
+  background-color: #6b6b6b;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+}
+.light_mode .moving .moving_tabs .moving_tab {
+  color: #52536e;
+  background-color: #edf0f2;
+}
+.moving .moving_tabs .moving_tab:hover {
+  color: white;
+  background-color: #808080;
+}
+.light_mode .moving .moving_tabs .moving_tab:hover {
+  color: black;
+  background-color: #f6f6f6;
+}
+.moving .moving_tabs .moving_active {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .moving .moving_tabs .moving_active {
+  color: black;
+  background-color: white;
+}
+.moving .moving_tabs .moving_active:hover {
+  color: white;
+  background-color: #3b3b3b;
+}
+.light_mode .moving .moving_tabs .moving_active:hover {
+  color: black;
+  background-color: white;
+}
+
 .moving .moving_section {
   width: calc(100% - 12px);
   height: 94%;
@@ -23,4 +68,37 @@
 }
 .light_mode .moving .moving_section {
   background-color: white;
+}
+.moving_data_general {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.moving_data_general .moving_data_div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 3px;
+}
+.moving_data_general .moving_data_div .moving_title {
+  width: 60px;
+  color: #a5a5a5;
+  text-align: left;
+  padding: 5px 0px;
+}
+.light_mode .moving_data_general .moving_data_div .moving_title {
+  color: #7f7f7f;
+}
+.moving_data_general .moving_data_div .moving_period {
+  width: 60px;
+  text-align: right;
+  padding: 5px 0px;
+}
+.moving_data_general .moving_data_div .moving_signal {
+  width: 50px;
+  text-align: center;
+  font-weight: 500;
+  padding: 5px 0px;
+  border-radius: 12px;
+  color: white;
 }

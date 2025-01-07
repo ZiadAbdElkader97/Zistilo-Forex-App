@@ -1,4 +1,5 @@
 import "./Tech_Section.css";
+import GaugeChart from "react-gauge-chart";
 import { useContext, useEffect } from "react";
 import { beginner_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
@@ -62,7 +63,20 @@ export default function Beginner() {
             </div>
           ))}
         </div>
-        <div className="tech_ads"></div>
+        <div className="tech_chart">
+          <h3>Summary</h3>
+          <GaugeChart
+            id="gauge-chart1"
+            nrOfLevels={5}
+            arcsLength={[0.2, 0.2, 0.2, 0.2, 0.2]}
+            colors={["#FF0000", "#FF5E00", "#A9A9A9", "#00FF00", "#008000"]}
+            percent={0.37}
+            arcPadding={0.02}
+            needleColor="#345243"
+            needleBaseColor="#345243"
+            textColor="#345243"
+          />
+        </div>
       </div>
     </>
   );

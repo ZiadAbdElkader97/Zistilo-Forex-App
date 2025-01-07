@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import "./ChartsView.css";
 import PatternsSignals from "../PatternsSignals/PatternsSignals";
@@ -57,7 +58,7 @@ function ChartsView({ isLightMode }) {
       };
       new window.TradingView.widget(widgetOptions2);
     }
-  });
+  }, [activeSymbol, activeTimeframe, isSingleChart, isLightMode]);
 
   return (
     <>

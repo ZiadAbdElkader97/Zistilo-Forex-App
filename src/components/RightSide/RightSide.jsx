@@ -5,6 +5,7 @@ import RSide_Symbol from "../RSide_Symbol/RSide_Symbol.jsx";
 import Calendar from "../Calendar/Calendar.jsx";
 import Patterns from "../Patterns/Patterns.jsx";
 import MovingAverage from "../MovingAverage/MovingAverage.jsx";
+import PivotPoints from "../PivotPoints/PivotPoints.jsx";
 
 export default function RightSide() {
   const [toggleState, setToggleState] = useState(1);
@@ -50,6 +51,13 @@ export default function RightSide() {
         >
           M.A
         </span>
+        <span
+          title="Pivot Points"
+          className={toggleState === 6 ? "tab tab_active" : "tab"}
+          onClick={() => toggleTab(6)}
+        >
+          P.P
+        </span>
       </div>
       <div className="right_side_content"></div>
       {toggleState === 1 ? <Tech_Section /> : <></>}
@@ -57,6 +65,7 @@ export default function RightSide() {
       {toggleState === 3 ? <Calendar /> : <></>}
       {toggleState === 4 ? <Patterns /> : <></>}
       {toggleState === 5 ? <MovingAverage /> : <></>}
+      {toggleState === 6 ? <PivotPoints /> : <></>}
     </div>
   );
 }

@@ -90,7 +90,7 @@
 }
 .patterns_signals .patterns_signals_section {
   width: calc(100% - 12px);
-  max-height: 95%;
+  max-height: 97%;
   height: 200px;
   background-color: #292929;
   margin-left: 6px;

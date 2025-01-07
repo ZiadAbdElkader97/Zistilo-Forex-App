@@ -146,7 +146,10 @@ export default function Sidebar({ toggleMode }) {
           {openMenuLang && (
             <div className="dropdown_menu">
               <div className="dropdown_group">
-                <img src={en_lang} />
+                <img
+                  src={en_lang}
+                  onClick={() => handleToggleOption(1, en_lang)}
+                />
                 <p
                   className={
                     toggleOption === 1
@@ -159,7 +162,10 @@ export default function Sidebar({ toggleMode }) {
                 </p>
               </div>
               <div className="dropdown_group">
-                <img src={ar_lang} />
+                <img
+                  src={ar_lang}
+                  onClick={() => handleToggleOption(2, ar_lang)}
+                />
                 <p
                   className={
                     toggleOption === 2
@@ -172,7 +178,10 @@ export default function Sidebar({ toggleMode }) {
                 </p>
               </div>
               <div className="dropdown_group">
-                <img src={de_lang} />
+                <img
+                  src={de_lang}
+                  onClick={() => handleToggleOption(3, de_lang)}
+                />
                 <p
                   className={
                     toggleOption === 3

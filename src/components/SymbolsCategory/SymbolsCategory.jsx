@@ -26,6 +26,10 @@ export default function SymbolsCategory({ data, filteredSearchData }) {
     }
   };
 
+  // const filteredSearchInputData = data.filter((item) =>
+  //   item.symbol.toLowerCase().includes(inputSymbolValue.toLowerCase())
+  // );
+
   useEffect(() => {
     if (!activeTimeframe) {
       filterData("M1", null);

@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 /* eslint-disable no-unused-vars */
 import "./AllSymbols.css";
 import axios from "axios";
@@ -5,7 +6,6 @@ import { useState, useEffect, useContext } from "react";
 import { marketData, symbols_search } from "../../assets/data/MarketData.js";
 import { DataContext } from "../../context/DataContext.jsx";
 import SymbolsCategory from "../SymbolsCategory/SymbolsCategory.jsx";
-import PM_Symbols from "../PM_Symbols/PM_Symbols.jsx";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
@@ -17,14 +17,28 @@ export default function AllSymbols() {
     inputRef,
     filterData,
     activeSymbol,
+    categoryData,
+    openTabs,
+    filteredSearchData,
+    setFilteredSearchData,
+    handleToggle,
   } = useContext(DataContext);
 
   const handleInputChange = (event) => {
     setInputSymbolValue(event.target.value);
+    const filteredData = {};
+    for (const key in categoryData) {
+      if (categoryData.hasOwnProperty(key)) {
+        filteredData[key] = categoryData[key].filter((item) =>
+          item.symbol.toLowerCase().includes(event.target.value.toLowerCase())
+        );
+      }
+    }
+    setFilteredSearchData(filteredData);
   };
-
   const clearInput = () => {
     setInputSymbolValue("");
+    setFilteredSearchData(categoryData);
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -46,31 +60,6 @@ export default function AllSymbols() {
 
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [openTabs, setOpenTabs] = useState(false);
-  const [categoryData, setCategoryData] = useState({});
-  const [filteredSearchData, setFilteredSearchData] = useState({});
-
-  const [toggleState, setToggleState] = useState(true);
-
-  const filterByTimeframe = (data, timeframe) => {
-    return data.filter((item) => item.timeframe === timeframe);
-  };
-
-  const handleToggle = async (id, category) => {
-    setOpenTabs((prevState) => ({ ...prevState, [id]: !prevState[id] }));
-
-    if (!categoryData[id]) {
-      const response = await axios.get(
-        `https://notifications.copyforexsignals.com/apii/market_watch_prices_api.php?category=${category}`
-      );
-      const filteredData = filterByTimeframe(response.data, "M1");
-      setCategoryData((prevState) => ({ ...prevState, [id]: filteredData }));
-      setFilteredSearchData((prevState) => ({
-        ...prevState,
-        [id]: filteredData,
-      }));
-    }
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -150,20 +139,6 @@ export default function AllSymbols() {
         </div>
 
         <div className="symbol_section">
-          <div className="popular">
-            <div
-              className="popular_section"
-              onClick={() => setToggleState(!toggleState)}
-            >
-              <i>
-                {toggleState ? <IoMdArrowDropdown /> : <IoMdArrowDropright />}
-              </i>
-              <p>Popular Markets</p>
-            </div>
-          </div>
-
-          {toggleState ? <PM_Symbols /> : <></>}
-
           {filteredData.map((item) => (
             <div key={item.id} className="category_symbol">
               <div
