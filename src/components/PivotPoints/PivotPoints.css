@@ -63,6 +63,7 @@
   margin-left: 6px;
   padding: 6px;
   border-radius: var(--border_radius);
+  position: relative;
   overflow: auto;
 }
 .light_mode .pivot_points .pivot_section {
@@ -79,6 +80,9 @@
   font-weight: bold;
   text-align: right;
 }
+.pivot_section .pivot_header .pivot_header_p:last-child {
+  margin-left: 12px;
+}
 .pivot_section .pivot_data_general {
   display: flex;
   flex-direction: column;
@@ -89,6 +93,7 @@
   justify-content: space-between;
   font-size: 13px;
   padding: 4px;
+  position: relative;
 }
 .pivot_data_general .pivot_data_div .pivot_level {
   width: 22px;
@@ -104,18 +109,34 @@
   text-align: right;
 }
 .pivot_data_general .pivot_data_div .pivot_empty {
-  width: 100px;
+  width: 120px;
+  text-align: right;
 }
-.pivot_data_general .pivot_data_div .pivot_high_low {
-  width: 100px;
-  text-align: center;
+.pivot_data_div .pivot_empty .pivot_current_container {
+  position: relative;
+  transform: translateY(-50%);
 }
-.pivot_data_general .pivot_data_div .pivot_current_price {
-  width: 100px;
-  text-align: center;
+.pivot_data_div .pivot_empty .pivot_price {
+  display: block;
 }
-.pivot_current_value {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+.pivot_data_div .pivot_empty .price_difference {
+  display: block;
+}
+.pivot_data_div .pivot_empty .positive {
+  color: green;
+}
+.pivot_data_div .pivot_empty .negative {
+  color: red;
+}
+
+.pivot_section hr {
+  width: 100%;
+  height: 1px;
+  background-color: #525252;
+  margin-top: 3px;
+  border: none;
+  outline: none;
+}
+.light_mode .pivot_section hr {
+  background-color: #d5dde0;
 }

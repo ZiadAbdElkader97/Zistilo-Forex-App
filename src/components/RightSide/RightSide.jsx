@@ -17,25 +17,25 @@ export default function RightSide() {
     <div className="right_side">
       <div className="tabs">
         <span
-          title="Technical Indicator"
+          title="Symbol"
           className={toggleState === 1 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(1)}
-        >
-          Tech
-        </span>
-        <span
-          title="Symbol"
-          className={toggleState === 2 ? "tab tab_active" : "tab"}
-          onClick={() => toggleTab(2)}
         >
           Symbol
         </span>
         <span
           title="Calendar"
+          className={toggleState === 2 ? "tab tab_active" : "tab"}
+          onClick={() => toggleTab(2)}
+        >
+          Calendar
+        </span>
+        <span
+          title="Technical Indicator"
           className={toggleState === 3 ? "tab tab_active" : "tab"}
           onClick={() => toggleTab(3)}
         >
-          Calendar
+          Tech
         </span>
         <span
           title="Patterns"
@@ -60,9 +60,9 @@ export default function RightSide() {
         </span>
       </div>
       <div className="right_side_content"></div>
-      {toggleState === 1 ? <Tech_Section /> : <></>}
-      {toggleState === 2 ? <RSide_Symbol /> : <></>}
-      {toggleState === 3 ? <Calendar /> : <></>}
+      {toggleState === 1 ? <RSide_Symbol /> : <></>}
+      {toggleState === 2 ? <Calendar /> : <></>}
+      {toggleState === 3 ? <Tech_Section /> : <></>}
       {toggleState === 4 ? <Patterns /> : <></>}
       {toggleState === 5 ? <MovingAverage /> : <></>}
       {toggleState === 6 ? <PivotPoints /> : <></>}

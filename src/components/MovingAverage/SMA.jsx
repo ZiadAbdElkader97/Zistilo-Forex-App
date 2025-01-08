@@ -38,6 +38,7 @@ export default function SMA() {
                 {item.signal_5}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">SMA 10</span>
@@ -53,6 +54,7 @@ export default function SMA() {
                 {item.signal_10}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">SMA 20</span>
@@ -68,6 +70,7 @@ export default function SMA() {
                 {item.signal_20}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">SMA 50</span>
@@ -83,6 +86,7 @@ export default function SMA() {
                 {item.signal_50}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">SMA 100</span>
@@ -98,6 +102,7 @@ export default function SMA() {
                 {item.signal_100}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">SMA 200</span>

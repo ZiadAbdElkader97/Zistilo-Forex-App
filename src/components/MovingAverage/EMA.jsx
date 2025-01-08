@@ -38,6 +38,7 @@ export default function EMA() {
                 {item.signal_5}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">EMA 10</span>
@@ -53,6 +54,7 @@ export default function EMA() {
                 {item.signal_10}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">EMA 20</span>
@@ -68,6 +70,7 @@ export default function EMA() {
                 {item.signal_20}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">EMA 50</span>
@@ -83,6 +86,7 @@ export default function EMA() {
                 {item.signal_50}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">EMA 100</span>
@@ -98,6 +102,7 @@ export default function EMA() {
                 {item.signal_100}
               </span>
             </div>
+            <hr />
 
             <div className="moving_data_div">
               <span className="moving_title">EMA 200</span>
