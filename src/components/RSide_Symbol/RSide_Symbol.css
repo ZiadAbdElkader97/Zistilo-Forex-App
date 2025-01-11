@@ -1,6 +1,6 @@
 .rSide_symbol {
   width: 100%;
-  height: 93%;
+  height: calc(100vh - 95px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
@@ -9,7 +9,7 @@
   background-color: #d5dde0;
 }
 .rSide_symbol .rSide_content {
-  height: 100%;
+  height: calc(100% + 8px);
   padding-top: 10px;
 }
 .rSide_symbol .rSide_section {
@@ -51,12 +51,22 @@
   font-size: 14px;
 }
 .rSide_section .symbol_data .symbol_data_frame {
+  color: #aeaeae;
   font-size: 11px;
+  font-weight: 500;
   margin-left: 5px;
 }
+.light_mode .rSide_section .symbol_data .symbol_data_frame {
+  color: #292929;
+}
 .rSide_section .symbol_data .symbol_data_symbol {
+  color: #aeaeae;
   font-size: 10px;
+  font-weight: 500;
   margin-left: 5px;
+}
+.light_mode .rSide_section .symbol_data .symbol_data_symbol {
+  color: #292929;
 }
 .rSide_symbol .rSide_section .symbol_data_div {
   display: flex;

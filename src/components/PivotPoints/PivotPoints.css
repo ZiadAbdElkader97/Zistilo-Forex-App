@@ -1,6 +1,6 @@
 .pivot_points {
   width: 100%;
-  height: 93%;
+  height: calc(100vh - 95px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
@@ -57,7 +57,7 @@
 
 .pivot_points .pivot_section {
   width: calc(100% - 12px);
-  height: 94%;
+  height: calc(100% - 27px);
   background-color: #292929;
   margin-right: 6px;
   margin-left: 6px;
@@ -72,7 +72,7 @@
 .pivot_section .pivot_header {
   width: 100%;
   display: flex;
-  gap: 70px;
+  justify-content: space-between;
   margin-bottom: 10px;
 }
 .pivot_section .pivot_header .pivot_header_p {
@@ -81,7 +81,11 @@
   text-align: right;
 }
 .pivot_section .pivot_header .pivot_header_p:last-child {
-  margin-left: 12px;
+  width: 110px;
+  text-align: left;
+}
+.pivot_section .pivot_header .pivot_header_p:nth-child(2) {
+  margin-left: 15px;
 }
 .pivot_section .pivot_data_general {
   display: flex;
@@ -110,7 +114,7 @@
 }
 .pivot_data_general .pivot_data_div .pivot_empty {
   width: 120px;
-  text-align: right;
+  text-align: center;
 }
 .pivot_data_div .pivot_empty .pivot_current_container {
   position: relative;
@@ -124,11 +128,12 @@
 }
 .pivot_data_div .pivot_empty .positive {
   color: green;
+  margin-right: 20px;
 }
 .pivot_data_div .pivot_empty .negative {
   color: red;
+  margin-right: 20px;
 }
-
 .pivot_section hr {
   width: 100%;
   height: 1px;

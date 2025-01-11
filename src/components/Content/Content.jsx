@@ -7,7 +7,9 @@ import RightSide from "../RightSide/RightSide.jsx";
 export default function Content({ isLightMode }) {
   return (
     <div className="content">
-      <Navbar />
+      <div className="content_navbar">
+        <Navbar />
+      </div>
       <div className="content_sides">
         <ChartsView isLightMode={isLightMode} />
         <RightSide />

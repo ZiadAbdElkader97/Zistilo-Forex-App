@@ -23,8 +23,6 @@ export default function PatternsSignals() {
     }
   };
 
-  // console.log(patternsSignalsData);
-
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -42,6 +40,23 @@ export default function PatternsSignals() {
 
     return matchesStatus && matchesSymbol;
   });
+
+  const formatToSixDigits = (num) => {
+    const parts = num.toString().split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1] || "";
+    const formattedDecimalPart = decimalPart.slice(0, 6 - integerPart.length);
+    return (
+      integerPart + (formattedDecimalPart ? "." + formattedDecimalPart : "")
+    );
+  };
+  const formattedSignals = filterSignals.map((item) => ({
+    ...item,
+    entry: formatToSixDigits(item.entry),
+    take_profit: formatToSixDigits(item.take_profit),
+    stop_loss: formatToSixDigits(item.stop_loss),
+  }));
+
   // console.log(filterSignals);
 
   return (
@@ -90,7 +105,7 @@ export default function PatternsSignals() {
         <div className="patterns_signals_content">
           <div className="patterns_signals_section">
             {toggleState === 1 &&
-              filterSignals.map((item) => (
+              formattedSignals.map((item) => (
                 <div key={item.id}>
                   <div className="patterns_signals_info">
                     <div
@@ -147,7 +162,7 @@ export default function PatternsSignals() {
                 </div>
               ))}
             {toggleState === 2 &&
-              filterSignals.map((item) => (
+              formattedSignals.map((item) => (
                 <div key={item.id}>
                   <div className="patterns_signals_info">
                     <div
@@ -204,7 +219,7 @@ export default function PatternsSignals() {
                 </div>
               ))}
             {toggleState === 3 &&
-              filterSignals.map((item) => (
+              formattedSignals.map((item) => (
                 <div key={item.id}>
                   <div className="patterns_signals_info">
                     <div

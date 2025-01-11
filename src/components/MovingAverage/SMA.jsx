@@ -20,22 +20,41 @@ export default function SMA() {
       (!activeSymbol || item.symbol === activeSymbol)
   );
 
+  const formatToSixDigits = (num) => {
+    const parts = num.toString().split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1] || "";
+    const formattedDecimalPart = decimalPart.slice(0, 6 - integerPart.length);
+    return (
+      integerPart + (formattedDecimalPart ? "." + formattedDecimalPart : "")
+    );
+  };
+  const formattedSignals = filterOtherData.map((item) => ({
+    ...item,
+    period_5: formatToSixDigits(item.period_5),
+    period_10: formatToSixDigits(item.period_10),
+    period_20: formatToSixDigits(item.period_20),
+    period_50: formatToSixDigits(item.period_50),
+    period_100: formatToSixDigits(item.period_100),
+    period_200: formatToSixDigits(item.period_200),
+  }));
+
   const chartData =
-    filterOtherData.length > 0
+    formattedSignals.length > 0
       ? [
           {
             name: "Sell",
-            value: filterOtherData[0].total_sell,
+            value: formattedSignals[0].total_sell,
             color: "#FF0000",
           },
           {
             name: "Neutral",
-            value: filterOtherData[0].total_neutral,
+            value: formattedSignals[0].total_neutral,
             color: "#D3D3D3",
           },
           {
             name: "Buy",
-            value: filterOtherData[0].total_buy,
+            value: formattedSignals[0].total_buy,
             color: "#008000",
           },
         ]
@@ -51,7 +70,7 @@ export default function SMA() {
   const oR = 85;
 
   const summary =
-    filterOtherData.length > 0 ? filterOtherData[0].summary : "No Data";
+    formattedSignals.length > 0 ? formattedSignals[0].summary : "No Data";
 
   const getSummaryColor = (summary) => {
     switch (summary) {
@@ -73,7 +92,7 @@ export default function SMA() {
   return (
     <>
       <div className="moving_section">
-        {filterOtherData.map((item) => (
+        {formattedSignals.map((item) => (
           <div key={item.id} className="moving_data_general">
             <div className="moving_data_div">
               <span className="moving_title">SMA 5</span>
@@ -172,7 +191,7 @@ export default function SMA() {
           </div>
         ))}
         <div className="tech_chart">
-          {filterOtherData.map((item) => (
+          {formattedSignals.map((item) => (
             <div key={item.id} className="chart_info">
               <div className="chart_info_div">
                 <span
@@ -230,7 +249,7 @@ export default function SMA() {
                   summaryColor === "#191919" ? "default" : summary.toLowerCase()
                 }`}
               >
-                {filterOtherData.map((item) => item.summary)}
+                {formattedSignals.map((item) => item.summary)}
               </text>
             </svg>
           </PieChart>

@@ -1,6 +1,5 @@
 .patterns_signals {
   width: 100%;
-  height: 26%;
   margin-right: 5px;
   border-radius: 4px 0px 4px 4px;
 }
@@ -80,7 +79,7 @@
 }
 .patterns_signals .patterns_signals_content {
   width: 100%;
-  height: 85%;
+  height: 100%;
   background-color: #525252;
   padding-top: 5px;
   border-radius: 0px 0px 4px 4px;
@@ -90,7 +89,7 @@
 }
 .patterns_signals .patterns_signals_section {
   width: calc(100% - 12px);
-  max-height: 97%;
+  max-height: calc(100% - 50px);
   height: 200px;
   background-color: #292929;
   margin-left: 6px;

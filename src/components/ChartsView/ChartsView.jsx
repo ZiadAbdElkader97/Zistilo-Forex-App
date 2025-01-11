@@ -1,16 +1,18 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import "./ChartsView.css";
 import PatternsSignals from "../PatternsSignals/PatternsSignals";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import { DataContext } from "../../context/DataContext";
 
 function ChartsView({ isLightMode }) {
   const { activeTimeframe, activeSymbol, isSingleChart } =
     useContext(DataContext);
 
-  useEffect(() => {
-    const widgetOptions = {
+  const chart1Ref = useRef(null);
+  const chart2Ref = useRef(null);
+
+  const widgetOptions = useMemo(
+    () => ({
       container_id: "chart1",
       autosize: true,
       symbol: activeSymbol || "EURUSD",
@@ -30,35 +32,44 @@ function ChartsView({ isLightMode }) {
         "mainSeriesProperties.candleStyle.wickUpColor": "#60d938",
         "mainSeriesProperties.candleStyle.wickDownColor": "#ed250e",
       },
-    };
+    }),
+    [activeSymbol, activeTimeframe, isLightMode]
+  );
 
-    new window.TradingView.widget(widgetOptions);
+  const widgetOptions2 = useMemo(
+    () => ({
+      container_id: "chart2",
+      autosize: true,
+      symbol: "XAUUSD",
+      interval: "H1",
+      timezone: "Etc/UTC",
+      theme: isLightMode ? "light" : "dark",
+      style: "1",
+      background_color: "#525252",
+      locale: "en",
+      allow_symbol_change: true,
+      hide_volume: true,
+      overrides: {
+        "mainSeriesProperties.candleStyle.upColor": "#60d938",
+        "mainSeriesProperties.candleStyle.downColor": "#ed250e",
+        "mainSeriesProperties.candleStyle.borderUpColor": "#60d938",
+        "mainSeriesProperties.candleStyle.borderDownColor": "#ed250e",
+        "mainSeriesProperties.candleStyle.wickUpColor": "#60d938",
+        "mainSeriesProperties.candleStyle.wickDownColor": "#ed250e",
+      },
+    }),
+    [isLightMode]
+  );
 
-    if (!isSingleChart) {
-      const widgetOptions2 = {
-        container_id: "chart2",
-        autosize: true,
-        symbol: "XAUUSD",
-        interval: "H1",
-        timezone: "Etc/UTC",
-        theme: isLightMode ? "light" : "dark",
-        style: "1",
-        background_color: "#525252",
-        locale: "en",
-        allow_symbol_change: true,
-        hide_volume: true,
-        overrides: {
-          "mainSeriesProperties.candleStyle.upColor": "#60d938",
-          "mainSeriesProperties.candleStyle.downColor": "#ed250e",
-          "mainSeriesProperties.candleStyle.borderUpColor": "#60d938",
-          "mainSeriesProperties.candleStyle.borderDownColor": "#ed250e",
-          "mainSeriesProperties.candleStyle.wickUpColor": "#60d938",
-          "mainSeriesProperties.candleStyle.wickDownColor": "#ed250e",
-        },
-      };
-      new window.TradingView.widget(widgetOptions2);
+  useEffect(() => {
+    if (chart1Ref.current) {
+      chart1Ref.current.remove();
     }
-  }, [activeSymbol, activeTimeframe, isSingleChart, isLightMode]);
+    chart1Ref.current = new window.TradingView.widget(widgetOptions);
+    if (!isSingleChart && chart2Ref.current === null) {
+      chart2Ref.current = new window.TradingView.widget(widgetOptions2);
+    }
+  }, [widgetOptions, widgetOptions2, isSingleChart]);
 
   return (
     <>

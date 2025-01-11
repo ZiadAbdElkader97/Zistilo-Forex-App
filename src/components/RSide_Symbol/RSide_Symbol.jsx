@@ -19,19 +19,48 @@ export default function RSide_Symbol() {
       (!activeSymbol || item.symbol === activeSymbol)
   );
 
+  const formatToSixDigits = (num) => {
+    const parts = num.toString().split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1] || "";
+    const formattedDecimalPart = decimalPart.slice(0, 6 - integerPart.length);
+    return (
+      integerPart + (formattedDecimalPart ? "." + formattedDecimalPart : "")
+    );
+  };
+
+  const formattedSymbol = filterOtherData.map((item) => ({
+    ...item,
+    ask_price: formatToSixDigits(item.ask_price),
+    bid_price: formatToSixDigits(item.bid_price),
+    high_price: formatToSixDigits(item.high_price),
+    low_price: formatToSixDigits(item.low_price),
+    high_price_daily: formatToSixDigits(item.high_price_daily),
+    low_price_daily: formatToSixDigits(item.low_price_daily),
+    daily_range: formatToSixDigits(item.daily_range),
+    highest_52_weeks: formatToSixDigits(item.highest_52_weeks),
+    lowest_52_weeks: formatToSixDigits(item.lowest_52_weeks),
+    annual_range: formatToSixDigits(item.annual_range),
+    volume_daily: formatToSixDigits(item.volume_daily),
+  }));
+
   return (
     <>
       <div className="rSide_symbol">
         <div className="rSide_content">
           <div className="rSide_section">
-            {filterOtherData.map((item) => (
+            {formattedSymbol.map((item) => (
               <div key={item.id} className="symbol_data">
                 <div className="symbol_data_title">
                   <p className="symbol_data_head">Real-time Prices:</p>
                   <p className="symbol_data_frame">
-                    Time Frame: ({activeTimeframe})
+                    Time Frame: (
+                    <span style={{ color: "#2980b9" }}>{activeTimeframe}</span>)
                   </p>
-                  <p className="symbol_data_symbol">Symbol: ({activeSymbol})</p>
+                  <p className="symbol_data_symbol">
+                    Symbol: (
+                    <span style={{ color: "#2980b9" }}>{activeSymbol}</span>)
+                  </p>
                 </div>
                 <hr />
                 <div className="symbol_data_div">

@@ -38,6 +38,27 @@ export default function Camarilla() {
     );
   };
 
+  const formatToSixDigits = (num) => {
+    const parts = num.toString().split(".");
+    const integerPart = parts[0];
+    const decimalPart = parts[1] || "";
+    const formattedDecimalPart = decimalPart.slice(0, 6 - integerPart.length);
+    return (
+      integerPart + (formattedDecimalPart ? "." + formattedDecimalPart : "")
+    );
+  };
+  const formattedPivot = filterOtherData.map((item) => ({
+    ...item,
+    R3: formatToSixDigits(item.R3),
+    R2: formatToSixDigits(item.R2),
+    R1: formatToSixDigits(item.R1),
+    PP: formatToSixDigits(item.PP),
+    S1: formatToSixDigits(item.S1),
+    S2: formatToSixDigits(item.S2),
+    S3: formatToSixDigits(item.S3),
+    current_price: formatToSixDigits(item.current_price),
+  }));
+
   return (
     <>
       <div className="pivot_section">
@@ -46,7 +67,7 @@ export default function Camarilla() {
           <p className="pivot_header_p">Value</p>
           <p className="pivot_header_p">Current Value</p>
         </div>
-        {filterOtherData.map((item) => (
+        {formattedPivot.map((item) => (
           <div key={item.id} className="pivot_data_general">
             <div className="pivot_data_div">
               <span className="pivot_level">R3</span>
