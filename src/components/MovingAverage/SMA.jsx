@@ -1,4 +1,5 @@
 import "./MovingAverage.css";
+import { PieChart, Pie, Cell } from "recharts";
 import { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
 
@@ -18,6 +19,56 @@ export default function SMA() {
       (!activeTimeframe || item.timeframe === activeTimeframe) &&
       (!activeSymbol || item.symbol === activeSymbol)
   );
+
+  const chartData =
+    filterOtherData.length > 0
+      ? [
+          {
+            name: "Sell",
+            value: filterOtherData[0].total_sell,
+            color: "#FF0000",
+          },
+          {
+            name: "Neutral",
+            value: filterOtherData[0].total_neutral,
+            color: "#D3D3D3",
+          },
+          {
+            name: "Buy",
+            value: filterOtherData[0].total_buy,
+            color: "#008000",
+          },
+        ]
+      : [
+          { name: "Sell", value: 0, color: "#FF0000" },
+          { name: "Neutral", value: 0, color: "#D3D3D3" },
+          { name: "Buy", value: 0, color: "#008000" },
+        ];
+
+  const cx = 100;
+  const cy = 100;
+  const iR = 60;
+  const oR = 85;
+
+  const summary =
+    filterOtherData.length > 0 ? filterOtherData[0].summary : "No Data";
+
+  const getSummaryColor = (summary) => {
+    switch (summary) {
+      case "Sell":
+        return "#FF0000";
+      case "Neutral":
+        return "#D3D3D3";
+      case "Buy":
+        return "#008000";
+      default:
+        return "#191919";
+    }
+  };
+
+  const summaryColor = getSummaryColor(summary);
+
+  // console.log(filterOtherData);
 
   return (
     <>
@@ -120,6 +171,70 @@ export default function SMA() {
             </div>
           </div>
         ))}
+        <div className="tech_chart">
+          {filterOtherData.map((item) => (
+            <div key={item.id} className="chart_info">
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#60d938" }}
+                ></span>
+                <p className="chart_name">Buy</p>
+                <p className="chart_num">({item.total_buy})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#ed250e" }}
+                ></span>
+                <p className="chart_name">Sell</p>
+                <p className="chart_num">({item.total_sell})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#bfbfbf" }}
+                ></span>
+                <p className="chart_name">Neutral</p>
+                <p className="chart_num">({item.total_neutral})</p>
+              </div>
+            </div>
+          ))}
+
+          <PieChart width={200} height={200}>
+            <Pie
+              data={chartData}
+              cx={cx}
+              cy={cy}
+              startAngle={360}
+              endAngle={0}
+              innerRadius={iR}
+              outerRadius={oR}
+              fill="#8884d8"
+              paddingAngle={0}
+              dataKey="value"
+            >
+              {chartData.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.color} />
+              ))}
+            </Pie>
+            <svg width="200" height="200">
+              <text
+                x={cx}
+                y={cy}
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="16"
+                fontWeight="bold"
+                className={`summary_text ${
+                  summaryColor === "#191919" ? "default" : summary.toLowerCase()
+                }`}
+              >
+                {filterOtherData.map((item) => item.summary)}
+              </text>
+            </svg>
+          </PieChart>
+        </div>
       </div>
     </>
   );

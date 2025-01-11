@@ -113,3 +113,35 @@
 .light_mode .moving_section hr {
   background-color: #d5dde0;
 }
+.moving_section .tech_chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+.moving_section .tech_chart .chart_info {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+.moving_section .chart_info .chart_info_div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.moving_section .chart_info .chart_info_div .chart_shape {
+  width: 15px;
+  height: 15px;
+}
+.moving_section .chart_info .chart_info_div .chart_name {
+  font-size: 13px;
+}
+.moving_section .chart_info .chart_info_div .chart_num {
+  font-size: 13px;
+}
+.summary_text {
+  fill: white;
+}
+.light_mode .summary_text {
+  fill: black;
+}

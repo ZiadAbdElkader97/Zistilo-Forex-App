@@ -6,9 +6,26 @@ import { PiUserCirclePlusBold } from "react-icons/pi";
 export default function Login_Register() {
   const [activeForm, setActiveForm] = useState("login");
 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
   const switchForm = (form) => {
     setActiveForm(form);
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       {activeForm === "login" && (
@@ -20,18 +37,22 @@ export default function Login_Register() {
             <h1>Login</h1>
           </div>
           {/* Login Form */}
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
               required
+              value={formData.email}
+              onChange={handleInputChange}
             />
             <input
               type="password"
               name="password"
               placeholder="Enter your password"
               required
+              value={formData.password}
+              onChange={handleInputChange}
             />
             <div className="keep_login">
               <input type="checkbox" name="keep_login" id="keep_login" />
@@ -52,30 +73,38 @@ export default function Login_Register() {
             </i>
             <h1>Sign Up</h1>
           </div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="name"
               placeholder="Enter your name"
               required
+              value={formData.name}
+              onChange={handleInputChange}
             />
             <input
               type="email"
               name="email"
               placeholder="Enter your email"
               required
+              value={formData.email}
+              onChange={handleInputChange}
             />
             <input
               type="password"
               name="password"
               placeholder="Enter your password"
               required
+              value={formData.password}
+              onChange={handleInputChange}
             />
             <input
               type="password"
-              name="password"
+              name="confirmPassword"
               placeholder="Confirm your password"
               required
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
             />
             <button type="submit">Sign Up</button>
           </form>

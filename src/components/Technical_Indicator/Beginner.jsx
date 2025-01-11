@@ -137,6 +137,35 @@ export default function Beginner() {
         </div>
         <div className="tech_chart">
           <h3>Summary</h3>
+          {filterOtherData.map((item) => (
+            <div key={item.id} className="chart_info">
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#60d938" }}
+                ></span>
+                <p className="chart_name">Buy</p>
+                <p className="chart_num">({item.total_buy})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#ed250e" }}
+                ></span>
+                <p className="chart_name">Sell</p>
+                <p className="chart_num">({item.total_sell})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#bfbfbf" }}
+                ></span>
+                <p className="chart_name">Neutral</p>
+                <p className="chart_num">({item.total_neutral})</p>
+              </div>
+            </div>
+          ))}
+
           <PieChart width={200} height={130}>
             <Pie
               data={chartData}
@@ -165,6 +194,7 @@ export default function Beginner() {
             )}
           </PieChart>
           <span
+            className="word"
             style={{
               backgroundColor: backgroundSpan(
                 `${filterOtherData.map((item) => item.summary)}`

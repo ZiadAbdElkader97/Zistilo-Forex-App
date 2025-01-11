@@ -63,6 +63,8 @@ export const DataProvider = ({ children }) => {
   const [openTabs, setOpenTabs] = useState(false);
   const [filteredSearchData, setFilteredSearchData] = useState({});
 
+  const [categoryCounts, setCategoryCounts] = useState({});
+
   const filterByTimeframe = (data, timeframe) => {
     return data.filter((item) => item.timeframe === timeframe);
   };
@@ -79,6 +81,10 @@ export const DataProvider = ({ children }) => {
       setFilteredSearchData((prevState) => ({
         ...prevState,
         [id]: filteredData,
+      }));
+      setCategoryCounts((prevState) => ({
+        ...prevState,
+        [id]: filteredData.length,
       }));
     }
   };
@@ -354,6 +360,7 @@ export const DataProvider = ({ children }) => {
         removeFromWatchlist,
         isSingleChart,
         setIsSingleChart,
+        categoryCounts,
       }}
     >
       {children}

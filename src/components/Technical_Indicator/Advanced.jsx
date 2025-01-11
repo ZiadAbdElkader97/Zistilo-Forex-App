@@ -61,7 +61,7 @@ export default function Advanced() {
   };
 
   const RADIAN = Math.PI / 180;
-  const cx = 100;
+  const cx = 80;
   const cy = 100;
   const iR = 60;
   const oR = 85;
@@ -149,7 +149,35 @@ export default function Advanced() {
         </div>
         <div className="tech_chart">
           <h3>Summary</h3>
-          <PieChart width={200} height={130}>
+          {filterOtherData.map((item) => (
+            <div key={item.id} className="chart_info">
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#60d938" }}
+                ></span>
+                <p className="chart_name">Buy</p>
+                <p className="chart_num">({item.total_buy})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#ed250e" }}
+                ></span>
+                <p className="chart_name">Sell</p>
+                <p className="chart_num">({item.total_sell})</p>
+              </div>
+              <div className="chart_info_div">
+                <span
+                  className="chart_shape"
+                  style={{ backgroundColor: "#bfbfbf" }}
+                ></span>
+                <p className="chart_name">Neutral</p>
+                <p className="chart_num">({item.total_neutral})</p>
+              </div>
+            </div>
+          ))}
+          <PieChart width={170} height={115}>
             <Pie
               data={chartData}
               cx={cx}
@@ -177,6 +205,7 @@ export default function Advanced() {
             )}
           </PieChart>
           <span
+            className="word"
             style={{
               backgroundColor: backgroundSpan(
                 `${filterOtherData.map((item) => item.summary)}`

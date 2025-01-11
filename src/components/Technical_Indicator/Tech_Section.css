@@ -126,7 +126,27 @@
   align-items: center;
   margin-top: 10px;
 }
-.tech_section .tech_chart span {
+.tech_section .tech_chart .chart_info {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+.tech_section .chart_info .chart_info_div {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.tech_section .chart_info .chart_info_div .chart_shape {
+  width: 15px;
+  height: 15px;
+}
+.tech_section .chart_info .chart_info_div .chart_name {
+  font-size: 13px;
+}
+.tech_section .chart_info .chart_info_div .chart_num {
+  font-size: 13px;
+}
+.tech_section .tech_chart .word {
   color: white;
   font-weight: 500;
   padding: 8px;

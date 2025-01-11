@@ -41,9 +41,22 @@
   flex-direction: column;
   gap: 4px;
 }
+.rSide_section .symbol_data .symbol_data_title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 .rSide_section .symbol_data .symbol_data_head {
   font-weight: bold;
   font-size: 14px;
+}
+.rSide_section .symbol_data .symbol_data_frame {
+  font-size: 11px;
+  margin-left: 5px;
+}
+.rSide_section .symbol_data .symbol_data_symbol {
+  font-size: 10px;
+  margin-left: 5px;
 }
 .rSide_symbol .rSide_section .symbol_data_div {
   display: flex;

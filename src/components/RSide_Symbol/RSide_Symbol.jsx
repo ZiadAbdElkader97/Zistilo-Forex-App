@@ -19,8 +19,6 @@ export default function RSide_Symbol() {
       (!activeSymbol || item.symbol === activeSymbol)
   );
 
-  // console.log(filterOtherData);
-
   return (
     <>
       <div className="rSide_symbol">
@@ -28,7 +26,13 @@ export default function RSide_Symbol() {
           <div className="rSide_section">
             {filterOtherData.map((item) => (
               <div key={item.id} className="symbol_data">
-                <p className="symbol_data_head">Real-time Prices:</p>
+                <div className="symbol_data_title">
+                  <p className="symbol_data_head">Real-time Prices:</p>
+                  <p className="symbol_data_frame">
+                    Time Frame: ({activeTimeframe})
+                  </p>
+                  <p className="symbol_data_symbol">Symbol: ({activeSymbol})</p>
+                </div>
                 <hr />
                 <div className="symbol_data_div">
                   <p className="data_name">Ask Price</p>
@@ -101,6 +105,11 @@ export default function RSide_Symbol() {
                 <div className="symbol_data_div">
                   <p className="data_name">Percent Change</p>
                   <p className="data_value">{item.percent_change}</p>
+                </div>
+                <hr />
+                <div className="symbol_data_div">
+                  <p className="data_name">Description</p>
+                  <p className="data_value">{item.description}</p>
                 </div>
               </div>
             ))}

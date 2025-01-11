@@ -1,12 +1,15 @@
+.symbol {
+  height: calc(100vh - 310px);
+}
 /* Search Section */
 .search_section {
+  height: 25px;
   width: 100%;
   display: flex;
   align-items: baseline;
   gap: 5px;
 }
 .search_section .search_field {
-  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
@@ -71,6 +74,7 @@
   background-color: #d8d8d8;
 }
 .market_section .data_header {
+  height: 20px;
   width: 100%;
   background-color: #a3a3a3;
   display: flex;
@@ -90,7 +94,8 @@
 }
 
 .symbol .symbol_section {
-  height: 350px;
+  max-height: calc(100% - 45px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -164,6 +169,13 @@
 .light_mode .symbol .category_symbol_section:hover i {
   color: #000;
 }
-.symbol .category_symbol_section p {
+.category_symbol_section .category_info {
+  display: flex;
+  gap: 5px;
+}
+.category_symbol_section .category_info .category_name {
+  font-size: 11px;
+}
+.category_symbol_section .category_info .category_num {
   font-size: 11px;
 }

@@ -3,7 +3,10 @@ import { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
 
 export default function Patterns() {
-  const { patternsData, activeTimeframe, filterData } = useContext(DataContext);
+  const { patternsData, activeTimeframe, activeSymbol, filterData } =
+    useContext(DataContext);
+
+  console.log(patternsData);
 
   useEffect(() => {
     if (!activeTimeframe) {
@@ -13,7 +16,7 @@ export default function Patterns() {
   }, []);
 
   const filterOtherData = patternsData.filter(
-    (item) => !activeTimeframe || item.timeframe === activeTimeframe
+    (item) => !activeSymbol || item.symbol === activeSymbol
   );
 
   // console.log(filterOtherData);

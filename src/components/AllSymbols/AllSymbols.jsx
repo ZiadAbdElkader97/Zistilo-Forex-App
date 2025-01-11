@@ -22,6 +22,7 @@ export default function AllSymbols() {
     filteredSearchData,
     setFilteredSearchData,
     handleToggle,
+    categoryCounts,
   } = useContext(DataContext);
 
   const handleInputChange = (event) => {
@@ -152,7 +153,13 @@ export default function AllSymbols() {
                     <IoMdArrowDropright />
                   )}
                 </i>
-                <p>{item.category}</p>
+
+                <div className="category_info">
+                  <p className="category_name">{item.category}</p>
+                  <span className="category_num">
+                    ({categoryCounts[item.id] || 0})
+                  </span>
+                </div>
               </div>
               {openTabs[item.id] ? (
                 <SymbolsCategory

@@ -1,5 +1,9 @@
+.watchlist {
+  height: calc(100vh - 310px);
+}
 .watchlist .watchlist_section {
-  height: 350px;
+  max-height: calc(100% - 45px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -58,4 +62,3 @@
   font-size: 11px;
   text-align: right;
 }
-
