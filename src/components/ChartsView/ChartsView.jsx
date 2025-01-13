@@ -66,10 +66,16 @@ function ChartsView({ isLightMode }) {
       chart1Ref.current.remove();
     }
     chart1Ref.current = new window.TradingView.widget(widgetOptions);
-    if (!isSingleChart && chart2Ref.current === null) {
+  }, [widgetOptions]);
+
+  useEffect(() => {
+    if (!isSingleChart) {
+      if (chart2Ref.current) {
+        chart2Ref.current.remove();
+      }
       chart2Ref.current = new window.TradingView.widget(widgetOptions2);
     }
-  }, [widgetOptions, widgetOptions2, isSingleChart]);
+  }, [widgetOptions2, isSingleChart]);
 
   return (
     <>

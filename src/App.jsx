@@ -2,6 +2,8 @@ import "./App.css";
 import { useState } from "react";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
 import Content from "./components/Content/Content.jsx";
+import { UserProvider } from "./context/UserProvider.jsx";
+import { ModalProvider } from "./context/ModalProvider.jsx";
 
 export default function App() {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -11,11 +13,13 @@ export default function App() {
   };
 
   return (
-    <>
-      <div className={`app ${isLightMode ? "light_mode" : "dark_mode"}`}>
-        <Sidebar toggleMode={toggleMode} />
-        <Content isLightMode={isLightMode} />
-      </div>
-    </>
+    <ModalProvider>
+      <UserProvider>
+        <div className={`app ${isLightMode ? "light_mode" : "dark_mode"}`}>
+          <Sidebar toggleMode={toggleMode} />
+          <Content isLightMode={isLightMode} />
+        </div>
+      </UserProvider>
+    </ModalProvider>
   );
 }

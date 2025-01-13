@@ -1,16 +1,47 @@
 import "./PatternsSignals.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../context/DataContext";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
+import UseUser from "../../context/UseUser";
+import UseModal from "../../context/UseModal";
 
 export default function PatternsSignals() {
+  const { user } = UseUser();
+  const { setIsModalOpen } = UseModal();
+
   const {
     patternsSignalsData,
     inputPatternValue,
     setInputPatternValue,
     inputRef,
   } = useContext(DataContext);
+
+  const [displayedSignals, setDisplayedSignals] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(100);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    setDisplayedSignals(patternsSignalsData.slice(0, visibleCount));
+  }, [patternsSignalsData, visibleCount]);
+
+  const handleScroll = () => {
+    if (
+      containerRef.current.scrollTop + containerRef.current.clientHeight !==
+      containerRef.current.scrollHeight
+    )
+      return;
+    setVisibleCount((prevCount) => prevCount + 100);
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
 
   const handleInputChange = (event) => {
     setInputPatternValue(event.target.value);
@@ -28,7 +59,7 @@ export default function PatternsSignals() {
     setToggleState(index);
   };
 
-  const filterSignals = patternsSignalsData.filter((signal) => {
+  const filterSignals = displayedSignals.filter((signal) => {
     const matchesStatus =
       (toggleState === 1 && signal.status === "Open") ||
       (toggleState === 2 && signal.status === "Pending") ||
@@ -56,6 +87,18 @@ export default function PatternsSignals() {
     take_profit: formatToSixDigits(item.take_profit),
     stop_loss: formatToSixDigits(item.stop_loss),
   }));
+
+  const contentClass = user
+    ? "patterns_signals_content"
+    : "patterns_signals_content blurred";
+
+  if (!user) {
+    setIsModalOpen(true);
+  }
+
+  const handleBlurMessageClick = () => {
+    setIsModalOpen(true);
+  };
 
   // console.log(filterSignals);
 
@@ -102,8 +145,8 @@ export default function PatternsSignals() {
             </div>
           </div>
         </div>
-        <div className="patterns_signals_content">
-          <div className="patterns_signals_section">
+        <div className={contentClass}>
+          <div className="patterns_signals_section" ref={containerRef}>
             {toggleState === 1 &&
               formattedSignals.map((item) => (
                 <div key={item.id}>
@@ -277,6 +320,11 @@ export default function PatternsSignals() {
               ))}
           </div>
         </div>
+        {!user && (
+          <div className="blur_message" onClick={handleBlurMessageClick}>
+            Please log in to view the content
+          </div>
+        )}
       </div>
     </>
   );

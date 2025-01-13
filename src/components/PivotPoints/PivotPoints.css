@@ -90,14 +90,14 @@
 .pivot_section .pivot_data_general {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 .pivot_data_general .pivot_data_div {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   font-size: 13px;
   padding: 4px;
-  position: relative;
 }
 .pivot_data_general .pivot_data_div .pivot_level {
   width: 22px;
@@ -112,25 +112,29 @@
   width: 85px;
   text-align: right;
 }
-.pivot_data_general .pivot_data_div .pivot_empty {
+.pivot_data_div .pivot_empty {
   width: 120px;
   text-align: center;
+  margin-top: 15px;
 }
 .pivot_data_div .pivot_empty .pivot_current_container {
-  position: relative;
-  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.pivot_data_div .pivot_empty .pivot_price {
+.pivot_data_div .pivot_price {
   display: block;
+  font-weight: 500;
 }
-.pivot_data_div .pivot_empty .price_difference {
-  display: block;
+.pivot_data_div .price_difference {
+  width: 100%;
 }
-.pivot_data_div .pivot_empty .positive {
+.pivot_data_div .positive {
   color: green;
   margin-right: 20px;
 }
-.pivot_data_div .pivot_empty .negative {
+.pivot_data_div .negative {
   color: red;
   margin-right: 20px;
 }

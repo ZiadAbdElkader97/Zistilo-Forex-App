@@ -27,10 +27,11 @@ export default function Camarilla() {
 
     return (
       <div className="pivot_current_container" style={{ top: `${topOffset}%` }}>
+        <span className="pivot_price_empty"></span>
         <span className="price_difference positive">
           {`+ ${positiveDifference}`}
         </span>
-        <span className="pivot_price">{item.current_price}</span>{" "}
+        <span className="pivot_price">{item.current_price}</span>
         <span className="price_difference negative">
           {`- ${negativeDifference}`}
         </span>
@@ -74,7 +75,10 @@ export default function Camarilla() {
               <span className="pivot_value">{item.R3}</span>
               <span className="pivot_empty">
                 {item.current_price > item.R2 ? (
-                  getCurrentPriceDetails(item, item.R3, item.R2)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.R3, item.R2)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -87,7 +91,10 @@ export default function Camarilla() {
               <span className="pivot_empty">
                 {item.current_price > item.R1 &&
                 item.current_price <= item.R2 ? (
-                  getCurrentPriceDetails(item, item.R2, item.R1)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.R2, item.R1)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -100,7 +107,10 @@ export default function Camarilla() {
               <span className="pivot_empty">
                 {item.current_price > item.PP &&
                 item.current_price <= item.R1 ? (
-                  getCurrentPriceDetails(item, item.R1, item.PP)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.R1, item.PP)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -113,7 +123,10 @@ export default function Camarilla() {
               <span className="pivot_empty">
                 {item.current_price > item.S1 &&
                 item.current_price <= item.PP ? (
-                  getCurrentPriceDetails(item, item.PP, item.S1)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.PP, item.S1)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -126,7 +139,10 @@ export default function Camarilla() {
               <span className="pivot_empty">
                 {item.current_price > item.S2 &&
                 item.current_price <= item.S1 ? (
-                  getCurrentPriceDetails(item, item.S1, item.S2)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.S1, item.S2)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -139,7 +155,10 @@ export default function Camarilla() {
               <span className="pivot_empty">
                 {item.current_price > item.S3 &&
                 item.current_price <= item.S2 ? (
-                  getCurrentPriceDetails(item, item.S2, item.S3)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.S2, item.S3)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}
@@ -151,7 +170,10 @@ export default function Camarilla() {
               <span className="pivot_value">{item.S3}</span>
               <span className="pivot_empty">
                 {item.current_price <= item.S3 ? (
-                  getCurrentPriceDetails(item, item.S3, item.current_price)
+                  <>
+                    <span className="pivot_price_empty"></span>
+                    {getCurrentPriceDetails(item, item.S3, item.current_price)}
+                  </>
                 ) : (
                   <span className="pivot_empty"></span>
                 )}

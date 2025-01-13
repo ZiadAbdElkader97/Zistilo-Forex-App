@@ -2,8 +2,13 @@ import "./Login_Register.css";
 import { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { PiUserCirclePlusBold } from "react-icons/pi";
+import UseUser from "../../context/UseUser.jsx";
+import UseModal from "../../context/UseModal.jsx";
 
 export default function Login_Register() {
+  const { user, setUser } = UseUser();
+  const { isModalOpen, setIsModalOpen } = UseModal();
+
   const [activeForm, setActiveForm] = useState("login");
 
   const [formData, setFormData] = useState({
@@ -24,7 +29,23 @@ export default function Login_Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (activeForm === "login") {
+      const loggedInUser = { email: formData.email };
+      setUser(loggedInUser);
+    } else if (activeForm === "register") {
+      const registeredUser = { email: formData.email };
+      setUser(registeredUser);
+    }
+    setIsModalOpen(false);
   };
+
+  if (user) {
+    setIsModalOpen(false);
+  }
+
+  if (!isModalOpen) {
+    return null;
+  }
 
   return (
     <>

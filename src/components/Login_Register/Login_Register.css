@@ -18,47 +18,47 @@
   font-size: 60px;
   padding-bottom: -30px;
 }
-.navbar_login .login_form h1,
-.navbar_login .signup_form h1 {
+.login_form h1,
+.signup_form h1 {
   color: white;
   margin-bottom: 20px;
   text-transform: uppercase;
 }
-.light_mode .navbar_login .login_form h1,
-.light_mode .navbar_login .signup_form h1 {
+.light_mode .login_form h1,
+.light_mode .signup_form h1 {
   color: black;
 }
-.navbar_login form {
+form {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.navbar_login form input {
+form input {
   padding: 10px 15px;
   border-radius: var(--border_radius);
   border: none;
   outline: none;
 }
-.light_mode .navbar_login form input {
+.light_mode form input {
   background: #d5dde0;
 }
-.light_mode .navbar_login form input::placeholder {
+.light_mode form input::placeholder {
   color: #676767;
 }
-.navbar_login form .keep_login {
+form .keep_login {
   width: 100%;
   display: flex;
   gap: 10px;
 }
-.navbar_login form .keep_login input {
+form .keep_login input {
   cursor: pointer;
 }
-.navbar_login form .keep_login label {
+form .keep_login label {
   font-size: 14px;
   cursor: pointer;
 }
-.navbar_login form button {
+form button {
   width: 100px;
   color: white;
   background-image: linear-gradient(120deg, #32e9f6 0%, #1a6bdc 100%);
@@ -70,31 +70,31 @@
   transition: var(--main_transition);
   cursor: pointer;
 }
-.navbar_login form button:hover {
+form button:hover {
   background-image: linear-gradient(120deg, #1a6bdc 0%, #32e9f6 100%);
 }
-.navbar_login .login_span {
+.login_span {
   font-size: 14px;
   display: flex;
   justify-content: center;
   margin-top: 20px;
   cursor: pointer;
 }
-.navbar_login .login_span:hover {
+.login_span:hover {
   color: var(--main_color);
   text-decoration: underline;
 }
-.navbar_login .signup_span {
+.signup_span {
   font-size: 14px;
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-.navbar_login .signup_span span {
+.signup_span span {
   margin-left: 5px;
   cursor: pointer;
 }
-.navbar_login .signup_span span:hover {
+.signup_span span:hover {
   color: var(--main_color);
   text-decoration: underline;
 }
