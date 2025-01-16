@@ -62,20 +62,43 @@ function ChartsView({ isLightMode }) {
   );
 
   useEffect(() => {
-    if (chart1Ref.current) {
+    if (
+      chart1Ref.current &&
+      chart1Ref.current._innerWidget &&
+      chart1Ref.current._innerWidget.parentNode
+    ) {
       chart1Ref.current.remove();
+      chart1Ref.current = null;
     }
     chart1Ref.current = new window.TradingView.widget(widgetOptions);
   }, [widgetOptions]);
 
   useEffect(() => {
+    if (
+      chart2Ref.current &&
+      chart2Ref.current._innerWidget &&
+      chart2Ref.current._innerWidget.parentNode
+    ) {
+      chart2Ref.current.remove();
+      chart2Ref.current = null;
+    }
     if (!isSingleChart) {
-      if (chart2Ref.current) {
-        chart2Ref.current.remove();
-      }
       chart2Ref.current = new window.TradingView.widget(widgetOptions2);
     }
   }, [widgetOptions2, isSingleChart]);
+
+  useEffect(() => {
+    if (isSingleChart) {
+      if (
+        chart2Ref.current &&
+        chart2Ref.current._innerWidget &&
+        chart2Ref.current._innerWidget.parentNode
+      ) {
+        chart2Ref.current.remove();
+        chart2Ref.current = null;
+      }
+    }
+  }, [isSingleChart]);
 
   return (
     <>

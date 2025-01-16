@@ -19,9 +19,24 @@ export default function Fibonacci() {
       (!activeSymbol || item.symbol === activeSymbol)
   );
 
+  const getMultiplier = (price) => {
+    if (price < 10) return 10000;
+    if (price < 100) return 1000;
+    if (price < 1000) return 100;
+    if (price < 10000) return 10;
+    return 1;
+  };
+
   const getCurrentPriceDetails = (item, larger, smaller) => {
-    const positiveDifference = (larger - item.current_price).toFixed(2);
-    const negativeDifference = (item.current_price - smaller).toFixed(2);
+    const multiplier = getMultiplier(item.current_price);
+    const positiveDifference = (
+      (larger - item.current_price) *
+      multiplier
+    ).toFixed(2);
+    const negativeDifference = (
+      (item.current_price - smaller) *
+      multiplier
+    ).toFixed(2);
     const topOffset =
       ((item.current_price - smaller) / (larger - smaller)) * 100;
 

@@ -1,13 +1,12 @@
+/* eslint-disable react/prop-types */
 import "./Login_Register.css";
 import { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { PiUserCirclePlusBold } from "react-icons/pi";
-import UseUser from "../../context/UseUser.jsx";
-import UseModal from "../../context/UseModal.jsx";
+import { useUser } from "../../context/UserContext";
 
-export default function Login_Register() {
-  const { user, setUser } = UseUser();
-  const { isModalOpen, setIsModalOpen } = UseModal();
+export default function Login_Register({ closeModal }) {
+  const { setUser } = useUser();
 
   const [activeForm, setActiveForm] = useState("login");
 
@@ -30,22 +29,11 @@ export default function Login_Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (activeForm === "login") {
-      const loggedInUser = { email: formData.email };
-      setUser(loggedInUser);
-    } else if (activeForm === "register") {
-      const registeredUser = { email: formData.email };
-      setUser(registeredUser);
+      setUser({ email: formData.email });
+      localStorage.setItem("user", JSON.stringify({ email: formData.email }));
+      closeModal();
     }
-    setIsModalOpen(false);
   };
-
-  if (user) {
-    setIsModalOpen(false);
-  }
-
-  if (!isModalOpen) {
-    return null;
-  }
 
   return (
     <>

@@ -1,34 +1,37 @@
+.patternsSignals_general {
+  position: relative;
+}
 .patterns_signals {
   width: 100%;
-  flex: 1;
+  height: 27vh;
   margin-right: 5px;
   border-radius: 4px 0px 4px 4px;
 }
-.blurred {
+.patterns_signals_blur {
   filter: blur(8px);
   pointer-events: none;
-  position: relative;
 }
-.blur_message {
-  background-color: #525252;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
+
+.login_btn_signal {
   position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px 20px;
-  border-radius: 5px;
-  z-index: 1;
+  top: 50%;
+  left: 35%;
+  color: white;
+  background-color: #525252;
+  padding: 6px 20px;
+  border: none;
+  outline: none;
+  border-radius: var(--border_radius);
+  transition: var(--main_transition);
   cursor: pointer;
 }
-.light_mode .blur_message {
-  background-color: #d5dde0;
+.light_mode .login_btn_signal {
+  background-color: #98b1ba;
 }
-.blur_message:hover {
+.login_btn_signal:hover {
   background-color: var(--main_color);
 }
+
 .patterns_signals .patterns_signals_tabs {
   display: flex;
   justify-content: space-between;
@@ -79,13 +82,16 @@
   padding: 3px;
   border-radius: 4px 4px 0px 0px;
 }
+.light_mode .patterns_signals .patterns_signals_tabs .right_search {
+  background-color: #d5dde0;
+}
 .patterns_signals_tabs .right_search .search_field {
   width: 200px;
   display: flex;
   justify-content: center;
   position: relative;
 }
-.patterns_signals_tabs .right_search .search_field .search_input {
+.right_search .search_field .search_input {
   width: 100%;
   color: #bababa;
   background-color: #1a1a1a;
@@ -96,6 +102,13 @@
   position: relative;
   border-radius: var(--border_radius);
 }
+.right_search .search_field .search_input::placeholder {
+  font-size: 10px;
+}
+.light_mode .right_search .search_field .search_input {
+  color: #000;
+  background-color: #e6ebed;
+}
 .patterns_signals_tabs .right_search .search_field i {
   color: #bababa;
   position: absolute;
@@ -103,9 +116,12 @@
   top: 4px;
   cursor: pointer;
 }
+.light_mode .patterns_signals_tabs .right_search .search_field i {
+  color: #6f6f6f;
+}
 .patterns_signals .patterns_signals_content {
   width: 100%;
-  height: 150px;
+  height: 23vh;
   background-color: #525252;
   padding-top: 5px;
   border-radius: 0px 0px 4px 4px;
@@ -121,6 +137,7 @@
   padding: 5px;
   border-radius: var(--border_radius);
   overflow: auto;
+  position: relative;
 }
 .light_mode .patterns_signals .patterns_signals_section {
   background-color: white;

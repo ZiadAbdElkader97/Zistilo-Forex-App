@@ -6,8 +6,11 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function Contact_Us() {
+  const { t } = useTranslation();
+
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -30,19 +33,19 @@ export default function Contact_Us() {
   const handleSend = (e) => {
     e.preventDefault();
     if (username === "") {
-      setErrMsg("UserName is required!");
+      setErrMsg(t("UserName is required!"));
     } else if (phoneNumber === "") {
-      setErrMsg("Phone Number is required!");
+      setErrMsg(t("Phone Number is required!"));
     } else if (email === "") {
-      setErrMsg("Please give your email!");
+      setErrMsg(t("Please give your email!"));
     } else if (!emailValidation(email)) {
-      setErrMsg("Give a valid Email!");
+      setErrMsg(t("Give a valid Email!"));
     } else if (subject === "") {
-      setErrMsg("please give your subject!");
+      setErrMsg(t("please give your subject!"));
     } else if (message === "") {
-      setErrMsg("Message is required!");
+      setErrMsg(t("Message is required!"));
     } else {
-      setSuccessMsg(`Thanks dear, Your Msgs has been sent successfully!`);
+      setSuccessMsg(t("Thanks dear, Your Msgs has been sent successfully!"));
       setErrMsg("");
       setUsername("");
       setEmail("");
@@ -57,9 +60,9 @@ export default function Contact_Us() {
     <div className="contact">
       <div className="contact_left">
         <div className="contact_left_info">
-          <h2 className="contact_h2">Get in touch</h2>
+          <h2 className="contact_h2">{t("Get in touch")}</h2>
           <div className="contact_details">
-            <h4 className="contact_h4">Visit us</h4>
+            <h4 className="contact_h4">{t("Visit us")}</h4>
             <div className="contact_p">
               <p className="contact_p1">Come say hello at out office HQ.</p>
               <p className="contact_p2">
@@ -68,21 +71,21 @@ export default function Contact_Us() {
             </div>
           </div>
           <div className="contact_details">
-            <h4 className="contact_h4">Chat to us</h4>
+            <h4 className="contact_h4">{t("Chat to us")}</h4>
             <div className="contact_p">
               <p className="contact_p1">Our friendly team is here to help.</p>
               <p className="contact_p2">hello@paysphere.com</p>
             </div>
           </div>
           <div className="contact_details">
-            <h4 className="contact_h4">Call us</h4>
+            <h4 className="contact_h4">{t("Call us")}</h4>
             <div className="contact_p">
               <p className="contact_p1">Mon-Fir from 8am to 5pm.</p>
               <p className="contact_p2">(+995) 555-55-55-55</p>
             </div>
           </div>
           <div className="contact_details">
-            <h4 className="contact_h4">Social Media</h4>
+            <h4 className="contact_h4">{t("Social Media")}</h4>
             <div className="contact_icons">
               <i>
                 <FaFacebook />
@@ -102,26 +105,26 @@ export default function Contact_Us() {
       </div>
       <div className="contact_right">
         <div className="contact_right_info">
-          <form className="contact_form">
+          <form onSubmit={handleSend} className="contact_form">
             {errMsg && <p className="contact_err_msg">{errMsg}</p>}
             {successMsg && <p className="contact_success_msg">{successMsg}</p>}
             <div className="contact_name_phone">
               <div className="contact_field" style={{ width: "47%" }}>
-                <p className="contact_label">Name</p>
+                <p className="contact_label">{t("Name")}</p>
                 <input
                   type="text"
                   className="contact_input"
-                  placeholder="Enter your name"
+                  placeholder={t("Enter your name")}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="contact_field" style={{ width: "48%" }}>
-                <p className="contact_label">Phone Number</p>
+                <p className="contact_label">{t("Phone Number")}</p>
                 <input
                   type="text"
                   className="contact_input"
-                  placeholder="Enter your phone number"
+                  placeholder={t("Enter your phone number")}
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
@@ -129,32 +132,32 @@ export default function Contact_Us() {
             </div>
 
             <div className="contact_field">
-              <p className="contact_label">Email</p>
+              <p className="contact_label">{t("Email")}</p>
               <input
                 type="email"
                 className="contact_input"
-                placeholder="Enter your email"
+                placeholder={t("Enter your email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="contact_field">
-              <p className="contact_label">Subject</p>
+              <p className="contact_label">{t("Subject")}</p>
               <input
                 type="text"
                 className="contact_input"
-                placeholder="Enter your subject"
+                placeholder={t("Enter your subject")}
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
               />
             </div>
 
             <div className="contact_field">
-              <p className="contact_label">Message</p>
+              <p className="contact_label">{t("Message")}</p>
               <textarea
                 className="contact_textarea"
-                placeholder="Write your message"
+                placeholder={t("Write your message")}
                 cols={30}
                 rows={10}
                 value={message}
@@ -163,7 +166,7 @@ export default function Contact_Us() {
             </div>
 
             <div className="contact_field">
-              <p className="contact_label">Attach Picture</p>
+              <p className="contact_label">{t("Attach Picture")}</p>
               <input
                 type="file"
                 accept="image/*"
@@ -172,7 +175,7 @@ export default function Contact_Us() {
                 onChange={(e) => {
                   const file = e.target.files[0];
                   if (file && file.size > 1024 * 1024) {
-                    alert("The file size must be less than 1MB.");
+                    alert(t("The file size must be less than 1MB."));
                     e.target.value = "";
                   } else {
                     setAttachPic(e.target.value);
@@ -187,7 +190,7 @@ export default function Contact_Us() {
                 type="submit"
                 onClick={handleSend}
               >
-                Send Message
+                {t("Send Message")}
               </button>
             </div>
             {errMsg && <p className="contact_err_msg">{errMsg}</p>}

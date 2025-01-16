@@ -1,17 +1,13 @@
-.navbar {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
+.navbar_main {
+  width: 100%;
+  height: 5vh;
 }
-.navbar .navbar_main {
-  width: 75%;
-}
-.navbar .navbar_main .charts_tabs {
+.navbar_main .charts_tabs {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 7px 6px;
+  padding: 6px 2px;
 }
 .navbar_main .charts_tabs .chart_tab {
   color: #bababa;
@@ -52,12 +48,13 @@
   background-color: #d5dde0;
 }
 
-.navbar .navbar_login {
-  width: 25%;
+.navbar_login {
+  width: 100%;
+  height: 5vh;
   text-align: right;
-  padding: 10px;
+  padding: 7px 3px;
 }
-.navbar .navbar_login .login_btn {
+.navbar_login .login_btn {
   color: white;
   background-color: var(--main_color);
   font-size: 12px;

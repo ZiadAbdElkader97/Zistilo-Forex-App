@@ -1,6 +1,6 @@
 .rSide_symbol {
   width: 100%;
-  height: calc(100vh - 95px);
+  height: calc(88vh + 4px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
@@ -43,12 +43,18 @@
 }
 .rSide_section .symbol_data .symbol_data_title {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 5px;
 }
 .rSide_section .symbol_data .symbol_data_head {
   font-weight: bold;
   font-size: 14px;
+}
+@media (max-width: 480px) {
+  .rSide_section .symbol_data .symbol_data_head {
+    font-size: 13px;
+  }
 }
 .rSide_section .symbol_data .symbol_data_frame {
   color: #aeaeae;
@@ -76,9 +82,19 @@
   font-size: 14px;
   color: #a5a5a5;
 }
+@media (max-width: 480px) {
+  .rSide_section .symbol_data_div .data_name {
+    font-size: 13px;
+  }
+}
 .light_mode .rSide_section .symbol_data_div .data_name {
   color: #7f7f7f;
 }
 .rSide_section .symbol_data_div .data_value {
   font-size: 13px;
+}
+@media (max-width: 480px) {
+  .rSide_section .symbol_data_div .data_value {
+    font-size: 12px;
+  }
 }

@@ -6,8 +6,11 @@ import { FaCheck } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 export default function Watchlists() {
+  const { t } = useTranslation();
+
   const {
     inputWatchlistValue,
     setInputWatchlistValue,
@@ -74,7 +77,7 @@ export default function Watchlists() {
           <div className="search_field">
             <input
               type="search"
-              placeholder={marketData.search_ph}
+              placeholder={t(marketData.search_ph)}
               className="search_input"
               value={inputWatchlistValue}
               ref={inputRef}
@@ -105,20 +108,20 @@ export default function Watchlists() {
 
         <div className="data_header">
           <p className="data_header_p" style={{ width: "60px" }}>
-            Symbol
+            {t("Symbol")}
           </p>
-          <p className="data_header_p">Change %</p>
+          <p className="data_header_p">{t("Change %")}</p>
           <p
             className="data_header_p"
             style={{ width: "20px", marginLeft: "10px" }}
           >
-            Ask
+            {t("Ask")}
           </p>
           <p
             className="data_header_p"
             style={{ width: "20px", marginLeft: "30px" }}
           >
-            Bid
+            {t("Bid")}
           </p>
         </div>
 

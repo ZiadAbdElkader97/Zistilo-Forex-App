@@ -1,9 +1,37 @@
+.tech_general {
+  position: relative;
+}
 .tech_indicator {
   width: 100%;
-  height: calc(100vh - 95px);
+  height: calc(88vh + 4px);
   background-color: #525252;
   border-radius: 0 4px 4px 4px;
 }
+.tech_indicator_blur {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.login_btn_tech {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  color: white;
+  background-color: #525252;
+  padding: 6px 20px;
+  border: none;
+  outline: none;
+  border-radius: var(--border_radius);
+  transition: var(--main_transition);
+  cursor: pointer;
+}
+.light_mode .login_btn_tech {
+  background-color: #98b1ba;
+}
+.login_btn_tech:hover {
+  background-color: var(--main_color);
+}
+
 .light_mode .tech_indicator {
   background-color: #d5dde0;
 }
@@ -77,6 +105,11 @@
   padding-bottom: 8px;
   z-index: 10;
 }
+@media (max-width: 480px) {
+  .tech_section .tech_values .data_values {
+    font-size: 11px;
+  }
+}
 .tech_section .tech_values .chart_values {
   display: flex;
   flex-direction: column;
@@ -86,6 +119,11 @@
   width: 90px;
   height: 11px;
   position: relative;
+}
+@media (max-width: 480px) {
+  .tech_values .value_bar_container {
+    height: 9.5px;
+  }
 }
 .value_bar_container .value_bar_center {
   position: absolute;
@@ -120,11 +158,21 @@
   font-size: 12px;
   text-align: right;
 }
+@media (max-width: 480px) {
+  .tech_section .tech_values .status_values p {
+    font-size: 11px;
+  }
+}
 .tech_section .tech_chart {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
+}
+@media (max-width: 480px) {
+  .tech_section .tech_chart {
+    margin-top: 5px;
+  }
 }
 .tech_section .tech_chart .chart_info {
   display: flex;

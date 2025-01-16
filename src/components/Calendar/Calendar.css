@@ -1,6 +1,6 @@
 .calendar {
   width: 100%;
-  height: calc(100vh - 95px);
+  height: calc(88vh + 4px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;

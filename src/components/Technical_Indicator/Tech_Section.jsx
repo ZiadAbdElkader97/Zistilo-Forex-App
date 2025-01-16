@@ -3,57 +3,78 @@ import { useState } from "react";
 import Beginner from "./Beginner.jsx";
 import Intermediate from "./Intermediate.jsx";
 import Advanced from "./Advanced.jsx";
-import UseUser from "../../context/UseUser.jsx";
-import UseModal from "../../context/UseModal.jsx";
+import { useUser } from "../../context/UserContext.jsx";
+import Modal from "../Modal/Modal.jsx";
+import Login_Register from "../Login_Register/Login_Register.jsx";
+
+// import { useTranslation } from "react-i18next";
 
 export default function Tech_Section() {
-  const { user } = UseUser();
-  const { setIsModalOpen } = UseModal();
+  // const { t } = useTranslation();
+
+  const { user } = useUser();
 
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
   };
 
-  if (!user) {
-    setIsModalOpen(true);
-    return null;
-  }
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
 
   return (
     <>
-      <div className="tech_indicator">
-        <div className="tech_tabs">
-          <span
-            className={
-              toggleState === 1 ? "tech_tab tech_tab_active" : "tech_tab"
-            }
-            onClick={() => toggleTab(1)}
-            style={{ borderRadius: "4px 0 0 4px" }}
-          >
-            Beginner
-          </span>
-          <span
-            className={
-              toggleState === 2 ? "tech_tab tech_tab_active" : "tech_tab"
-            }
-            onClick={() => toggleTab(2)}
-          >
-            Intermediate
-          </span>
-          <span
-            className={
-              toggleState === 3 ? "tech_tab tech_tab_active" : "tech_tab"
-            }
-            onClick={() => toggleTab(3)}
-            style={{ borderRadius: "0 4px 4px 0px" }}
-          >
-            Advanced
-          </span>
+      <div className="tech_general">
+        <div className={`tech_indicator ${!user ? "tech_indicator_blur" : ""}`}>
+          <div className="tech_tabs">
+            <span
+              className={
+                toggleState === 1 ? "tech_tab tech_tab_active" : "tech_tab"
+              }
+              onClick={() => toggleTab(1)}
+              style={{ borderRadius: "4px 0 0 4px" }}
+            >
+              Beginner
+            </span>
+            <span
+              className={
+                toggleState === 2 ? "tech_tab tech_tab_active" : "tech_tab"
+              }
+              onClick={() => toggleTab(2)}
+            >
+              Intermediate
+            </span>
+            <span
+              className={
+                toggleState === 3 ? "tech_tab tech_tab_active" : "tech_tab"
+              }
+              onClick={() => toggleTab(3)}
+              style={{ borderRadius: "0 4px 4px 0px" }}
+            >
+              Advanced
+            </span>
+          </div>
+
+          {toggleState === 1 ? <Beginner /> : <></>}
+          {toggleState === 2 ? <Intermediate /> : <></>}
+          {toggleState === 3 ? <Advanced /> : <></>}
         </div>
-        {toggleState === 1 ? <Beginner /> : <></>}
-        {toggleState === 2 ? <Intermediate /> : <></>}
-        {toggleState === 3 ? <Advanced /> : <></>}
+
+        <Modal show={showModal} onClose={handleCloseModal}>
+          <Login_Register closeModal={handleCloseModal} />
+        </Modal>
+
+        {!user && (
+          <button className="login_btn_tech" onClick={handleOpenModal}>
+            Please login to view this content
+          </button>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 .symbol {
-  height: calc(100vh - 310px);
+  height: calc(100vh - 300px);
 }
 /* Search Section */
 .search_section {
@@ -38,10 +38,16 @@
 }
 .search_section .search_field i {
   color: #bababa;
+  font-size: 13px;
   position: absolute;
   right: 2px;
   top: 2px;
   cursor: pointer;
+}
+@media (min-width: 1120px) {
+  .search_section .search_field i {
+    font-size: 16px;
+  }
 }
 .light_mode .search_section .search_field i {
   color: #6f6f6f;
@@ -50,14 +56,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
+}
+@media (min-width: 1120px) {
+  .symbols_search .symbols_ul {
+    gap: 2px;
+  }
 }
 .symbols_ul .symbols_li {
   color: #bababa;
-  font-size: 9px;
+  font-size: 8px;
   padding: 2px;
   cursor: pointer;
   border-radius: var(--border_radius);
+}
+@media (min-width: 1120px) {
+  .symbols_ul .symbols_li {
+    font-size: 9px;
+  }
 }
 .symbols_ul .symbols_active {
   color: white;
@@ -79,20 +95,30 @@
   background-color: #a3a3a3;
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 13px;
   padding: 4px 33px 4px 0px;
-  margin-top: 6px;
+  margin-top: 5px;
+}
+@media (max-width: 480px) {
+  .market_section .data_header {
+    gap: 25px;
+    padding: 4px 38px 4px 0px;
+  }
 }
 .light_mode .market_section .data_header {
   background-color: #d5dde0;
 }
 .market_section .data_header .data_header_p {
   color: #2c2c2c;
-  font-size: 11px;
+  font-size: 10px;
   text-align: right;
   font-weight: bold;
 }
-
+@media (min-width: 1120px) {
+  .market_section .data_header .data_header_p {
+    font-size: 11px;
+  }
+}
 .symbol .symbol_section {
   max-height: calc(100% - 45px);
   flex: 1;

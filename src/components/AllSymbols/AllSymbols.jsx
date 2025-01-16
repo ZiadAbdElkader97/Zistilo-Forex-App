@@ -9,8 +9,11 @@ import SymbolsCategory from "../SymbolsCategory/SymbolsCategory.jsx";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 export default function AllSymbols() {
+  const { t } = useTranslation();
+
   const {
     inputSymbolValue,
     setInputSymbolValue,
@@ -91,7 +94,7 @@ export default function AllSymbols() {
           <div className="search_field">
             <input
               type="search"
-              placeholder={marketData.search_ph}
+              placeholder={t(marketData.search_ph)}
               className="search_input"
               value={inputSymbolValue}
               ref={inputRef}
@@ -122,20 +125,20 @@ export default function AllSymbols() {
 
         <div className="data_header">
           <p className="data_header_p" style={{ width: "60px" }}>
-            Symbol
+            {t("Symbol")}
           </p>
-          <p className="data_header_p">Change %</p>
+          <p className="data_header_p">{t("Change %")}</p>
           <p
             className="data_header_p"
             style={{ width: "20px", marginLeft: "10px" }}
           >
-            Ask
+            {t("Ask")}
           </p>
           <p
             className="data_header_p"
             style={{ width: "20px", marginLeft: "30px" }}
           >
-            Bid
+            {t("Bid")}
           </p>
         </div>
 

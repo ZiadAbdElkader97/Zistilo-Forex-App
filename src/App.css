@@ -4,15 +4,6 @@
   max-height: 100vh;
   display: flex;
 }
-.app .app_content {
-  display: flex;
-  flex-direction: column;
-  margin-right: 5px;
-  margin-left: 5px;
-}
-.app_content_details {
-  display: flex;
-}
 
 /* Dark Mode */
 .dark_mode {

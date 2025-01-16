@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./Sidebar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MarketSection from "../MarketSection/MarketSection";
 import { sidebar_menu } from "../../assets/data/SidebarData";
 import { LuFullscreen } from "react-icons/lu";
@@ -17,8 +17,12 @@ import Modal from "../Modal/Modal";
 import MailingList from "../MailingList/MailingList";
 import Contact_Us from "../Contact_Us/Contact_Us";
 import SubscriptionPlans from "../SubscriptionPlans/SubscriptionPlans";
+import i18n from "../../i18n.js";
+import { useTranslation } from "react-i18next";
 
 export default function Sidebar({ toggleMode }) {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState(true);
   const [isVisibleTrade, setIsVisibleTrade] = useState(true);
 
@@ -26,13 +30,30 @@ export default function Sidebar({ toggleMode }) {
   const [toggleOption, setToggleOption] = useState(1);
   const [selectedLang, setSelectedLang] = useState(en_lang);
 
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+    const savedLangImage = localStorage.getItem("selectedLangImage") || en_lang;
+    i18n.changeLanguage(savedLanguage);
+    setSelectedLang(savedLangImage);
+    if (savedLanguage === "ar") {
+      setToggleOption(2);
+    } else if (savedLanguage === "de") {
+      setToggleOption(3);
+    } else {
+      setToggleOption(1);
+    }
+  }, []);
+
   const handleToggle = () => {
     SetOpenMenuLang(!openMenuLang);
   };
 
-  const handleToggleOption = (option, langImage) => {
+  const handleToggleOption = (option, langImage, langCode) => {
     setToggleOption(option);
     setSelectedLang(langImage);
+    i18n.changeLanguage(langCode);
+    localStorage.setItem("selectedLanguage", langCode);
+    localStorage.setItem("selectedLangImage", langImage);
     SetOpenMenuLang(false);
   };
 
@@ -74,7 +95,7 @@ export default function Sidebar({ toggleMode }) {
 
   const handleOpenMailingModal = () => {
     setShowMailingModal(true);
-    setModalTitle("Mailing List");
+    setModalTitle(t("Mailing List"));
   };
   const handleCloseMailingModal = () => {
     setShowMailingModal(false);
@@ -84,7 +105,7 @@ export default function Sidebar({ toggleMode }) {
 
   const handleOpenContactModal = () => {
     setShowContactModal(true);
-    setModalTitle("Contact Us");
+    setModalTitle(t("Contact Us"));
   };
   const handleCloseContactModal = () => {
     setShowContactModal(false);
@@ -94,7 +115,7 @@ export default function Sidebar({ toggleMode }) {
 
   const handleOpenSubPlansModal = () => {
     setShowSubPlansModal(true);
-    setModalTitle("Subscription Plans");
+    setModalTitle(t("Subscription Plans"));
   };
   const handleCloseSubPlansModal = () => {
     setShowSubPlansModal(false);
@@ -114,22 +135,25 @@ export default function Sidebar({ toggleMode }) {
             <span></span>
           </div>
           <div className="top_menu_icons">
-            <i title="Mailing List" onClick={() => handleOpenMailingModal()}>
+            <i
+              title={t("Mailing List")}
+              onClick={() => handleOpenMailingModal()}
+            >
               <MdOutlineEmail />
             </i>
-            <i title="Full-screen mode (F11)" onClick={handleFullScreen}>
+            <i title={t("Full-screen mode (F11)")} onClick={handleFullScreen}>
               <LuFullscreen />
             </i>
-            <i title="Switch color theme" onClick={toggleMode}>
+            <i title={t("Switch color theme")} onClick={toggleMode}>
               <CgDarkMode />
             </i>
             <i
-              title={isMuted ? "Sound is off" : "Sound is on"}
+              title={isMuted ? t("Sound is off") : t("Sound is on")}
               onClick={() => setIsMuted(!isMuted)}
             >
               {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
             </i>
-            <i title="Change Language" onClick={handleToggle}>
+            <i title={t("Change Language")} onClick={handleToggle}>
               <img className="lang_img_icon" src={selectedLang} />
             </i>
           </div>
@@ -148,7 +172,7 @@ export default function Sidebar({ toggleMode }) {
               <div className="dropdown_group">
                 <img
                   src={en_lang}
-                  onClick={() => handleToggleOption(1, en_lang)}
+                  onClick={() => handleToggleOption(1, en_lang, "en")}
                 />
                 <p
                   className={
@@ -156,7 +180,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(1, en_lang)}
+                  onClick={() => handleToggleOption(1, en_lang, "en")}
                 >
                   EN
                 </p>
@@ -164,7 +188,7 @@ export default function Sidebar({ toggleMode }) {
               <div className="dropdown_group">
                 <img
                   src={ar_lang}
-                  onClick={() => handleToggleOption(2, ar_lang)}
+                  onClick={() => handleToggleOption(2, ar_lang, "ar")}
                 />
                 <p
                   className={
@@ -172,7 +196,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(2, ar_lang)}
+                  onClick={() => handleToggleOption(2, ar_lang, "ar")}
                 >
                   AR
                 </p>
@@ -180,7 +204,7 @@ export default function Sidebar({ toggleMode }) {
               <div className="dropdown_group">
                 <img
                   src={de_lang}
-                  onClick={() => handleToggleOption(3, de_lang)}
+                  onClick={() => handleToggleOption(3, de_lang, "de")}
                 />
                 <p
                   className={
@@ -188,7 +212,7 @@ export default function Sidebar({ toggleMode }) {
                       ? "dropdown_tab dropdown_active"
                       : "dropdown_tab"
                   }
-                  onClick={() => handleToggleOption(3, de_lang)}
+                  onClick={() => handleToggleOption(3, de_lang, "de")}
                 >
                   DE
                 </p>
@@ -209,10 +233,10 @@ export default function Sidebar({ toggleMode }) {
               toggleTab(1), setIsVisibleTrade(!isVisibleTrade), setOpen(!open)
             )}
           >
-            <i title={sidebar_menu.menu1}>
+            <i title={t(sidebar_menu.menu1)}>
               <AiOutlineTrademark />
             </i>
-            <h4>{sidebar_menu.menu1}</h4>
+            <h4>{t(sidebar_menu.menu1)}</h4>
           </div>
           {toggleState === 1 && isVisibleTrade ? <MarketSection /> : <></>}
           <div
@@ -223,10 +247,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => toggleTab(2)}
           >
-            <i title={sidebar_menu.menu2}>
+            <i title={t(sidebar_menu.menu2)}>
               <FaRegCopy />
             </i>
-            <h4>{sidebar_menu.menu2}</h4>
+            <h4>{t(sidebar_menu.menu2)}</h4>
           </div>
           <div
             className={
@@ -236,10 +260,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => (toggleTab(3), handleOpenContactModal())}
           >
-            <i title={sidebar_menu.menu3}>
+            <i title={t(sidebar_menu.menu3)}>
               <MdPermContactCalendar />
             </i>
-            <h4>{sidebar_menu.menu3}</h4>
+            <h4>{t(sidebar_menu.menu3)}</h4>
           </div>
           <Modal
             show={showContactModal}
@@ -256,10 +280,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => (toggleTab(4), handleOpenSubPlansModal())}
           >
-            <i title={sidebar_menu.menu4}>
+            <i title={t(sidebar_menu.menu4)}>
               <GrPlan />
             </i>
-            <h4>{sidebar_menu.menu4}</h4>
+            <h4>{t(sidebar_menu.menu4)}</h4>
           </div>
           <Modal
             show={showSubPlansModal}
@@ -276,10 +300,10 @@ export default function Sidebar({ toggleMode }) {
             }
             onClick={() => toggleTab(5)}
           >
-            <i title={sidebar_menu.menu5}>
+            <i title={t(sidebar_menu.menu5)}>
               <IoHelpCircleOutline />
             </i>
-            <h4>{sidebar_menu.menu5}</h4>
+            <h4>{t(sidebar_menu.menu5)}</h4>
           </div>
         </div>
       </div>

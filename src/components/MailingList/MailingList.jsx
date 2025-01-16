@@ -6,8 +6,11 @@ import {
 } from "react-icons/fa";
 import "./MailingList.css";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function MailingList() {
+  const { t } = useTranslation();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -28,17 +31,17 @@ export default function MailingList() {
   const handleSend = (e) => {
     e.preventDefault();
     if (username === "") {
-      setErrMsg("UserName is required!");
-    } else if (phoneNumber === "") {
-      setErrMsg("Phone Number is required!");
+      setErrMsg(t("UserName is required!"));
     } else if (email === "") {
-      setErrMsg("Please give your email!");
+      setErrMsg(t("Please give your email!"));
     } else if (!emailValidation(email)) {
-      setErrMsg("Give a valid Email!");
+      setErrMsg(t("Give a valid Email!"));
+    } else if (phoneNumber === "") {
+      setErrMsg(t("Phone Number is required!"));
     } else if (birthday === "") {
-      setErrMsg("Birthday is required!");
+      setErrMsg(t("Birthday is required!"));
     } else {
-      setSuccessMsg(`Thanks dear, Your Msgs has been sent successfully!`);
+      setSuccessMsg(t(`Thanks dear, Your Msgs has been sent successfully!`));
       setErrMsg("");
       setUsername("");
       setEmail("");
@@ -51,9 +54,9 @@ export default function MailingList() {
     <div className="mailing_list">
       <div className="mailing_left">
         <div className="mailing_left_info">
-          <h2 className="mailing_h2">Get in touch</h2>
+          <h2 className="mailing_h2">{t("Get in touch")}</h2>
           <div className="mailing_details">
-            <h4 className="mailing_h4">Visit us</h4>
+            <h4 className="mailing_h4">{t("Visit us")}</h4>
             <div className="mailing_p">
               <p className="mailing_p1">Come say hello at out office HQ.</p>
               <p className="mailing_p2">
@@ -62,21 +65,21 @@ export default function MailingList() {
             </div>
           </div>
           <div className="mailing_details">
-            <h4 className="mailing_h4">Chat to us</h4>
+            <h4 className="mailing_h4">{t("Chat to us")}</h4>
             <div className="mailing_p">
               <p className="mailing_p1">Our friendly team is here to help.</p>
               <p className="mailing_p2">hello@paysphere.com</p>
             </div>
           </div>
           <div className="mailing_details">
-            <h4 className="mailing_h4">Call us</h4>
+            <h4 className="mailing_h4">{t("Call us")}</h4>
             <div className="mailing_p">
               <p className="mailing_p1">Mon-Fir from 8am to 5pm.</p>
               <p className="mailing_p2">(+995) 555-55-55-55</p>
             </div>
           </div>
           <div className="mailing_details">
-            <h4 className="mailing_h4">Social Media</h4>
+            <h4 className="mailing_h4">{t("Social Media")}</h4>
             <div className="mailing_icons">
               <i>
                 <FaFacebook />
@@ -96,48 +99,47 @@ export default function MailingList() {
       </div>
       <div className="mailing_right">
         <div className="mailing_right_info">
-          <form className="mailing_form">
+          <form onSubmit={handleSend} className="mailing_form">
             {errMsg && <p className="mailing_err_msg">{errMsg}</p>}
             {successMsg && <p className="mailing_success_msg">{successMsg}</p>}
             <div className="mailing_field">
-              <p className="mailing_label">Name</p>
+              <p className="mailing_label">{t("Name")}</p>
               <input
                 type="text"
                 className="mailing_input"
-                placeholder="Enter your name"
+                placeholder={t("Enter your name")}
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
 
             <div className="mailing_field">
-              <p className="contact_label">Email</p>
+              <p className="mailing_label">{t("Email")}</p>
               <input
                 type="email"
                 className="mailing_input"
-                placeholder="Enter your email"
+                placeholder={t("Enter your email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="mailing_field">
-              <p className="mailing_label">Phone Number</p>
+              <p className="mailing_label">{t("Phone Number")}</p>
               <input
                 type="text"
                 className="mailing_input"
-                placeholder="Enter your phone number"
+                placeholder={t("Enter your phone number")}
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
             </div>
 
             <div className="mailing_field">
-              <p className="mailing_label">Birthday</p>
+              <p className="mailing_label">{t("Birthday")}</p>
               <input
                 type="date"
                 className="mailing_input"
-                placeholder="Enter your phone number"
                 value={birthday}
                 onChange={(e) => setBirthday(e.target.value)}
               />
@@ -148,7 +150,7 @@ export default function MailingList() {
                 type="submit"
                 onClick={handleSend}
               >
-                Submit
+                {t("Submit")}
               </button>
             </div>
             {errMsg && <p className="mailing_err_msg">{errMsg}</p>}

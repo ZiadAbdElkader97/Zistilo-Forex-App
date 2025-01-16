@@ -1,6 +1,6 @@
 .moving {
   width: 100%;
-  height: calc(100vh - 95px);
+  height: calc(88vh + 4px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
@@ -118,6 +118,11 @@
   flex-direction: column;
   align-items: center;
   margin-top: 55px;
+}
+@media (max-width: 480px) {
+  .moving_section .tech_chart {
+    margin-top: 40px;
+  }
 }
 .moving_section .tech_chart .chart_info {
   display: flex;

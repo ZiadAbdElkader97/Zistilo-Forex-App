@@ -148,7 +148,7 @@ export default function Advanced() {
           ))}
         </div>
         <div className="tech_chart">
-          <h3>Summary</h3>
+          {/* <h3>Summary</h3> */}
           {filterOtherData.map((item) => (
             <div key={item.id} className="chart_info">
               <div className="chart_info_div">

@@ -1,6 +1,9 @@
+.patterns_general {
+  position: relative;
+}
 .patterns {
   width: 100%;
-  height: calc(100vh - 95px);
+  height: calc(88vh + 4px);
   background-color: #525252;
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
@@ -8,6 +11,31 @@
 .light_mode .patterns {
   background-color: #d5dde0;
 }
+.patterns_blur {
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.login_btn_pattern {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  color: white;
+  background-color: #525252;
+  padding: 6px 20px;
+  border: none;
+  outline: none;
+  border-radius: var(--border_radius);
+  transition: var(--main_transition);
+  cursor: pointer;
+}
+.light_mode .login_btn_pattern {
+  background-color: #98b1ba;
+}
+.login_btn_pattern:hover {
+  background-color: var(--main_color);
+}
+
 .patterns .patterns_content {
   height: calc(100% + 8px);
   padding-top: 10px;

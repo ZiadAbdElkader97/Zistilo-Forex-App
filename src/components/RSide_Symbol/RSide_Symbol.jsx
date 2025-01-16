@@ -55,11 +55,11 @@ export default function RSide_Symbol() {
                   <p className="symbol_data_head">Real-time Prices:</p>
                   <p className="symbol_data_frame">
                     Time Frame: (
-                    <span style={{ color: "#2980b9" }}>{activeTimeframe}</span>)
+                    <span style={{ color: "#2ecc71" }}>{activeTimeframe}</span>)
                   </p>
                   <p className="symbol_data_symbol">
                     Symbol: (
-                    <span style={{ color: "#2980b9" }}>{activeSymbol}</span>)
+                    <span style={{ color: "#2ecc71" }}>{activeSymbol}</span>)
                   </p>
                 </div>
                 <hr />
