@@ -9,6 +9,7 @@
   .content {
     display: flex;
     flex-direction: column;
+    gap: 15px;
   }
 }
 .content .content_middle {
@@ -19,8 +20,8 @@
 }
 @media (max-width: 480px) {
   .content .content_middle {
+    min-width: 100%;
     order: 2;
-    display: none;
   }
 }
 .content .content_Rsides {

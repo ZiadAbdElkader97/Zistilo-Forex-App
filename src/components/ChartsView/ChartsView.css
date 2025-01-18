@@ -3,6 +3,7 @@
 }
 .charts .charts_view {
   height: 65vh;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   grid-gap: 5px;

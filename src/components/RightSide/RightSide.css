@@ -1,23 +1,26 @@
 .right_side {
   width: 350px;
   height: 92vh; /* -3vh */
-  margin-left: 5px;
   border-radius: 4px 0px 4px 4px;
   transition: var(--main_transition);
 }
 @media (max-width: 480px) {
   .right_side {
-    width: 320px;
+    width: 330px;
+  }
+}
+@media (min-width: 1120px) {
+  .right_side {
+    margin-left: 5px;
   }
 }
 .sm_right_side {
-  width: 70px;
+  width: 40px;
   height: 100%;
   background-color: #3b3b3b;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 3px;
   border-radius: var(--border_radius);
   transition: var(--main_transition);
 }
@@ -39,7 +42,7 @@
   align-items: center;
   gap: 5px;
 }
-.tabs .tab {
+.right_side .tabs .tab {
   font-size: 11px;
   font-weight: 500;
   color: #bababa;
@@ -49,9 +52,9 @@
   cursor: pointer;
 }
 .sm_right_side .tabs .tab {
-  width: 100%;
-  text-align: center;
-  border-radius: var(--border_radius);
+  color: #bababa;
+  padding: 10px;
+  cursor: pointer;
 }
 .tabs .tab:hover {
   color: rgb(229, 229, 229);
@@ -61,17 +64,37 @@
   color: #40484d;
   background-color: #e8ebed;
 }
+.light_mode .sm_right_side .tabs .tab {
+  color: #40484d;
+  background-color: #d5dde0;
+}
 .light_mode .tabs .tab:hover {
   color: #292929;
   background-color: #e2e5e7;
 }
-.tabs .tab_active {
+.right_side .tabs .tab_active {
   color: white;
   background-color: #525252;
 }
 .light_mode .tabs .tab_active {
   color: #161717;
   background-color: #d5dde0;
+}
+.sm_right_side .tabs .tab_active {
+  color: white;
+  background-color: var(--main_color);
+}
+.light_mode .sm_right_side .tabs .tab_active {
+  color: white;
+  background-color: var(--main_color);
+}
+.sm_right_side .tabs .tab_active:hover {
+  color: white;
+  background-color: var(--main_color);
+}
+.light_mode .sm_right_side .tabs .tab_active:hover {
+  color: white;
+  background-color: var(--main_color);
 }
 .tabs .tab_active:hover {
   color: white;
@@ -82,13 +105,15 @@
   background-color: #d5dde0;
 }
 .right_side_bar {
-  width: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 5px;
   cursor: pointer;
+}
+.right_side .right_side_bar {
+  margin-left: 10px;
 }
 .sm_right_side .right_side_bar {
   margin-top: 10px;
@@ -99,4 +124,7 @@
   height: 1px;
   width: 17px;
   background-color: #cfcfcf;
+}
+.light_mode .right_side_bar span {
+  background-color: #0f0f0f;
 }

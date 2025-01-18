@@ -101,7 +101,7 @@
 }
 @media (max-width: 480px) {
   .market_section .data_header {
-    gap: 25px;
+    gap: 17px;
     padding: 4px 38px 4px 0px;
   }
 }

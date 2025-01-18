@@ -1,100 +1,121 @@
+/* eslint-disable react/prop-types */
 import "./RightSide.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Tech_Section from "../Technical_Indicator/Tech_Section.jsx";
 import RSide_Symbol from "../RSide_Symbol/RSide_Symbol.jsx";
 import Calendar from "../Calendar/Calendar.jsx";
 import Patterns from "../Patterns/Patterns.jsx";
 import MovingAverage from "../MovingAverage/MovingAverage.jsx";
 import PivotPoints from "../PivotPoints/PivotPoints.jsx";
+import { FaProjectDiagram, FaRegCalendarAlt } from "react-icons/fa";
+import { FaCalculator, FaChartBar, FaChartLine } from "react-icons/fa6";
+import { SiSymbolab } from "react-icons/si";
 
-export default function RightSide() {
-  const [open, setOpen] = useState(window.innerWidth > 768);
-
+export default function RightSide({ isRightSideOpen, toggleRightSide }) {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
+    if (!isRightSideOpen) {
+      toggleRightSide();
+    }
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setOpen(window.innerWidth > 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   return (
-    <div className={open ? "right_side" : "sm_right_side"}>
+    <div className={isRightSideOpen ? "right_side" : "sm_right_side"}>
       <div className="tabs">
         <span
           title="Symbol"
           className={toggleState === 1 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(1);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          Symbol
+          {isRightSideOpen ? (
+            "Symbol"
+          ) : (
+            <SiSymbolab style={{ fontSize: "20px" }} />
+          )}
         </span>
         <span
           title="Calendar"
           className={toggleState === 2 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(2);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          Calendar
+          {isRightSideOpen ? (
+            "Calendar"
+          ) : (
+            <FaRegCalendarAlt style={{ fontSize: "20px" }} />
+          )}
         </span>
         <span
           title="Technical Indicator"
           className={toggleState === 3 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(3);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          Tech
+          {isRightSideOpen ? (
+            "Tech"
+          ) : (
+            <FaChartBar style={{ fontSize: "20px" }} />
+          )}
         </span>
         <span
           title="Patterns"
           className={toggleState === 4 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(4);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          Patterns
+          {isRightSideOpen ? (
+            "Patterns"
+          ) : (
+            <FaProjectDiagram style={{ fontSize: "20px" }} />
+          )}
         </span>
         <span
           title="Moving Average"
           className={toggleState === 5 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(5);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          M.A
+          {isRightSideOpen ? (
+            "M.A"
+          ) : (
+            <FaChartLine style={{ fontSize: "20px" }} />
+          )}
         </span>
         <span
           title="Pivot Points"
           className={toggleState === 6 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(6);
-            setOpen(true);
+            isRightSideOpen(true);
           }}
         >
-          P.P
+          {isRightSideOpen ? (
+            "P.P"
+          ) : (
+            <FaCalculator style={{ fontSize: "20px" }} />
+          )}
         </span>
 
-        <div className="right_side_bar" onClick={() => setOpen(!open)}>
+        <div className="right_side_bar" onClick={toggleRightSide}>
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
 
-      {open && (
+      {isRightSideOpen && (
         <>
           {toggleState === 1 && <RSide_Symbol />}
           {toggleState === 2 && <Calendar />}

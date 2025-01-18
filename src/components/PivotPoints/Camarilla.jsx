@@ -29,14 +29,12 @@ export default function Camarilla() {
 
   const getCurrentPriceDetails = (item, larger, smaller) => {
     const multiplier = getMultiplier(item.current_price);
-    const positiveDifference = (
-      (larger - item.current_price) *
-      multiplier
-    ).toFixed(2);
-    const negativeDifference = (
-      (item.current_price - smaller) *
-      multiplier
-    ).toFixed(2);
+    const positiveDifference = Math.round(
+      (larger - item.current_price) * multiplier
+    );
+    const negativeDifference = Math.round(
+      (item.current_price - smaller) * multiplier
+    );
     const topOffset =
       ((item.current_price - smaller) / (larger - smaller)) * 100;
 

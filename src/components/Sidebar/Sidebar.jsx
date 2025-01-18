@@ -20,11 +20,8 @@ import SubscriptionPlans from "../SubscriptionPlans/SubscriptionPlans";
 import i18n from "../../i18n.js";
 import { useTranslation } from "react-i18next";
 
-export default function Sidebar({ toggleMode }) {
+export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
   const { t } = useTranslation();
-
-  const [open, setOpen] = useState(true);
-  const [isVisibleTrade, setIsVisibleTrade] = useState(true);
 
   const [openMenuLang, SetOpenMenuLang] = useState(false);
   const [toggleOption, setToggleOption] = useState(1);
@@ -123,13 +120,10 @@ export default function Sidebar({ toggleMode }) {
 
   return (
     <>
-      <div className={open ? "sidebar" : "sm_sidebar"}>
+      <div className={isSidebarOpen ? "sidebar" : "sm_sidebar"}>
         {/* Top Menu */}
         <div className="top_menu">
-          <div
-            className="top_menu_bar"
-            onClick={() => (setOpen(!open), setIsVisibleTrade(!isVisibleTrade))}
-          >
+          <div className="top_menu_bar" onClick={toggleSidebar}>
             <span></span>
             <span></span>
             <span></span>
@@ -229,16 +223,14 @@ export default function Sidebar({ toggleMode }) {
                 ? "center_menu_list  center_menu_active"
                 : "center_menu_list"
             }
-            onClick={() => (
-              toggleTab(1), setIsVisibleTrade(!isVisibleTrade), setOpen(!open)
-            )}
+            onClick={() => toggleTab(1)}
           >
             <i title={t(sidebar_menu.menu1)}>
               <AiOutlineTrademark />
             </i>
             <h4>{t(sidebar_menu.menu1)}</h4>
           </div>
-          {toggleState === 1 && isVisibleTrade ? <MarketSection /> : <></>}
+          {toggleState === 1 && isSidebarOpen ? <MarketSection /> : <></>}
           <div
             className={
               toggleState === 2
