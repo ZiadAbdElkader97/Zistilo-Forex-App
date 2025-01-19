@@ -158,8 +158,8 @@ export default function Contact_Us() {
               <textarea
                 className="contact_textarea"
                 placeholder={t("Write your message")}
-                cols={30}
-                rows={10}
+                cols={10}
+                rows={5}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               ></textarea>

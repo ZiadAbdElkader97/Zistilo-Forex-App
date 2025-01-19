@@ -1,6 +1,5 @@
 .navbar_main {
   width: 100%;
-  height: 5vh;
 }
 .navbar_main .charts_tabs {
   width: 100%;
@@ -50,9 +49,8 @@
 
 .navbar_login {
   width: 100%;
-  height: 5vh;
   text-align: right;
-  padding: 7px 3px;
+  padding: 7px 4px;
 }
 .navbar_login .login_btn {
   color: white;

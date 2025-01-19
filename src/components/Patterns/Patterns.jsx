@@ -4,8 +4,11 @@ import { DataContext } from "../../context/DataContext";
 import { useUser } from "../../context/UserContext";
 import Modal from "../Modal/Modal";
 import Login_Register from "../Login_Register/Login_Register";
+import { useTranslation } from "react-i18next";
 
 export default function Patterns() {
+  const { t } = useTranslation();
+
   const { patternsData, activeTimeframe, activeSymbol, filterData } =
     useContext(DataContext);
 
@@ -65,11 +68,11 @@ export default function Patterns() {
                     <div key={item.id} className="patterns_info">
                       <div className="patterns_group">
                         <div className="patterns_info_div">
-                          <p className="patterns_header">Symbol</p>
+                          <p className="patterns_header">{t("Symbol")}</p>
                           <p className="patterns_value">{item.symbol}</p>
                         </div>
                         <div className="patterns_info_div">
-                          <p className="patterns_header">Trade Signal</p>
+                          <p className="patterns_header">{t("Trade Signal")}</p>
                           <p
                             className="patterns_value"
                             style={{ color: tradeSignalColor }}
@@ -80,11 +83,11 @@ export default function Patterns() {
                       </div>
                       <div className="patterns_group">
                         <div className="patterns_info_div">
-                          <p className="patterns_header">Candle Type</p>
+                          <p className="patterns_header">{t("Candle Type")}</p>
                           <p className="patterns_value">{item.candle_type}</p>
                         </div>
                         <div className="patterns_info_div">
-                          <p className="patterns_header">Strength</p>
+                          <p className="patterns_header">{t("Strength")}</p>
                           <div className="strength">
                             <div
                               className="strength_bar"

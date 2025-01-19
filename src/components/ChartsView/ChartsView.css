@@ -1,12 +1,18 @@
 .charts {
-  height: 100%;
+  width: 100%;
 }
 .charts .charts_view {
-  height: 65vh;
+  max-height: 65vh;
+  height: 580px;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
   grid-gap: 5px;
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .charts .charts_view {
+    max-height: 420px;
+  }
 }
 .chart.full-width {
   width: 100%;

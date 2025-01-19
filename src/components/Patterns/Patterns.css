@@ -8,6 +8,11 @@
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .patterns {
+    height: 580px;
+  }
+}
 .light_mode .patterns {
   background-color: #d5dde0;
 }

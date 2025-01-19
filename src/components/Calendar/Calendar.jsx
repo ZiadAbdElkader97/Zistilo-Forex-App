@@ -3,8 +3,11 @@ import "./Calendar.css";
 import { useContext, useState } from "react";
 import { FaRegClock } from "react-icons/fa";
 import { DataContext } from "../../context/DataContext";
+import { useTranslation } from "react-i18next";
 
 export default function Calendar() {
+  const { t } = useTranslation();
+
   const { calendarData } = useContext(DataContext);
 
   const [toggleState, setToggleState] = useState(5);
@@ -90,7 +93,7 @@ export default function Calendar() {
               checked={importanceFilter === null}
               onChange={() => setImportanceFilter(null)}
             />
-            All
+            {t("All")}
           </label>
           <label>
             <input
@@ -100,7 +103,7 @@ export default function Calendar() {
               checked={importanceFilter === 1}
               onChange={() => setImportanceFilter(1)}
             />
-            Importance 1
+            {t("importance")} 1
           </label>
           <label>
             <input
@@ -110,7 +113,7 @@ export default function Calendar() {
               checked={importanceFilter === 2}
               onChange={() => setImportanceFilter(2)}
             />
-            Importance 2
+            {t("importance")} 2
           </label>
         </div>
         {selectedOption && (
@@ -133,11 +136,11 @@ export default function Calendar() {
                     <div className="calendar_country">
                       <div className="country_currency">
                         <p>{item.country}</p>
-                        <p>Country</p>
+                        <p>{t("Country")}</p>
                       </div>
                       <div className="country_currency">
                         <p>{item.currency}</p>
-                        <p>Currency</p>
+                        <p>{t("Currency")}</p>
                       </div>
                     </div>
                   </div>
@@ -145,22 +148,22 @@ export default function Calendar() {
                   <div className="calendar_details">
                     <div className="calendar_data importance">
                       <ProgressBar importance={item.importance} />
-                      <p className="word">importance</p>
+                      <p className="word">{t("importance")}</p>
                     </div>
                     <hr className="hr_side" />
                     <div className="calendar_data actual">
                       <p className="percent">{item.actual}</p>
-                      <p className="word">Actual</p>
+                      <p className="word">{t("Actual")}</p>
                     </div>
                     <hr className="hr_side" />
                     <div className="calendar_data forecast">
                       <p className="percent">{item.forecast}</p>
-                      <p className="word">Forecast</p>
+                      <p className="word">{t("Forecast")}</p>
                     </div>
                     <hr className="hr_side" />
                     <div className="calendar_data previous">
                       <p className="percent">{item.previous}</p>
-                      <p className="word">Previous</p>
+                      <p className="word">{t("Previous")}</p>
                     </div>
                   </div>
                 </div>

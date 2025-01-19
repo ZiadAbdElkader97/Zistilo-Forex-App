@@ -1,8 +1,11 @@
 import "./PivotPoints.css";
 import { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
+import { useTranslation } from "react-i18next";
 
 export default function Camarilla() {
+  const { t } = useTranslation();
+
   const { pivotCamarillaData, activeTimeframe, activeSymbol, filterData } =
     useContext(DataContext);
 
@@ -77,9 +80,9 @@ export default function Camarilla() {
     <>
       <div className="pivot_section">
         <div className="pivot_header">
-          <p className="pivot_header_p">Level</p>
-          <p className="pivot_header_p">Value</p>
-          <p className="pivot_header_p">Current Value</p>
+          <p className="pivot_header_p">{t("Level")}</p>
+          <p className="pivot_header_p">{t("Value")}</p>
+          <p className="pivot_header_p">{t("Current Value")}</p>
         </div>
         {formattedPivot.map((item) => (
           <div key={item.id} className="pivot_data_general">

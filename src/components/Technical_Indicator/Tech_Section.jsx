@@ -3,14 +3,13 @@ import { useState } from "react";
 import Beginner from "./Beginner.jsx";
 import Intermediate from "./Intermediate.jsx";
 import Advanced from "./Advanced.jsx";
-import { useUser } from "../../context/UserContext.jsx";
 import Modal from "../Modal/Modal.jsx";
 import Login_Register from "../Login_Register/Login_Register.jsx";
-
-// import { useTranslation } from "react-i18next";
+import { useUser } from "../../context/UserContext.jsx";
+import { useTranslation } from "react-i18next";
 
 export default function Tech_Section() {
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const { user } = useUser();
 
@@ -40,7 +39,7 @@ export default function Tech_Section() {
               onClick={() => toggleTab(1)}
               style={{ borderRadius: "4px 0 0 4px" }}
             >
-              Beginner
+              {t("Beginner")}
             </span>
             <span
               className={
@@ -48,7 +47,7 @@ export default function Tech_Section() {
               }
               onClick={() => toggleTab(2)}
             >
-              Intermediate
+              {t("Intermediate")}
             </span>
             <span
               className={
@@ -57,7 +56,7 @@ export default function Tech_Section() {
               onClick={() => toggleTab(3)}
               style={{ borderRadius: "0 4px 4px 0px" }}
             >
-              Advanced
+              {t("Advanced")}
             </span>
           </div>
 
@@ -72,7 +71,7 @@ export default function Tech_Section() {
 
         {!user && (
           <button className="login_btn_tech" onClick={handleOpenModal}>
-            Please login to view this content
+            {t("Please login to view this content")}
           </button>
         )}
       </div>

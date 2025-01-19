@@ -5,10 +5,14 @@
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .moving {
+    height: 580px;
+  }
+}
 .light_mode .moving {
   background-color: #d5dde0;
 }
-
 .moving .moving_tabs {
   width: 100%;
   display: flex;
@@ -122,6 +126,11 @@
 @media (max-width: 480px) {
   .moving_section .tech_chart {
     margin-top: 40px;
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .moving_section .tech_chart {
+    margin-top: 25px;
   }
 }
 .moving_section .tech_chart .chart_info {

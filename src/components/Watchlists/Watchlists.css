@@ -10,6 +10,11 @@
   margin-top: 6px;
   overflow: auto;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .watchlist .watchlist_section {
+    max-height: 320px;
+  }
+}
 .view_data {
   width: 100%;
   display: flex;

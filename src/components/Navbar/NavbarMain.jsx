@@ -3,8 +3,11 @@ import { useContext, useState } from "react";
 import { FaSquare } from "react-icons/fa";
 import { HiMiniSquare2Stack } from "react-icons/hi2";
 import { DataContext } from "../../context/DataContext";
+import { useTranslation } from "react-i18next";
 
 export default function NavbarMain() {
+  const { t } = useTranslation();
+
   const { setIsSingleChart } = useContext(DataContext);
 
   const [activeChartTab, setActiveChartTab] = useState(1);
@@ -26,7 +29,7 @@ export default function NavbarMain() {
             <i>
               <FaSquare />
             </i>
-            <p>Single Chart</p>
+            <p>{t("Single Chart")}</p>
           </div>
           <div
             className={
@@ -37,7 +40,7 @@ export default function NavbarMain() {
             <i>
               <HiMiniSquare2Stack />
             </i>
-            <p>Double Chart</p>
+            <p>{t("Double Chart")}</p>
           </div>
         </div>
       </div>

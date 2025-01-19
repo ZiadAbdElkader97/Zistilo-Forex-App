@@ -10,8 +10,11 @@ import PivotPoints from "../PivotPoints/PivotPoints.jsx";
 import { FaProjectDiagram, FaRegCalendarAlt } from "react-icons/fa";
 import { FaCalculator, FaChartBar, FaChartLine } from "react-icons/fa6";
 import { SiSymbolab } from "react-icons/si";
+import { useTranslation } from "react-i18next";
 
 export default function RightSide({ isRightSideOpen, toggleRightSide }) {
+  const { t } = useTranslation();
+
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -24,7 +27,7 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
     <div className={isRightSideOpen ? "right_side" : "sm_right_side"}>
       <div className="tabs">
         <span
-          title="Symbol"
+          title={t("Symbol")}
           className={toggleState === 1 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(1);
@@ -32,13 +35,13 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "Symbol"
+            (t("Symbol"))
           ) : (
             <SiSymbolab style={{ fontSize: "20px" }} />
           )}
         </span>
         <span
-          title="Calendar"
+          title={t("Calendar")}
           className={toggleState === 2 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(2);
@@ -46,13 +49,13 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "Calendar"
+            (t("Calendar"))
           ) : (
             <FaRegCalendarAlt style={{ fontSize: "20px" }} />
           )}
         </span>
         <span
-          title="Technical Indicator"
+          title={t("Technical Indicator")}
           className={toggleState === 3 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(3);
@@ -60,13 +63,13 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "Tech"
+            (t("Tech"))
           ) : (
             <FaChartBar style={{ fontSize: "20px" }} />
           )}
         </span>
         <span
-          title="Patterns"
+          title={t("Patterns")}
           className={toggleState === 4 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(4);
@@ -74,13 +77,13 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "Patterns"
+            (t("Patterns"))
           ) : (
             <FaProjectDiagram style={{ fontSize: "20px" }} />
           )}
         </span>
         <span
-          title="Moving Average"
+          title={t("Moving Average")}
           className={toggleState === 5 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(5);
@@ -88,13 +91,13 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "M.A"
+            (t("M.A"))
           ) : (
             <FaChartLine style={{ fontSize: "20px" }} />
           )}
         </span>
         <span
-          title="Pivot Points"
+          title={t("Pivot Points")}
           className={toggleState === 6 ? "tab tab_active" : "tab"}
           onClick={() => {
             toggleTab(6);
@@ -102,7 +105,7 @@ export default function RightSide({ isRightSideOpen, toggleRightSide }) {
           }}
         >
           {isRightSideOpen ? (
-            "P.P"
+            (t("P.P"))
           ) : (
             <FaCalculator style={{ fontSize: "20px" }} />
           )}

@@ -3,6 +3,17 @@
   margin-top: 60px;
   margin-bottom: 60px;
 }
+@media (max-width: 480px) {
+  .subPlans {
+    padding: 0px 10px;
+  }
+}
+@media (max-width: 1199px) {
+  .subPlans {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+}
 .subPlans .subPlans_header {
   display: flex;
   flex-direction: column;
@@ -24,15 +35,28 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+@media (max-width: 480px) {
+  .subPlans .subPlans_details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+}
 .subPlans .subPlans_details span {
   width: 300px;
   font-size: 13px;
   color: #bfbfbf;
 }
+@media (max-width: 480px) {
+  .subPlans .subPlans_details span {
+    width: 180px;
+  }
+}
 .light_mode .subPlans .subPlans_details span {
   color: #636363;
 }
 .subPlans_details .details_btn {
+  display: flex;
   border-radius: 8px;
 }
 .light_mode .subPlans_details .details_btn {
@@ -45,6 +69,11 @@
   border: 1px solid #454545;
   outline: none;
   cursor: pointer;
+}
+@media (max-width: 480px) {
+  .subPlans_details .details_btn button {
+    padding: 5px 10px;
+  }
 }
 .light_mode .subPlans_details .details_btn button {
   border: none;
@@ -95,6 +124,11 @@
   padding: 35px;
   border-radius: 20px;
 }
+@media (max-width: 768px) {
+  .subPlans .subPlans_cards .subPlans_card {
+    padding: 25px;
+  }
+}
 .light_mode .subPlans .subPlans_cards .subPlans_card {
   background-color: white;
   box-shadow: 10px 10px 19px #e0e0e0, -10px -10px 19px #e6e6e6;
@@ -134,7 +168,6 @@
   color: orange;
 }
 .subPlans_cards .subPlans_card .plan_menu .plan_menu_list p {
-  /* color: black; */
   font-size: 15px;
 }
 .subPlans_cards .subPlans_card .subPlans_btn {
@@ -150,6 +183,11 @@
   outline: none;
   transition: var(--main_transition);
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .subPlans_cards .subPlans_card .subPlans_btn {
+    margin-top: 0px;
+  }
 }
 .light_mode .subPlans_cards .subPlans_card .subPlans_btn {
   background-color: white;

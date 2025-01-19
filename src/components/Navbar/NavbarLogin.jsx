@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import "./Navbar.css";
-// import { useState } from "react";
 import Modal from "../Modal/Modal";
 import Login_Register from "../Login_Register/Login_Register";
 import { useModal, useUser } from "../../context/UserContext";
 import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 export default function NavbarLogin({ isRightSideOpen }) {
+  const { t } = useTranslation();
+
   const { user, setUser } = useUser();
   const { showModal, openModal, closeModal } = useModal();
 
@@ -23,14 +25,14 @@ export default function NavbarLogin({ isRightSideOpen }) {
             className={isRightSideOpen ? "login_btn" : "icon_btn"}
             onClick={handleLogout}
           >
-            {isRightSideOpen ? "Logout" : <FaSignOutAlt />}
+            {isRightSideOpen ? (t("Logout")) : <FaSignOutAlt />}
           </button>
         ) : (
           <button
             className={isRightSideOpen ? "login_btn" : "icon_btn"}
             onClick={openModal}
           >
-            {isRightSideOpen ? "Login" : <FaSignInAlt />}
+            {isRightSideOpen ? (t("Login")) : <FaSignInAlt />}
           </button>
         )}
 

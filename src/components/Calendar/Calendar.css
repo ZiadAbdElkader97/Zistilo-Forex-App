@@ -5,6 +5,11 @@
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .calendar {
+    height: 580px;
+  }
+}
 .light_mode .calendar {
   background-color: #d5dde0;
 }

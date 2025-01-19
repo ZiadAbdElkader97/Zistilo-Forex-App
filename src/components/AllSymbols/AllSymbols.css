@@ -128,6 +128,11 @@
   margin-top: 6px;
   overflow: auto;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .symbol .symbol_section {
+    max-height: 320px;
+  }
+}
 .popular .popular_section {
   width: 100%;
   display: flex;

@@ -6,6 +6,6 @@ import { DataProvider } from "./context/DataProvider.jsx";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <DataProvider>
-    <App />
+      <App />
   </DataProvider>
 );

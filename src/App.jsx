@@ -8,10 +8,12 @@ export default function App() {
   const [isLightMode, setIsLightMode] = useState(false);
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(
-    window.innerWidth > 768 || window.innerWidth <= 768
+    window.innerWidth > 480 ||
+      (window.innerWidth >= 1024 && window.innerWidth <= 1199)
   );
   const [isRightSideOpen, setIsRightSideOpen] = useState(
-    window.innerWidth > 768
+    window.innerWidth > 480 ||
+      (window.innerWidth >= 1024 && window.innerWidth <= 1199)
   );
 
   const toggleMode = () => {
@@ -21,8 +23,12 @@ export default function App() {
   useEffect(() => {
     const handleResize = () => {
       const isDesktop = window.innerWidth > 768;
-      setIsSidebarOpen(isDesktop || window.innerWidth <= 768);
-      setIsRightSideOpen(isDesktop);
+      const isTablet = window.innerWidth >= 1024 && window.innerWidth <= 1199;
+      const isMobile = window.innerWidth <= 480;
+      setIsSidebarOpen(
+        isDesktop || window.innerWidth <= 768 || isTablet || !isMobile
+      );
+      setIsRightSideOpen(isDesktop || isTablet || !isMobile);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -30,7 +36,8 @@ export default function App() {
   }, []);
 
   const toggleSidebar = () => {
-    if (window.innerWidth <= 768) {
+    const isTablet = window.innerWidth >= 1024 && window.innerWidth <= 1199;
+    if (window.innerWidth <= 480 || isTablet) {
       setIsSidebarOpen(!isSidebarOpen);
       setIsRightSideOpen(isSidebarOpen);
     } else {
@@ -39,7 +46,8 @@ export default function App() {
   };
 
   const toggleRightSide = () => {
-    if (window.innerWidth <= 768) {
+    const isTablet = window.innerWidth >= 1024 && window.innerWidth <= 1199;
+    if (window.innerWidth <= 480 || isTablet) {
       setIsRightSideOpen(!isRightSideOpen);
       setIsSidebarOpen(isRightSideOpen);
     } else {

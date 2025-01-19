@@ -5,12 +5,22 @@
   padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .rSide_symbol {
+    height: 580px;
+  }
+}
 .light_mode .rSide_symbol {
   background-color: #d5dde0;
 }
 .rSide_symbol .rSide_content {
-  height: calc(100% + 8px);
+  height: calc(88vh - 3px);
   padding-top: 10px;
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .rSide_symbol .rSide_content {
+    height: calc(100% + 10px);
+  }
 }
 .rSide_symbol .rSide_section {
   width: calc(100% - 12px);

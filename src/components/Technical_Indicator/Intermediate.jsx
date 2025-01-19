@@ -3,8 +3,11 @@ import { PieChart, Pie, Cell } from "recharts";
 import { useContext, useEffect } from "react";
 import { intermediate_signal_data } from "../../assets/data/TechData";
 import { DataContext } from "../../context/DataContext";
+import { useTranslation } from "react-i18next";
 
 export default function Intermediate() {
+  const { t } = useTranslation();
+
   const { otherData2, activeTimeframe, activeSymbol, filterData, ValueBar } =
     useContext(DataContext);
 
@@ -144,7 +147,7 @@ export default function Intermediate() {
                   className="chart_shape"
                   style={{ backgroundColor: "#60d938" }}
                 ></span>
-                <p className="chart_name">Buy</p>
+                <p className="chart_name">{t("Buy")}</p>
                 <p className="chart_num">({item.total_buy})</p>
               </div>
               <div className="chart_info_div">
@@ -152,7 +155,7 @@ export default function Intermediate() {
                   className="chart_shape"
                   style={{ backgroundColor: "#ed250e" }}
                 ></span>
-                <p className="chart_name">Sell</p>
+                <p className="chart_name">{t("Sell")}</p>
                 <p className="chart_num">({item.total_sell})</p>
               </div>
               <div className="chart_info_div">
@@ -160,7 +163,7 @@ export default function Intermediate() {
                   className="chart_shape"
                   style={{ backgroundColor: "#bfbfbf" }}
                 ></span>
-                <p className="chart_name">Neutral</p>
+                <p className="chart_name">{t("Neutral")}</p>
                 <p className="chart_num">({item.total_neutral})</p>
               </div>
             </div>
@@ -200,7 +203,7 @@ export default function Intermediate() {
               ),
             }}
           >
-            {filterOtherData.map((item) => item.summary)}
+            {filterOtherData.map((item) => t(item.summary))}
           </span>
         </div>
       </div>

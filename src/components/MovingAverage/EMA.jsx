@@ -2,8 +2,11 @@ import "./MovingAverage.css";
 import { PieChart, Pie, Cell } from "recharts";
 import { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
+import { useTranslation } from "react-i18next";
 
 export default function EMA() {
+  const { t } = useTranslation();
+
   const { movingAverageEMAData, activeTimeframe, activeSymbol, filterData } =
     useContext(DataContext);
 
@@ -105,7 +108,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_5}
+                {t(item.signal_5)}
               </span>
             </div>
             <hr />
@@ -121,7 +124,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_10}
+                {t(item.signal_10)}
               </span>
             </div>
             <hr />
@@ -137,7 +140,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_20}
+                {t(item.signal_20)}
               </span>
             </div>
             <hr />
@@ -153,7 +156,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_50}
+                {t(item.signal_50)}
               </span>
             </div>
             <hr />
@@ -169,7 +172,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_100}
+                {t(item.signal_100)}
               </span>
             </div>
             <hr />
@@ -185,7 +188,7 @@ export default function EMA() {
                   }`,
                 }}
               >
-                {item.signal_200}
+                {t(item.signal_200)}
               </span>
             </div>
           </div>
@@ -199,7 +202,7 @@ export default function EMA() {
                   className="chart_shape"
                   style={{ backgroundColor: "#60d938" }}
                 ></span>
-                <p className="chart_name">Buy</p>
+                <p className="chart_name">{t("Buy")}</p>
                 <p className="chart_num">({item.total_buy})</p>
               </div>
               <div className="chart_info_div">
@@ -207,7 +210,7 @@ export default function EMA() {
                   className="chart_shape"
                   style={{ backgroundColor: "#ed250e" }}
                 ></span>
-                <p className="chart_name">Sell</p>
+                <p className="chart_name">{t("Sell")}</p>
                 <p className="chart_num">({item.total_sell})</p>
               </div>
               <div className="chart_info_div">
@@ -215,7 +218,7 @@ export default function EMA() {
                   className="chart_shape"
                   style={{ backgroundColor: "#bfbfbf" }}
                 ></span>
-                <p className="chart_name">Neutral</p>
+                <p className="chart_name">{t("Neutral")}</p>
                 <p className="chart_num">({item.total_neutral})</p>
               </div>
             </div>
@@ -249,7 +252,7 @@ export default function EMA() {
                   summaryColor === "#191919" ? "default" : summary.toLowerCase()
                 }`}
               >
-                {formattedSignals.map((item) => item.summary)}
+                {formattedSignals.map((item) => t(item.summary))}
               </text>
             </svg>
           </PieChart>

@@ -1,9 +1,22 @@
 .mailing_list {
-  width: 100%;
+  max-width: 100%;
   display: flex;
   gap: 30px;
   margin-top: 50px;
   margin-bottom: 30px;
+}
+@media (max-width: 1199px) {
+  .mailing_list {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .mailing_list {
+    width: 300px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }
 }
 
 /* Left Side */
@@ -13,6 +26,11 @@
   border-radius: 8px;
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 768px) {
+  .mailing_left {
+    display: none;
+  }
 }
 .mailing_left .mailing_left_info {
   padding: 30px;
@@ -55,6 +73,11 @@
 .mailing_right {
   width: 50%;
   height: 100%;
+}
+@media (max-width: 768px) {
+  .mailing_right {
+    width: 100%;
+  }
 }
 .mailing_right_info .mailing_form {
   width: 100%;

@@ -4,8 +4,11 @@ import { PivotTabs } from "../../assets/data/PivotPointsData";
 import Classic from "../PivotPoints/Classic";
 import Fibonacci from "../PivotPoints/Fibonacci";
 import Camarilla from "../PivotPoints/Camarilla";
+import { useTranslation } from "react-i18next";
 
 export default function PivotPoints() {
+  const { t } = useTranslation();
+
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
@@ -22,7 +25,7 @@ export default function PivotPoints() {
             }
             onClick={() => toggleTab(item.id)}
           >
-            {item.tab}
+            {t(item.tab)}
           </span>
         ))}
       </div>

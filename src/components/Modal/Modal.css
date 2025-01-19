@@ -11,13 +11,18 @@
   z-index: 500;
 }
 .modal_overlay .modal_content {
-  min-width: 420px;
+  max-width: 100%;
   background-color: #292929;
   padding: 20px;
   border-radius: 8px;
   position: relative;
   border: 1px solid #525252;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 480px) {
+  .modal_overlay .modal_content {
+    width: 370px;
+  }
 }
 .light_mode .modal_overlay .modal_content {
   background-color: white;

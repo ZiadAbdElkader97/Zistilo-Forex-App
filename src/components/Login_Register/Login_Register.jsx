@@ -4,8 +4,11 @@ import { useState } from "react";
 import { FaCircleUser } from "react-icons/fa6";
 import { PiUserCirclePlusBold } from "react-icons/pi";
 import { useUser } from "../../context/UserContext";
+import { useTranslation } from "react-i18next";
 
 export default function Login_Register({ closeModal }) {
+  const { t } = useTranslation();
+
   const { setUser } = useUser();
 
   const [activeForm, setActiveForm] = useState("login");
@@ -32,6 +35,13 @@ export default function Login_Register({ closeModal }) {
       setUser({ email: formData.email });
       localStorage.setItem("user", JSON.stringify({ email: formData.email }));
       closeModal();
+    } else if (activeForm === "register") {
+      setUser({ name: formData.name, email: formData.email });
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ name: formData.name, email: formData.email })
+      );
+      closeModal();
     }
   };
 
@@ -43,14 +53,14 @@ export default function Login_Register({ closeModal }) {
             <i className="form_icon">
               <FaCircleUser />
             </i>
-            <h1>Login</h1>
+            <h1>{t("Login")}</h1>
           </div>
           {/* Login Form */}
           <form onSubmit={handleSubmit}>
             <input
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder={t("Enter your email")}
               required
               value={formData.email}
               onChange={handleInputChange}
@@ -58,35 +68,35 @@ export default function Login_Register({ closeModal }) {
             <input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder={t("Enter your password")}
               required
               value={formData.password}
               onChange={handleInputChange}
             />
             <div className="keep_login">
               <input type="checkbox" name="keep_login" id="keep_login" />
-              <label htmlFor="keep_login">Remember me</label>
+              <label htmlFor="keep_login">{t("Remember me")}</label>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit">{t("Login")}</button>
           </form>
           <span className="login_span" onClick={() => switchForm("register")}>
-            Forget Email / Password?
+            {t("Forget Email / Password?")}
           </span>
         </div>
       )}
       {activeForm === "register" && (
         <div className="signup_form">
           <div className="form_header">
-            <i className="form_icon">
+            <i className="form_icon signup_icon">
               <PiUserCirclePlusBold />
             </i>
-            <h1>Sign Up</h1>
+            <h1>{t("Sign Up")}</h1>
           </div>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
               name="name"
-              placeholder="Enter your name"
+              placeholder={t("Enter your name")}
               required
               value={formData.name}
               onChange={handleInputChange}
@@ -94,7 +104,7 @@ export default function Login_Register({ closeModal }) {
             <input
               type="email"
               name="email"
-              placeholder="Enter your email"
+              placeholder={t("Enter your email")}
               required
               value={formData.email}
               onChange={handleInputChange}
@@ -102,7 +112,7 @@ export default function Login_Register({ closeModal }) {
             <input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder={t("Enter your password")}
               required
               value={formData.password}
               onChange={handleInputChange}
@@ -110,16 +120,16 @@ export default function Login_Register({ closeModal }) {
             <input
               type="password"
               name="confirmPassword"
-              placeholder="Confirm your password"
+              placeholder={t("Confirm your password")}
               required
               value={formData.confirmPassword}
               onChange={handleInputChange}
             />
-            <button type="submit">Sign Up</button>
+            <button type="submit">{t("Sign Up")}</button>
           </form>
-          <span className="signup_span">
-            Already have an account?
-            <span onClick={() => switchForm("login")}>Login Here</span>
+          <span className="signup_span arabic_text">
+            {t("Already have an account?")}
+            <span onClick={() => switchForm("login")}>{t("Login Here")}</span>
           </span>
         </div>
       )}
