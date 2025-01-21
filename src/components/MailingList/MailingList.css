@@ -11,11 +11,15 @@
     margin-bottom: 10px;
   }
 }
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 1023px) {
   .mailing_list {
-    width: 300px;
     margin-top: 20px;
     margin-bottom: 5px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mailing_list {
+    width: 300px;
   }
 }
 
@@ -100,6 +104,12 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .mailing_right_info .mailing_form .mailing_err_msg {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
 .light_mode .mailing_right_info .mailing_form .mailing_err_msg {
   background: #d5dde0;
 }
@@ -116,8 +126,19 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .mailing_right_info .mailing_form .mailing_success_msg {
+    font-size: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
 .light_mode .mailing_right_info .mailing_form .mailing_success_msg {
   background: #d5dde0;
+}
+.mailing_form .mailing_field_group {
+  display: flex;
+  gap: 10px;
 }
 .mailing_form .mailing_field {
   width: 100%;
@@ -154,7 +175,7 @@
 .light_mode .mailing_form .mailing_field .mailing_textarea {
   background: #d5dde0;
 }
-.mailing_form .mailing_submit .mailing_submit_button {
+.mailing_submit .mailing_submit_button {
   width: 80%;
   height: 35px;
   color: white;
@@ -167,6 +188,11 @@
   border-radius: 8px;
   cursor: pointer;
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .mailing_submit .mailing_submit_button {
+    margin: 5px auto;
+  }
 }
 .mailing_form .mailing_submit .mailing_submit_button:hover {
   background-image: linear-gradient(10deg, #2980b9 0%, #19499c 100%);

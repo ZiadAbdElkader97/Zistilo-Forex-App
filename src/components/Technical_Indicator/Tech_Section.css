@@ -120,6 +120,11 @@
   flex-direction: column;
   gap: 13px;
 }
+@media (max-width: 480px) {
+  .tech_section .tech_values .chart_values {
+    gap: 14px;
+  }
+}
 .tech_values .value_bar_container {
   width: 90px;
   height: 11px;
@@ -177,6 +182,11 @@
 @media (max-width: 480px) {
   .tech_section .tech_chart {
     margin-top: 5px;
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .tech_section .tech_chart_adv {
+    display: none;
   }
 }
 .tech_section .tech_chart .chart_info {

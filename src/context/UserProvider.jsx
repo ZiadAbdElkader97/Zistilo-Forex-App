@@ -11,7 +11,9 @@ export default function UserProvider({ children }) {
   const closeModal = () => setShowModal(false);
 
   return (
-    <UserContext.Provider value={{ user, setUser, showModal, openModal, closeModal }}>
+    <UserContext.Provider
+      value={{ user, setUser, showModal, openModal, closeModal }}
+    >
       {children}
     </UserContext.Provider>
   );

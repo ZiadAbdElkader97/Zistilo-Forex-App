@@ -1,5 +1,5 @@
 import "./Contact_Us.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaFacebook,
   FaLinkedinIn,
@@ -19,6 +19,18 @@ export default function Contact_Us() {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [attachPic, setAttachPic] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobileView(window.innerWidth >= 481 && window.innerWidth <= 767);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
 
   // ============== Email Validation Start ==============
 
@@ -108,81 +120,169 @@ export default function Contact_Us() {
           <form onSubmit={handleSend} className="contact_form">
             {errMsg && <p className="contact_err_msg">{errMsg}</p>}
             {successMsg && <p className="contact_success_msg">{successMsg}</p>}
-            <div className="contact_name_phone">
-              <div className="contact_field" style={{ width: "47%" }}>
-                <p className="contact_label">{t("Name")}</p>
-                <input
-                  type="text"
-                  className="contact_input"
-                  placeholder={t("Enter your name")}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="contact_field" style={{ width: "48%" }}>
-                <p className="contact_label">{t("Phone Number")}</p>
-                <input
-                  type="text"
-                  className="contact_input"
-                  placeholder={t("Enter your phone number")}
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                />
-              </div>
-            </div>
 
-            <div className="contact_field">
-              <p className="contact_label">{t("Email")}</p>
-              <input
-                type="email"
-                className="contact_input"
-                placeholder={t("Enter your email")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            {isMobileView ? (
+              <>
+                <div className="contact_name_phone">
+                  <div className="contact_field" style={{ width: "47%" }}>
+                    <p className="contact_label">{t("Name")}</p>
+                    <input
+                      type="text"
+                      className="contact_input"
+                      placeholder={t("Enter your name")}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
 
-            <div className="contact_field">
-              <p className="contact_label">{t("Subject")}</p>
-              <input
-                type="text"
-                className="contact_input"
-                placeholder={t("Enter your subject")}
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
-              />
-            </div>
+                  <div className="contact_field" style={{ width: "48%" }}>
+                    <p className="contact_label">{t("Phone Number")}</p>
+                    <input
+                      type="text"
+                      className="contact_input"
+                      placeholder={t("Enter your phone number")}
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </div>
 
-            <div className="contact_field">
-              <p className="contact_label">{t("Message")}</p>
-              <textarea
-                className="contact_textarea"
-                placeholder={t("Write your message")}
-                cols={10}
-                rows={5}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              ></textarea>
-            </div>
+                  <div className="contact_field">
+                    <p className="contact_label">{t("Email")}</p>
+                    <input
+                      type="email"
+                      className="contact_input"
+                      placeholder={t("Enter your email")}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
 
-            <div className="contact_field">
-              <p className="contact_label">{t("Attach Picture")}</p>
-              <input
-                type="file"
-                accept="image/*"
-                className="contact_attach"
-                value={attachPic}
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file && file.size > 1024 * 1024) {
-                    alert(t("The file size must be less than 1MB."));
-                    e.target.value = "";
-                  } else {
-                    setAttachPic(e.target.value);
-                  }
-                }}
-              />
-            </div>
+                <div className="contact_name_phone">
+                  <div className="contact_sub_msg">
+                    <div className="contact_field">
+                      <p className="contact_label">{t("Subject")}</p>
+                      <input
+                        type="text"
+                        className="contact_input"
+                        placeholder={t("Enter your subject")}
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="contact_field">
+                      <p className="contact_label">{t("Attach Picture")}</p>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="contact_attach"
+                        value={attachPic}
+                        onChange={(e) => {
+                          const file = e.target.files[0];
+                          if (file && file.size > 1024 * 1024) {
+                            alert(t("The file size must be less than 1MB."));
+                            e.target.value = "";
+                          } else {
+                            setAttachPic(e.target.value);
+                          }
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="contact_field">
+                    <p className="contact_label">{t("Message")}</p>
+                    <textarea
+                      className="contact_textarea"
+                      placeholder={t("Write your message")}
+                      cols={10}
+                      rows={5}
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="contact_name_phone">
+                  <div className="contact_field" style={{ width: "47%" }}>
+                    <p className="contact_label">{t("Name")}</p>
+                    <input
+                      type="text"
+                      className="contact_input"
+                      placeholder={t("Enter your name")}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  <div className="contact_field" style={{ width: "48%" }}>
+                    <p className="contact_label">{t("Phone Number")}</p>
+                    <input
+                      type="text"
+                      className="contact_input"
+                      placeholder={t("Enter your phone number")}
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div className="contact_field">
+                  <p className="contact_label">{t("Email")}</p>
+                  <input
+                    type="email"
+                    className="contact_input"
+                    placeholder={t("Enter your email")}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div className="contact_field">
+                  <p className="contact_label">{t("Subject")}</p>
+                  <input
+                    type="text"
+                    className="contact_input"
+                    placeholder={t("Enter your subject")}
+                    value={subject}
+                    onChange={(e) => setSubject(e.target.value)}
+                  />
+                </div>
+
+                <div className="contact_field">
+                  <p className="contact_label">{t("Message")}</p>
+                  <textarea
+                    className="contact_textarea"
+                    placeholder={t("Write your message")}
+                    cols={10}
+                    rows={5}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  ></textarea>
+                </div>
+
+                <div className="contact_field">
+                  <p className="contact_label">{t("Attach Picture")}</p>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="contact_attach"
+                    value={attachPic}
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file && file.size > 1024 * 1024) {
+                        alert(t("The file size must be less than 1MB."));
+                        e.target.value = "";
+                      } else {
+                        setAttachPic(e.target.value);
+                      }
+                    }}
+                  />
+                </div>
+              </>
+            )}
 
             <div className="contact_submit">
               <button

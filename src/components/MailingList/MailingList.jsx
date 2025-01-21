@@ -5,7 +5,7 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 import "./MailingList.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function MailingList() {
@@ -17,6 +17,18 @@ export default function MailingList() {
   const [birthday, setBirthday] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobileView(window.innerWidth >= 481 && window.innerWidth <= 767);
+    };
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize);
+    };
+  }, []);
 
   // ============== Email Validation Start ==============
 
@@ -102,48 +114,102 @@ export default function MailingList() {
           <form onSubmit={handleSend} className="mailing_form">
             {errMsg && <p className="mailing_err_msg">{errMsg}</p>}
             {successMsg && <p className="mailing_success_msg">{successMsg}</p>}
-            <div className="mailing_field">
-              <p className="mailing_label">{t("Name")}</p>
-              <input
-                type="text"
-                className="mailing_input"
-                placeholder={t("Enter your name")}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-            </div>
 
-            <div className="mailing_field">
-              <p className="mailing_label">{t("Email")}</p>
-              <input
-                type="email"
-                className="mailing_input"
-                placeholder={t("Enter your email")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+            {isMobileView ? (
+              <>
+                <div className="mailing_field_group">
+                  <div className="mailing_field">
+                    <p className="mailing_label">{t("Name")}</p>
+                    <input
+                      type="text"
+                      className="mailing_input"
+                      placeholder={t("Enter your name")}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
 
-            <div className="mailing_field">
-              <p className="mailing_label">{t("Phone Number")}</p>
-              <input
-                type="text"
-                className="mailing_input"
-                placeholder={t("Enter your phone number")}
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </div>
+                  <div className="mailing_field">
+                    <p className="mailing_label">{t("Email")}</p>
+                    <input
+                      type="email"
+                      className="mailing_input"
+                      placeholder={t("Enter your email")}
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="mailing_field_group">
+                  <div className="mailing_field">
+                    <p className="mailing_label">{t("Phone Number")}</p>
+                    <input
+                      type="text"
+                      className="mailing_input"
+                      placeholder={t("Enter your phone number")}
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
+                    />
+                  </div>
 
-            <div className="mailing_field">
-              <p className="mailing_label">{t("Birthday")}</p>
-              <input
-                type="date"
-                className="mailing_input"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
-              />
-            </div>
+                  <div className="mailing_field">
+                    <p className="mailing_label">{t("Birthday")}</p>
+                    <input
+                      type="date"
+                      className="mailing_input"
+                      value={birthday}
+                      onChange={(e) => setBirthday(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="mailing_field">
+                  <p className="mailing_label">{t("Name")}</p>
+                  <input
+                    type="text"
+                    className="mailing_input"
+                    placeholder={t("Enter your name")}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+
+                <div className="mailing_field">
+                  <p className="mailing_label">{t("Email")}</p>
+                  <input
+                    type="email"
+                    className="mailing_input"
+                    placeholder={t("Enter your email")}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+
+                <div className="mailing_field">
+                  <p className="mailing_label">{t("Phone Number")}</p>
+                  <input
+                    type="text"
+                    className="mailing_input"
+                    placeholder={t("Enter your phone number")}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                  />
+                </div>
+
+                <div className="mailing_field">
+                  <p className="mailing_label">{t("Birthday")}</p>
+                  <input
+                    type="date"
+                    className="mailing_input"
+                    value={birthday}
+                    onChange={(e) => setBirthday(e.target.value)}
+                  />
+                </div>
+              </>
+            )}
+
             <div className="mailing_submit">
               <button
                 className="mailing_submit_button"

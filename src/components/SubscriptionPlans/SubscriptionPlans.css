@@ -8,6 +8,11 @@
     padding: 0px 10px;
   }
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .subPlans {
+    width: 500px;
+  }
+}
 @media (max-width: 1199px) {
   .subPlans {
     margin-top: 30px;
@@ -50,19 +55,25 @@
 @media (max-width: 480px) {
   .subPlans .subPlans_details span {
     width: 180px;
+    font-size: 12px;
+  }
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .subPlans .subPlans_details span {
+    width: 250px;
   }
 }
 .light_mode .subPlans .subPlans_details span {
   color: #636363;
 }
-.subPlans_details .details_btn {
+.subPlans .details_btn {
   display: flex;
   border-radius: 8px;
 }
-.light_mode .subPlans_details .details_btn {
+.light_mode .subPlans .details_btn {
   box-shadow: 10px 10px 19px #e0e0e0, -10px -10px 19px #e6e6e6;
 }
-.subPlans_details .details_btn button {
+.subPlans .details_btn button {
   color: white;
   background-color: #525252;
   padding: 10px 20px;
@@ -70,53 +81,89 @@
   outline: none;
   cursor: pointer;
 }
-@media (max-width: 480px) {
-  .subPlans_details .details_btn button {
-    padding: 5px 10px;
+@media (min-width: 375px) and (max-width: 767px) {
+  .subPlans .details_btn button {
+    padding: 8px 12px;
   }
 }
-.light_mode .subPlans_details .details_btn button {
+.light_mode .subPlans .details_btn button {
   border: none;
 }
-.subPlans_details .details_btn button:hover {
+.subPlans .details_btn button:hover {
   background-color: #828282;
 }
-.light_mode .subPlans_details .details_btn button:hover {
+.light_mode .subPlans .details_btn button:hover {
   background-color: #e2edf1;
 }
-.subPlans_details .details_btn .btn1 {
+.subPlans .details_btn .btn1 {
   border-radius: 8px 0px 0px 8px;
 }
-.subPlans_details .details_btn .btn2 {
+.subPlans .details_btn .btn2 {
   border-radius: 0px 8px 8px 0;
 }
-.subPlans_details .details_btn .btn_active {
+.subPlans .details_btn .btn_active {
   background-color: var(--main_color);
 }
-.subPlans_details .details_btn .btn_active:hover {
+.subPlans .details_btn .btn_active:hover {
   background-color: var(--main_color);
 }
-.light_mode .subPlans_details .details_btn .btn_active {
+.light_mode .subPlans .details_btn .btn_active {
   color: white;
   background-color: var(--main_color);
   border-radius: 8px;
 }
-.light_mode .subPlans_details .details_btn .btn_active:hover {
+.light_mode .subPlans .details_btn .btn_active:hover {
   background-color: var(--main_color);
 }
-.light_mode .subPlans_details .details_btn .btn_active:hover {
+.light_mode .subPlans .details_btn .btn_active:hover {
   background-color: var(--main_color);
 }
-.light_mode .subPlans_details .details_btn button {
+.light_mode .subPlans .details_btn button {
   color: black;
   background-color: white;
 }
+
+.subPlans .plan_section {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: auto;
+}
+@media (max-width: 480px) {
+  .subPlans .plan_section {
+    height: 450px;
+  }
+}
+.subPlans .plan_section .plan {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #525252;
+  padding: 8px 0px 8px 10px;
+  border-radius: var(--border_radius);
+  cursor: pointer;
+}
+.light_mode .subPlans .plan_section .plan {
+  background-color: #d5dde0;
+}
+.subPlans .plan_section .plan .plan_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subPlans .plan_section .plan .plan_name {
+  font-size: 13px;
+}
+
 .subPlans .subPlans_cards {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 15px;
 }
-.subPlans .subPlans_cards .subPlans_card {
+.subPlans .subPlans_card {
+  width: 280px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -125,52 +172,52 @@
   border-radius: 20px;
 }
 @media (max-width: 768px) {
-  .subPlans .subPlans_cards .subPlans_card {
+  .subPlans .subPlans_card {
     padding: 25px;
   }
 }
-.light_mode .subPlans .subPlans_cards .subPlans_card {
+.light_mode .subPlans .subPlans_card {
   background-color: white;
   box-shadow: 10px 10px 19px #e0e0e0, -10px -10px 19px #e6e6e6;
 }
-.subPlans_cards .subPlans_card .plan_name {
+.subPlans .subPlans_card .plan_name {
   font-size: 20px;
   font-weight: 600;
 }
-.subPlans_cards .subPlans_card .plan_price {
+.subPlans .subPlans_card .plan_price {
   display: flex;
   align-items: baseline;
   gap: 3px;
   margin-top: 20px;
 }
-.subPlans_cards .subPlans_card .plan_price h3 {
+.subPlans .subPlans_card .plan_price h3 {
   font-size: 30px;
   font-weight: 500;
 }
-.subPlans_cards .subPlans_card .plan_price span {
+.subPlans .subPlans_card .plan_price span {
   font-size: 11px;
   color: #c8c8c8;
 }
-.light_mode .subPlans_cards .subPlans_card .plan_price span {
+.light_mode .subPlans .subPlans_card .plan_price span {
   color: #838383;
 }
-.subPlans_cards .subPlans_card .plan_menu {
+.subPlans .subPlans_card .plan_menu {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 20px;
 }
-.subPlans_cards .subPlans_card .plan_menu .plan_menu_list {
+.subPlans .subPlans_card .plan_menu .plan_menu_list {
   display: flex;
   gap: 10px;
 }
-.subPlans_cards .subPlans_card .plan_menu .plan_menu_list i {
+.subPlans .subPlans_card .plan_menu .plan_menu_list i {
   color: orange;
 }
-.subPlans_cards .subPlans_card .plan_menu .plan_menu_list p {
-  font-size: 15px;
+.subPlans .subPlans_card .plan_menu .plan_menu_list p {
+  font-size: 14px;
 }
-.subPlans_cards .subPlans_card .subPlans_btn {
+.subPlans .subPlans_card .subPlans_btn {
   width: 100%;
   color: var(--main_color);
   background-color: #525252;
@@ -185,14 +232,14 @@
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .subPlans_cards .subPlans_card .subPlans_btn {
+  .subPlans .subPlans_card .subPlans_btn {
     margin-top: 0px;
   }
 }
-.light_mode .subPlans_cards .subPlans_card .subPlans_btn {
+.light_mode .subPlans .subPlans_card .subPlans_btn {
   background-color: white;
 }
-.subPlans_cards .subPlans_card .subPlans_btn:hover {
+.subPlans .subPlans_card .subPlans_btn:hover {
   color: white;
   background-color: var(--main_color);
 }

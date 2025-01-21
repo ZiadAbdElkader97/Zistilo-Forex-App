@@ -32,15 +32,14 @@ export default function Login_Register({ closeModal }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (activeForm === "login") {
-      setUser({ email: formData.email });
-      localStorage.setItem("user", JSON.stringify({ email: formData.email }));
+      const loggedInUser = { email: formData.email };
+      setUser(loggedInUser);
+      localStorage.setItem("user", JSON.stringify(loggedInUser));
       closeModal();
     } else if (activeForm === "register") {
-      setUser({ name: formData.name, email: formData.email });
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ name: formData.name, email: formData.email })
-      );
+      const registeredUser = { name: formData.name, email: formData.email };
+      setUser(registeredUser);
+      localStorage.setItem("user", JSON.stringify(registeredUser));
       closeModal();
     }
   };
