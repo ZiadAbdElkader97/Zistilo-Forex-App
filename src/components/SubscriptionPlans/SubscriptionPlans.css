@@ -40,7 +40,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
-@media (max-width: 480px) {
+@media (max-width: 1023px) {
   .subPlans .subPlans_details {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -63,6 +63,11 @@
     width: 250px;
   }
 }
+@media (min-width: 767px) and (max-width: 1023px) {
+  .subPlans .subPlans_details span {
+    width: 250px;
+  }
+}
 .light_mode .subPlans .subPlans_details span {
   color: #636363;
 }
@@ -81,9 +86,9 @@
   outline: none;
   cursor: pointer;
 }
-@media (min-width: 375px) and (max-width: 767px) {
+@media (min-width: 375px) and (max-width: 1023px) {
   .subPlans .details_btn button {
-    padding: 8px 12px;
+    padding: 6px 12px;
   }
 }
 .light_mode .subPlans .details_btn button {
@@ -124,13 +129,18 @@
 }
 
 .subPlans .plan_section {
-  height: 200px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   overflow: auto;
 }
 @media (max-width: 480px) {
+  .subPlans .plan_section {
+    height: 450px;
+  }
+}
+@media (min-width: 767px) and (max-width: 1023px) {
   .subPlans .plan_section {
     height: 450px;
   }

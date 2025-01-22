@@ -24,6 +24,11 @@
     display: none;
   }
 }
+@media (min-width: 481px) and (max-width: 766px) {
+  .content .content_middle {
+    display: block;
+  }
+}
 @media (min-width: 767px) and (max-width: 1023px) {
   .content .content_middle {
     order: 2;
