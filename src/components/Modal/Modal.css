@@ -19,11 +19,6 @@
   border: 1px solid #525252;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-@media (max-width: 480px) {
-  .modal_overlay .modal_content {
-    width: 370px;
-  }
-}
 .light_mode .modal_overlay .modal_content {
   background-color: white;
 }

@@ -1,15 +1,26 @@
 .tech_general {
   position: relative;
-}
-.tech_indicator {
-  width: 100%;
-  height: calc(88vh + 4px);
+  height: calc(100% - 25px);
   background-color: #525252;
+  padding-bottom: 15px;
   border-radius: 0 4px 4px 4px;
 }
-@media (min-width: 481px) and (max-width: 767px) {
-  .tech_indicator {
+.tech_indicator {
+  height: 100%;
+}
+@media (max-width: 480px) and (orientation: portrait) {
+  .tech_general {
+    height: calc(100% - 30px);
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+  .tech_general {
     height: 580px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: landscape) {
+  .tech_general {
+    height: calc(100% - 30px);
   }
 }
 .tech_indicator_blur {
@@ -88,7 +99,7 @@
 }
 .tech_section {
   width: calc(100% - 12px);
-  height: calc(100% - 42px);
+  height: calc(100% - 26px);
   background-color: #292929;
   margin-left: 6px;
   margin-right: 6px;
@@ -110,7 +121,7 @@
   padding-bottom: 8px;
   z-index: 10;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .tech_section .tech_values .data_values {
     font-size: 11px;
   }
@@ -120,7 +131,7 @@
   flex-direction: column;
   gap: 13px;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .tech_section .tech_values .chart_values {
     gap: 14px;
   }
@@ -130,7 +141,7 @@
   height: 11px;
   position: relative;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .tech_values .value_bar_container {
     height: 9.5px;
   }
@@ -168,7 +179,7 @@
   font-size: 12px;
   text-align: right;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .tech_section .tech_values .status_values p {
     font-size: 11px;
   }
@@ -179,12 +190,12 @@
   align-items: center;
   margin-top: 10px;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .tech_section .tech_chart {
     margin-top: 5px;
   }
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .tech_section .tech_chart_adv {
     display: none;
   }

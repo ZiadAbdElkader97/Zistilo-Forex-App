@@ -1,25 +1,20 @@
 .mailing_list {
-  max-width: 100%;
+  width: 100%;
   display: flex;
   gap: 30px;
   margin-top: 50px;
   margin-bottom: 30px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
   .mailing_list {
     margin-top: 30px;
     margin-bottom: 10px;
   }
 }
-@media (min-width: 481px) and (max-width: 1023px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .mailing_list {
     margin-top: 20px;
     margin-bottom: 5px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  .mailing_list {
-    width: 300px;
   }
 }
 
@@ -31,7 +26,7 @@
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
   box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.5);
 }
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .mailing_left {
     display: none;
   }
@@ -78,7 +73,7 @@
   width: 50%;
   height: 100%;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .mailing_right {
     width: 100%;
   }
@@ -104,7 +99,7 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
-@media (min-width: 481px) and (max-width: 1023px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .mailing_right_info .mailing_form .mailing_err_msg {
     padding-top: 8px;
     padding-bottom: 8px;
@@ -126,7 +121,7 @@
   transition: var(--main_transition);
   box-shadow: var(--main-shadow);
 }
-@media (min-width: 481px) and (max-width: 1023px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .mailing_right_info .mailing_form .mailing_success_msg {
     font-size: 12px;
     padding-top: 8px;
@@ -189,7 +184,7 @@
   cursor: pointer;
   background-image: linear-gradient(10deg, #19499c 0%, #2980b9 100%);
 }
-@media (min-width: 481px) and (max-width: 1023px) {
+@media (min-width: 481px) and (max-width: 1024px) {
   .mailing_submit .mailing_submit_button {
     margin: 5px auto;
   }

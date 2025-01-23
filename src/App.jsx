@@ -5,7 +5,14 @@ import Content from "./components/Content/Content.jsx";
 import UserProvider from "./context/UserProvider.jsx";
 
 export default function App() {
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(
+    localStorage.getItem("mode") === "light" || false
+  );
+
+  const toggleMode = () => {
+    setIsLightMode(!isLightMode);
+    localStorage.setItem("mode", !isLightMode ? "light" : "dark");
+  };
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(
     window.innerWidth > 480 ||
@@ -15,10 +22,6 @@ export default function App() {
     window.innerWidth > 480 ||
       (window.innerWidth >= 1024 && window.innerWidth <= 1199)
   );
-
-  const toggleMode = () => {
-    setIsLightMode(!isLightMode);
-  };
 
   useEffect(() => {
     const handleResize = () => {

@@ -13,7 +13,7 @@
   align-items: center;
   margin-top: 20px;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .form_header {
     margin-top: 5px;
   }
@@ -23,12 +23,12 @@
   font-size: 60px;
   padding-bottom: -30px;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .form_header .form_icon {
     font-size: 40px;
   }
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .form_header .signup_icon {
     display: none;
   }
@@ -39,7 +39,7 @@
   margin-bottom: 20px;
   text-transform: uppercase;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .login_form h1,
   .signup_form h1 {
     margin-bottom: 5px;
@@ -56,7 +56,7 @@ form {
   flex-direction: column;
   gap: 15px;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   form {
     gap: 10px;
   }
@@ -67,7 +67,7 @@ form input {
   border: none;
   outline: none;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   form input {
     padding: 5px 10px;
   }
@@ -105,7 +105,7 @@ form button {
   transition: var(--main_transition);
   cursor: pointer;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   form button {
     margin: 5px auto 0px auto;
   }
@@ -120,7 +120,7 @@ form button:hover {
   margin-top: 20px;
   cursor: pointer;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .login_span {
     margin-top: 5px;
   }
@@ -135,7 +135,7 @@ form button:hover {
   justify-content: center;
   margin-top: 20px;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .signup_span {
     margin-top: 5px;
   }

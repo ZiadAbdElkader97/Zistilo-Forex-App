@@ -99,10 +99,16 @@
   padding: 4px 33px 4px 0px;
   margin-top: 5px;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .market_section .data_header {
-    gap: 17px;
-    padding: 4px 38px 4px 0px;
+    gap: 5vw;
+    padding: 4px 9vw 4px 0px;
+  }
+}
+@media (min-width: 767px) and (max-width: 991px) and (orientation: portrait) {
+  .market_section .data_header {
+    gap: 3vw;
+    padding: 4px 5.5vw 4px 0px;
   }
 }
 .light_mode .market_section .data_header {
@@ -128,7 +134,7 @@
   margin-top: 6px;
   overflow: auto;
 }
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
   .symbol .symbol_section {
     max-height: 320px;
   }

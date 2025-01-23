@@ -19,11 +19,14 @@ export default function Contact_Us() {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [attachPic, setAttachPic] = useState(null);
-  const [isMobileView, setIsMobileView] = useState(false);
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobileView(window.innerWidth >= 481 && window.innerWidth <= 767);
+      const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+      setIsMobileLandscape(
+        window.innerWidth >= 481 && window.innerWidth <= 768 && isLandscape
+      );
     };
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
@@ -121,7 +124,7 @@ export default function Contact_Us() {
             {errMsg && <p className="contact_err_msg">{errMsg}</p>}
             {successMsg && <p className="contact_success_msg">{successMsg}</p>}
 
-            {isMobileView ? (
+            {isMobileLandscape ? (
               <>
                 <div className="contact_name_phone">
                   <div className="contact_field" style={{ width: "47%" }}>

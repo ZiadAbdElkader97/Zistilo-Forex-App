@@ -1,19 +1,15 @@
 .subPlans {
+  width: 100%;
   padding: 0px 40px;
   margin-top: 60px;
   margin-bottom: 60px;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .subPlans {
     padding: 0px 10px;
   }
 }
-@media (min-width: 481px) and (max-width: 767px) {
-  .subPlans {
-    width: 500px;
-  }
-}
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
   .subPlans {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -40,7 +36,7 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
   .subPlans .subPlans_details {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -52,20 +48,9 @@
   font-size: 13px;
   color: #bfbfbf;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .subPlans .subPlans_details span {
-    width: 180px;
     font-size: 12px;
-  }
-}
-@media (min-width: 481px) and (max-width: 767px) {
-  .subPlans .subPlans_details span {
-    width: 250px;
-  }
-}
-@media (min-width: 767px) and (max-width: 1023px) {
-  .subPlans .subPlans_details span {
-    width: 250px;
   }
 }
 .light_mode .subPlans .subPlans_details span {
@@ -86,7 +71,7 @@
   outline: none;
   cursor: pointer;
 }
-@media (min-width: 375px) and (max-width: 1023px) {
+@media (max-width: 1024px) {
   .subPlans .details_btn button {
     padding: 6px 12px;
   }
@@ -135,14 +120,14 @@
   gap: 6px;
   overflow: auto;
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) and (orientation: portrait) {
   .subPlans .plan_section {
-    height: 450px;
+    height: auto;
   }
 }
-@media (min-width: 767px) and (max-width: 1023px) {
+@media (min-width: 767px) and (max-width: 1024px) and (orientation: portrait) {
   .subPlans .plan_section {
-    height: 450px;
+    height: auto;
   }
 }
 .subPlans .plan_section .plan {
@@ -181,7 +166,7 @@
   padding: 35px;
   border-radius: 20px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .subPlans .subPlans_card {
     padding: 25px;
   }
@@ -241,7 +226,7 @@
   transition: var(--main_transition);
   cursor: pointer;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .subPlans .subPlans_card .subPlans_btn {
     margin-top: 0px;
   }

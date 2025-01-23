@@ -1,16 +1,27 @@
 .patterns_general {
+  width: 100%;
   position: relative;
+  background-color: #525252;
+  height: calc(100% - 25px);
+  border-radius: 0 4px 4px 4px;
+  padding-bottom: 15px;
 }
 .patterns {
-  width: 100%;
-  height: calc(88vh + 4px);
-  background-color: #525252;
-  padding-bottom: 15px;
-  border-radius: 0 4px 4px 4px;
+  height: 100%;
 }
-@media (min-width: 481px) and (max-width: 767px) {
-  .patterns {
+@media (max-width: 480px) and (orientation: portrait) {
+  .patterns_general {
+    height: calc(100% - 30px);
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) and (orientation: landscape) {
+  .patterns_general {
     height: 580px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) and (orientation: landscape) {
+  .patterns_general {
+    height: calc(100% - 30px);
   }
 }
 .light_mode .patterns {
@@ -42,7 +53,7 @@
 }
 
 .patterns .patterns_content {
-  height: calc(100% + 8px);
+  height: calc(100% + 9px);
   padding-top: 10px;
 }
 .patterns .patterns_section {

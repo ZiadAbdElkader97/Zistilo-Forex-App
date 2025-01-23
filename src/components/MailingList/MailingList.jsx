@@ -17,11 +17,14 @@ export default function MailingList() {
   const [birthday, setBirthday] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
-  const [isMobileView, setIsMobileView] = useState(false);
+  const [isMobileLandscape, setIsMobileLandscape] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobileView(window.innerWidth >= 481 && window.innerWidth <= 767);
+      const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+      setIsMobileLandscape(
+        window.innerWidth >= 481 && window.innerWidth <= 768 && isLandscape
+      );
     };
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
@@ -115,7 +118,7 @@ export default function MailingList() {
             {errMsg && <p className="mailing_err_msg">{errMsg}</p>}
             {successMsg && <p className="mailing_success_msg">{successMsg}</p>}
 
-            {isMobileView ? (
+            {isMobileLandscape ? (
               <>
                 <div className="mailing_field_group">
                   <div className="mailing_field">
