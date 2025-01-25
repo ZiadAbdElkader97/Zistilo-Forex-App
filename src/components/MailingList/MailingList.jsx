@@ -22,12 +22,12 @@ export default function MailingList() {
   useEffect(() => {
     const checkScreenSize = () => {
       const isLandscape = window.matchMedia("(orientation: landscape)").matches;
-      setIsMobileLandscape(
-        window.innerWidth >= 481 && window.innerWidth <= 768 && isLandscape
-      );
+      setIsMobileLandscape(window.innerWidth < 1200 && isLandscape);
     };
+
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
+
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };
