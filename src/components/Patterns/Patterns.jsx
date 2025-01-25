@@ -92,12 +92,12 @@ export default function Patterns() {
                             <div
                               className="strength_bar"
                               style={{
-                                width: `${item.candle_strength * 2}px`,
+                                width: `${item.candle_strength}px`,
                                 backgroundColor: barColor,
                               }}
                             ></div>
                             <p className="patterns_value">
-                              %{item.candle_strength * 2}
+                              %{item.candle_strength}
                             </p>
                           </div>
                         </div>
