@@ -27,10 +27,13 @@ export default function Contact_Us() {
       setIsMobileLandscape(window.innerWidth < 1200 && isLandscape);
     };
 
+    window.addEventListener("orientationchange", checkScreenSize);
+
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
 
     return () => {
+      window.removeEventListener("orientationchange", checkScreenSize);
       window.removeEventListener("resize", checkScreenSize);
     };
   }, []);

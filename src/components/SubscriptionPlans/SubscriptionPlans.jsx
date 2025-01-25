@@ -19,10 +19,13 @@ export default function SubscriptionPlans() {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobileView(window.innerWidth >= 375 && window.innerWidth <= 1023);
+      const isTargetWidth = window.innerWidth < 1200;
+      setIsMobileView(isTargetWidth);
     };
+  
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
+  
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };
