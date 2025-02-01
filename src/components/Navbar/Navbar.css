@@ -1,8 +1,10 @@
 .navbar_main {
   width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 .navbar_main .charts_tabs {
-  width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;

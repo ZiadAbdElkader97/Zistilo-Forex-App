@@ -1,0 +1,13 @@
+.info_btn {
+  height: auto;
+  color: #2dcc72;
+  background: transparent;
+  padding: 4px 3px 2px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.info_btn:hover {
+  background-color: #525252;
+}

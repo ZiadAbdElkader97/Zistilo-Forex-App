@@ -22,10 +22,10 @@ export default function SubscriptionPlans() {
       const isTargetWidth = window.innerWidth < 1200;
       setIsMobileView(isTargetWidth);
     };
-  
+
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
-  
+
     return () => {
       window.removeEventListener("resize", checkScreenSize);
     };

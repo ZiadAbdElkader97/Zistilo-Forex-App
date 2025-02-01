@@ -114,15 +114,16 @@
 }
 
 .subPlans .plan_section {
-  height: 140px;
+  /* height: 140px; */
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 6px;
   overflow: auto;
 }
-@media (orientation: portrait) and (orientation: landscape) {
+@media (orientation: landscape) {
   .subPlans .plan_section {
-    height: auto;
+    height: 140px;
   }
 }
 .subPlans .plan_section .plan {

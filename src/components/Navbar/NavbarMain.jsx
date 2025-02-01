@@ -4,6 +4,8 @@ import { FaSquare } from "react-icons/fa";
 import { HiMiniSquare2Stack } from "react-icons/hi2";
 import { DataContext } from "../../context/DataContext";
 import { useTranslation } from "react-i18next";
+import InfoModal from "../InfoModal/InfoModal";
+import videoDesc1 from "../../assets/videos/First_Air_Promo.mp4";
 
 export default function NavbarMain() {
   const { t } = useTranslation();
@@ -43,6 +45,11 @@ export default function NavbarMain() {
             <p>{t("Double Chart")}</p>
           </div>
         </div>
+        <InfoModal
+          title="Chart Info"
+          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quas veritatis quisquam tenetur rerum earum quo inventore odit fugiat modi?"
+          videoUrl={videoDesc1}
+        />
       </div>
     </>
   );

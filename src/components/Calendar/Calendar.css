@@ -27,12 +27,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 5px;
   padding: 6px;
   border-radius: 0 4px 4px 4px;
 }
 .calendar .calendar_tabs .calendar_tab {
-  width: 100%;
+  /* width: 100%; */
   font-size: 11px;
   color: #d1d1d1;
   background-color: #6b6b6b;
