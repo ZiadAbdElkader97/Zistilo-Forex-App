@@ -208,6 +208,7 @@
 }
 .category_symbol_section .category_info {
   display: flex;
+  align-items: center;
   gap: 5px;
 }
 .category_symbol_section .category_info .category_name {

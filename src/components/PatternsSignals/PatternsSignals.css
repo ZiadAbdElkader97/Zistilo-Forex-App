@@ -45,6 +45,9 @@
   gap: 5px;
 }
 .patterns_signals .left_tabs .tab {
+  display: flex;
+  align-items: center;
+  gap: 2px;
   color: #bababa;
   background-color: #3b3b3b;
   font-size: 12px;
@@ -81,6 +84,8 @@
   background-color: #d5dde0;
 }
 .patterns_signals .patterns_signals_tabs .right_search {
+  display: flex;
+  align-items: center;
   background-color: #525252;
   padding: 3px;
   border-radius: 4px 4px 0px 0px;

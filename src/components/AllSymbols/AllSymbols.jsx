@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { marketData, symbols_search } from "../../assets/data/MarketData.js";
 import { DataContext } from "../../context/DataContext.jsx";
 import SymbolsCategory from "../SymbolsCategory/SymbolsCategory.jsx";
+import InfoModal from "../InfoModal/InfoModal.jsx";
 import { IoMdArrowDropright, IoMdArrowDropdown } from "react-icons/io";
 import { LiaSearchSolid } from "react-icons/lia";
 import { MdCancel } from "react-icons/md";
@@ -26,7 +27,16 @@ export default function AllSymbols() {
     setFilteredSearchData,
     handleToggle,
     categoryCounts,
+    infoModalData,
   } = useContext(DataContext);
+
+  const getImagesArray = (data) => {
+    const images = [];
+    if (data?.image1) images.push(data.image1);
+    if (data?.image2) images.push(data.image2);
+    if (data?.image3) images.push(data.image3);
+    return images;
+  };
 
   const handleInputChange = (event) => {
     setInputSymbolValue(event.target.value);
@@ -162,6 +172,46 @@ export default function AllSymbols() {
                   <span className="category_num">
                     ({categoryCounts[item.id] || 0})
                   </span>
+                  {item.category === "Forex" ? (
+                    <InfoModal
+                      title={infoModalData[3]?.title}
+                      description={infoModalData[3]?.description}
+                      images={getImagesArray(infoModalData[3])}
+                      videoUrl={infoModalData[3]?.video_link}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {item.category === "CryptoCurrency" ? (
+                    <InfoModal
+                      title={infoModalData[4]?.title}
+                      description={infoModalData[4]?.description}
+                      images={getImagesArray(infoModalData[4])}
+                      videoUrl={infoModalData[4]?.video_link}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {item.category === "CFD" ? (
+                    <InfoModal
+                      title={infoModalData[5]?.title}
+                      description={infoModalData[5]?.description}
+                      images={getImagesArray(infoModalData[5])}
+                      videoUrl={infoModalData[5]?.video_link}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                  {item.category === "Indices" ? (
+                    <InfoModal
+                      title={infoModalData[6]?.title}
+                      description={infoModalData[6]?.description}
+                      images={getImagesArray(infoModalData[6])}
+                      videoUrl={infoModalData[6]?.video_link}
+                    />
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
               {openTabs[item.id] ? (

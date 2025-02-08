@@ -15,6 +15,10 @@
 }
 .market_tabs .tab_list {
   width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
   color: white;
   font-size: 11px;
   font-weight: 500;

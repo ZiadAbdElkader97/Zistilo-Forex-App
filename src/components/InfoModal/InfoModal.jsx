@@ -4,7 +4,7 @@ import { useState } from "react";
 import Modal from "../Modal/Modal";
 import InfoButton from "../InfoButton/InfoButton";
 
-export default function InfoModal({ title, description, videoUrl }) {
+export default function InfoModal({ title, description, images, videoUrl }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleButtonClick = () => {
@@ -25,6 +25,12 @@ export default function InfoModal({ title, description, videoUrl }) {
       <Modal title={title} show={showModal} onClose={handleCloseModal}>
         <div className="modal_section">
           <p className="info_description">{description}</p>
+          <div className="images_section">
+            {images &&
+              images.map((image, index) => (
+                <img key={index} src={image} alt={`Image ${index + 1}`} />
+              ))}
+          </div>
           <video width="560" height="315" controls>
             <source src={videoUrl} type="video/mp4" />
             Your browser does not support the video tag.

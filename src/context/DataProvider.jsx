@@ -25,6 +25,7 @@ export const DataProvider = ({ children }) => {
   const [inputWatchlistValue, setInputWatchlistValue] = useState("");
   const [inputPatternValue, setInputPatternValue] = useState("");
   const [watchlist, setWatchlist] = useState([]);
+  const [infoModalData, setInfoModalData] = useState([]);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -275,7 +276,21 @@ export const DataProvider = ({ children }) => {
     fetchPivotCamarillaData();
   }, []);
 
-  // console.log(data);
+  useEffect(() => {
+    const fetchInfoModalData = async () => {
+      const response = await axios.get(
+        "https://notifications.copyforexsignals.com/apii/hrlper_api.php",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            api_password: "5BhZWHeSp463Q7sU",
+          },
+        }
+      );
+      setInfoModalData(response.data);
+    };
+    fetchInfoModalData();
+  }, []);
 
   const ValueBar = ({ value }) => {
     const getWidth = () => {
@@ -361,6 +376,8 @@ export const DataProvider = ({ children }) => {
         isSingleChart,
         setIsSingleChart,
         categoryCounts,
+        infoModalData,
+        setInfoModalData,
       }}
     >
       {children}

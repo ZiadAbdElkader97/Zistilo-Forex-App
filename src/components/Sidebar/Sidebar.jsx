@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./Sidebar.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MarketSection from "../MarketSection/MarketSection";
 import { sidebar_menu } from "../../assets/data/SidebarData";
 import { LuFullscreen } from "react-icons/lu";
@@ -19,17 +19,31 @@ import Contact_Us from "../Contact_Us/Contact_Us";
 import SubscriptionPlans from "../SubscriptionPlans/SubscriptionPlans";
 import i18n from "../../i18n.js";
 import { useTranslation } from "react-i18next";
+import InfoModal from "../InfoModal/InfoModal.jsx";
+import { DataContext } from "../../context/DataContext.jsx";
 
 export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
   const { t } = useTranslation();
 
+  const { infoModalData } = useContext(DataContext);
+
+  const getImagesArray = (data) => {
+    const images = [];
+    if (data?.image1) images.push(data.image1);
+    if (data?.image2) images.push(data.image2);
+    if (data?.image3) images.push(data.image3);
+    return images;
+  };
+
   const [openMenuLang, SetOpenMenuLang] = useState(false);
   const [toggleOption, setToggleOption] = useState(1);
-  const [selectedLang, setSelectedLang] = useState(en_lang);
+  const [selectedLang, setSelectedLang] = useState(null);
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("selectedLanguage") || "en";
     const savedLangImage = localStorage.getItem("selectedLangImage") || en_lang;
+    const validLangImage = savedLangImage || en_lang;
+    setSelectedLang(validLangImage);
     i18n.changeLanguage(savedLanguage);
     setSelectedLang(savedLangImage);
     if (savedLanguage === "ar") {
@@ -39,6 +53,11 @@ export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
     } else {
       setToggleOption(1);
     }
+  }, []);
+
+  useEffect(() => {
+    const savedLangImage = localStorage.getItem("selectedLangImage") || en_lang;
+    setSelectedLang(savedLangImage);
   }, []);
 
   const handleToggle = () => {
@@ -86,6 +105,7 @@ export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
       }
     }
   };
+
   const [isMuted, setIsMuted] = useState(false);
 
   const [showMailingModal, setShowMailingModal] = useState(false);
@@ -129,6 +149,12 @@ export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
             <span></span>
           </div>
           <div className="top_menu_icons">
+            <InfoModal
+              title={infoModalData[0]?.title}
+              description={infoModalData[0]?.description}
+              images={getImagesArray(infoModalData[0])}
+              videoUrl={infoModalData[0]?.video_link}
+            />
             <i
               title={t("Mailing List")}
               onClick={() => handleOpenMailingModal()}
@@ -243,6 +269,13 @@ export default function Sidebar({ toggleMode, isSidebarOpen, toggleSidebar }) {
               <FaRegCopy />
             </i>
             <h4>{t(sidebar_menu.menu2)}</h4>
+            <InfoModal
+              className="copy_modal"
+              title={infoModalData[7]?.title}
+              description={infoModalData[7]?.description}
+              images={getImagesArray(infoModalData[7])}
+              videoUrl={infoModalData[7]?.video_link}
+            />
           </div>
           <div
             className={

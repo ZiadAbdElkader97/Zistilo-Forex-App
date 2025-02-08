@@ -6,6 +6,7 @@ import { MdCancel } from "react-icons/md";
 import Modal from "../Modal/Modal";
 import Login_Register from "../Login_Register/Login_Register";
 import { useUser } from "../../context/UserContext";
+import InfoModal from "../InfoModal/InfoModal";
 import { useTranslation } from "react-i18next";
 
 export default function PatternsSignals() {
@@ -16,7 +17,16 @@ export default function PatternsSignals() {
     inputPatternValue,
     setInputPatternValue,
     inputRef,
+    infoModalData,
   } = useContext(DataContext);
+
+  const getImagesArray = (data) => {
+    const images = [];
+    if (data?.image1) images.push(data.image1);
+    if (data?.image2) images.push(data.image2);
+    if (data?.image3) images.push(data.image3);
+    return images;
+  };
 
   const { user } = useUser();
 
@@ -110,20 +120,32 @@ export default function PatternsSignals() {
         >
           <div className="patterns_signals_tabs">
             <div className="left_tabs">
-              <span
+              <div
                 className={toggleState === 1 ? "tab tab_active" : "tab"}
                 title="Opened Signals"
                 onClick={() => toggleTab(1)}
               >
-                {t("Opened Signals")}
-              </span>
-              <span
+                <p>{t("Opened Signals")}</p>
+                <InfoModal
+                  title={infoModalData[9]?.title}
+                  description={infoModalData[9]?.description}
+                  images={getImagesArray(infoModalData[9])}
+                  videoUrl={infoModalData[9]?.video_link}
+                />
+              </div>
+              <div
                 className={toggleState === 2 ? "tab tab_active" : "tab"}
                 title="Pending Signals"
                 onClick={() => toggleTab(2)}
               >
-                {t("Pending Signals")}
-              </span>
+                <p>{t("Pending Signals")}</p>
+                <InfoModal
+                  title={infoModalData[10]?.title}
+                  description={infoModalData[10]?.description}
+                  images={getImagesArray(infoModalData[10])}
+                  videoUrl={infoModalData[10]?.video_link}
+                />
+              </div>
               <span
                 className={toggleState === 3 ? "tab tab_active" : "tab"}
                 title="Closed Signals"
@@ -133,6 +155,12 @@ export default function PatternsSignals() {
               </span>
             </div>
             <div className="right_search">
+              <InfoModal
+                title={infoModalData[11]?.title}
+                description={infoModalData[11]?.description}
+                images={getImagesArray(infoModalData[11])}
+                videoUrl={infoModalData[11]?.video_link}
+              />
               <div className="search_field">
                 <input
                   type="search"

@@ -5,17 +5,24 @@ import { HiMiniSquare2Stack } from "react-icons/hi2";
 import { DataContext } from "../../context/DataContext";
 import { useTranslation } from "react-i18next";
 import InfoModal from "../InfoModal/InfoModal";
-import videoDesc1 from "../../assets/videos/First_Air_Promo.mp4";
 
 export default function NavbarMain() {
   const { t } = useTranslation();
 
-  const { setIsSingleChart } = useContext(DataContext);
+  const { setIsSingleChart, infoModalData } = useContext(DataContext);
 
   const [activeChartTab, setActiveChartTab] = useState(1);
 
   const handleActiveChartTab = (tab) => {
     setActiveChartTab(tab);
+  };
+
+  const getImagesArray = (data) => {
+    const images = [];
+    if (data?.image1) images.push(data.image1);
+    if (data?.image2) images.push(data.image2);
+    if (data?.image3) images.push(data.image3);
+    return images;
   };
 
   return (
@@ -46,9 +53,10 @@ export default function NavbarMain() {
           </div>
         </div>
         <InfoModal
-          title="Chart Info"
-          description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quas veritatis quisquam tenetur rerum earum quo inventore odit fugiat modi?"
-          videoUrl={videoDesc1}
+          title={infoModalData[8]?.title}
+          description={infoModalData[8]?.description}
+          images={getImagesArray(infoModalData[8])}
+          videoUrl={infoModalData[8]?.video_link}
         />
       </div>
     </>
